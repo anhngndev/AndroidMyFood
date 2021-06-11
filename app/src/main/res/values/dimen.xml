@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="item_food_text_size_small">11sp</dimen>
+    <dimen name="item_food_text_size_big">15sp</dimen>
+
+</resources>
