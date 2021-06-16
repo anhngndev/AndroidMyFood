@@ -33,12 +33,12 @@
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="237dp"
-            android:layout_height="112dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="146dp"
             android:fontFamily="@font/righteous"
             android:gravity="center"
-            android:text="Hello"
+            android:text="Foody"
             android:textColor="@color/black"
             android:textSize="96sp"
             app:layout_constraintEnd_toEndOf="parent"

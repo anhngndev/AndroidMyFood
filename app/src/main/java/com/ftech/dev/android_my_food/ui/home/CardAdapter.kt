@@ -25,13 +25,6 @@ class CardAdapter(
 
         holderCard.binding.itemListener = callBack
         holderCard.binding.itemPosition = position
-
-//        holderCard.binding.image.animate().scaleX(1.5f)
-//        holderCard.binding.image.animate().scaleY(1.5f)
-
-
-//        holderCard.binding.image.scaleX = 1.2f
-//        holderCard.binding.image.scaleY = 1.2f
     }
 
     override fun getItemCount() = list.size

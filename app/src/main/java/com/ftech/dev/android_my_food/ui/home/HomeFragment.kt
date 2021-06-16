@@ -4,12 +4,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.ftech.dev.android_my_food.DetailFoodViewModel
+import com.ftech.dev.android_my_food.FoodDetailViewModel
 import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.data.model.Card
@@ -33,7 +31,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
     private lateinit var bigAdapter: FoodBigAdapter
     private var bigFoodList = mutableListOf<FoodBig>()
 
-    private val viewModel: DetailFoodViewModel by activityViewModels()
+    private val detailViewModel: FoodDetailViewModel by activityViewModels()
 
 
     override fun getLayoutId(): Int {
@@ -63,9 +61,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
         val layoutManagerCard = StaggeredGridLayoutManager(1, RecyclerView.HORIZONTAL)
         val layoutManagerBigFood = StaggeredGridLayoutManager(1, RecyclerView.HORIZONTAL)
 
-//        foodAdapter = FoodAdapter(foodList, this)
         foodAdapter = FoodAdapter()
         bigAdapter = FoodBigAdapter()
+
+
 
         foodAdapter.callBack = this
         foodAdapter.list = foodList
@@ -84,7 +83,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
         binding.cardRecyclerview.layoutManager = layoutManagerCard
         binding.cardRecyclerview.adapter = cardAdapter
 
+        /*binding.slideRecycler.setOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
 
+                }
+            }
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })*/
 
 
     }
@@ -99,7 +109,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
 
     override fun onItemClick(index: Int, item: Food) {
         Log.d(TAG, "onItemClick: ")
-        viewModel.liveFood.value = (item)
+        detailViewModel.liveFood.value = (item)
         findNavController().navigate(R.id.action_homeFragment_to_customBottomSheetDialogFragment)
 
     }
@@ -111,5 +121,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
 
     override fun onItemClick(index: Int, item: FoodBig) {
         Log.d(TAG, "onItemClick: ")
+        detailViewModel.liveBigFood.value = (item)
+        findNavController().navigate(R.id.action_homeFragment_to_bigFoodDetailFragment)
     }
 }

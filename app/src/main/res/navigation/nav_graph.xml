@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -42,6 +42,9 @@
         <action
             android:id="@+id/action_homeFragment_to_customBottomSheetDialogFragment"
             app:destination="@id/detailFoodBottomSheet" />
+        <action
+            android:id="@+id/action_homeFragment_to_bigFoodDetailFragment"
+            app:destination="@id/bigFoodDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -56,8 +59,22 @@
     <dialog
         android:id="@+id/detailFoodBottomSheet"
         tools:layout="@layout/bottom_sheet_detail_food"
-        android:name="com.ftech.dev.android_my_food.ui.detailfood.DetailFoodBottomSheet"
-        android:label="DetailFoodBottomSheet" />
+        android:name="com.ftech.dev.android_my_food.ui.detailfood.FoodDetailBottomSheet"
+        android:label="DetailFoodBottomSheet" >
+        <action
+            android:id="@+id/action_detailFoodBottomSheet_to_oderDetailFragment"
+            app:destination="@id/oderDetailFragment" />
+    </dialog>
+    <fragment
+        tools:layout="@layout/fragment_order_detail"
+        android:id="@+id/oderDetailFragment"
+        android:name="com.ftech.dev.android_my_food.ui.orderdetail.OderDetailFragment"
+        android:label="OderDetailFragment" />
+    <fragment
+        tools:layout="@layout/fragment_big_food_detail"
+        android:id="@+id/bigFoodDetailFragment"
+        android:name="com.ftech.dev.android_my_food.ui.detailfood.BigFoodDetailFragment"
+        android:label="BigFoodDetailFragment" />
 
 
 </navigation>

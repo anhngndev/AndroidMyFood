@@ -27,7 +27,6 @@ class FoodAdapter : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
             false
         )
         return FoodViewHolder(binding)
-
     }
 
     override fun onBindViewHolder(holderFood: FoodAdapter.FoodViewHolder, position: Int) {

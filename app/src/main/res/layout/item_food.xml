@@ -28,19 +28,16 @@
         android:paddingBottom="10dp">
 
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginStart="96dp"
             android:layout_marginEnd="3dp"
-            android:background="@drawable/border_right_14_white_fill"
+            android:background="@drawable/border_right_8_white_fill"
             android:elevation="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-
 
             <TextView
                 android:id="@+id/tv_name"
@@ -130,16 +127,15 @@
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/image"
-            image="@{item}"
+            riv_imageFood="@{item}"
             android:layout_width="96dp"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:riv_corner_radius="10dp"
+            app:riv_corner_radius="8dp"
             tools:src="@drawable/food_image_2" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

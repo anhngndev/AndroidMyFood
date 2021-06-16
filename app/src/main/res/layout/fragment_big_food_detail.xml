@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="com.ftech.dev.android_my_food.data.model.FoodBig" />
+
+        <variable
+            name="itemPosition"
+            type="Integer" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/toolbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:toolbarId="@+id/toolbar">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_food"
+                        android:layout_width="match_parent"
+                        android:layout_height="320dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_collapseMode="pin">
+
+                    <ImageView
+                        android:id="@+id/imv_back"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="18dp"
+                        android:layout_marginTop="39dp"
+                        android:layout_marginBottom="39dp"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/border_12_green_fill"
+                        android:padding="4dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_left_arrow"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_40_white_fill"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border_40_white_fill">
+
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="29dp"
+                    android:layout_marginTop="37dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:text="@{item.name}"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Indian Mastery Resto" />
+
+
+                <RatingBar
+                    android:id="@+id/rating"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="29dp"
+                    android:layout_marginTop="10dp"
+                    android:numStars="5"
+                    android:rating="@{item.rate}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+                <LinearLayout
+                    android:id="@+id/layout_verified"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="29dp"
+                    android:layout_marginTop="7dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rating">
+
+                    <ImageView
+                        android:id="@+id/imv_verified"
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:layout_marginEnd="3dp"
+                        android:scaleType="fitCenter"
+                        android:scaleX="1.2"
+                        android:src="@drawable/ic_verified" />
+
+                    <TextView
+
+                        android:id="@+id/tv_verified"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.verified}"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/item_food_text_size_small"
+                        tools:text="range" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_range"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toStartOf="@id/layout_timer"
+                    app:layout_constraintStart_toEndOf="@id/layout_verified"
+                    app:layout_constraintTop_toBottomOf="@id/rating">
+
+                    <ImageView
+                        android:id="@+id/imv_range"
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:layout_marginEnd="3dp"
+
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_green_pin" />
+
+
+                    <TextView
+                        android:id="@+id/tv_range"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.range}"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/item_food_text_size_small"
+                        tools:text="Range" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginEnd="9dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/layout_range"
+                    app:layout_constraintTop_toBottomOf="@id/rating">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imv_timer"
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+
+                        android:layout_marginEnd="3dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_timer" />
+
+                    <TextView
+                        android:id="@+id/tv_timer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{item.timer}"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/item_food_text_size_small"
+                        tools:text="Range" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_about"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="29dp"
+                    android:layout_marginTop="29dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:text="About"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toBottomOf="@id/layout_verified" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:src="@drawable/ic_like"
+            android:layout_marginEnd="48dp"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/border_12_green_fill"
+            app:layout_anchor="@id/app_bar"
+            app:layout_anchorGravity="bottom|right|end"
+            android:contentDescription="TODO" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

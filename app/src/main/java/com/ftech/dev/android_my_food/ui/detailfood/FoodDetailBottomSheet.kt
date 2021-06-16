@@ -1,24 +1,25 @@
 package com.ftech.dev.android_my_food.ui.detailfood
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.ftech.dev.android_my_food.DetailFoodViewModel
+import androidx.navigation.fragment.findNavController
+import com.ftech.dev.android_my_food.FoodDetailViewModel
 import com.ftech.dev.android_my_food.R
+import com.ftech.dev.android_my_food.data.model.Food
 import com.ftech.dev.android_my_food.databinding.BottomSheetDetailFoodBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class DetailFoodBottomSheet : BottomSheetDialogFragment() {
+class FoodDetailBottomSheet : BottomSheetDialogFragment() {
 
     lateinit var binding : BottomSheetDetailFoodBinding
-    private val viewModel: DetailFoodViewModel by activityViewModels()
+    private val detailViewModel: FoodDetailViewModel by activityViewModels()
+    lateinit var food:Food
+
 
     companion object {
         const val TAG = "CustomBottomSheetDialogFragment"
@@ -33,6 +34,7 @@ class DetailFoodBottomSheet : BottomSheetDialogFragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -40,10 +42,19 @@ class DetailFoodBottomSheet : BottomSheetDialogFragment() {
             dismiss()
         }
 
-        viewModel.liveFood.observe(viewLifecycleOwner) {food->
+
+        binding.tvAddOrder.setOnClickListener {
+//            findNavController().navigate(R.id.action_detailFoodBottomSheet_to_oderDetailFragment)
+
+            dismiss()
+        }
+
+        detailViewModel.liveFood.observe(viewLifecycleOwner) { food->
             binding.apply {
                 tvName.text = food.name
                 imvFood.setImageResource(food.image)
+                tvDescription.text = food.getResources()
+                tvPrice.text = food.getFormatPrice()
             }
         }
     }
