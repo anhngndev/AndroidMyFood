@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_gray"
+        tools:context=".ui.home.HomeFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/card_recyclerview"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/image_user"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/user_avt"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_corner_radius="22dp" />
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:text="Hi Ngoc Anh"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toEndOf="@id/image_user"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/title_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:text="What are you cooking today?"
+                    android:textColor="@color/gray"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toEndOf="@id/image_user"
+                    app:layout_constraintTop_toBottomOf="@id/username" />
+
+                <ImageView
+                    android:id="@+id/image_notify"
+                    android:layout_width="19dp"
+                    android:layout_height="21dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="29dp"
+                    android:src="@drawable/ic_black_bell"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/light_gray"
+                    app:layout_constraintTop_toBottomOf="@+id/image_user" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/slide_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="255dp"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintTop_toBottomOf="@+id/image_user"
+                    tools:layout_editor_absoluteX="-22dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/scroll_for_slide_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    app:layout_constraintTop_toBottomOf="@+id/slide_recycler" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/light_gray"
+                    app:layout_constraintTop_toBottomOf="@+id/scroll_for_slide_recycler" />
+
+                <TextView
+                    android:id="@+id/title_popular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="15dp"
+
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:gravity="center"
+                    android:text="Popular"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/scroll_for_slide_recycler" />
+
+                <TextView
+                    android:id="@+id/description_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="21dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:gravity="center"
+                    android:text="Food menu`s"
+
+                    android:textColor="@color/gray"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toEndOf="@id/title_popular"
+                    app:layout_constraintTop_toBottomOf="@id/scroll_for_slide_recycler" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/popular_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="23dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/title_popular" />
+
+                <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/card_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.ftech.dev.android_my_food.ui.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.ftech.dev.android_my_food.ui.login.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.ftech.dev.android_my_food.ui.register.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_register" />
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.ftech.dev.android_my_food.ui.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_customBottomSheetDialogFragment"
+            app:destination="@id/detailFoodBottomSheet" />
+        <action
+            android:id="@+id/action_homeFragment_to_bigFoodDetailFragment"
+            app:destination="@id/bigFoodDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        tools:layout="@layout/fragment_profile"
+        android:name="com.ftech.dev.android_my_food.ui.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        tools:layout="@layout/fragment_search"
+        android:id="@+id/searchFragment"
+        android:name="com.ftech.dev.android_my_food.ui.search.SearchFragment"
+        android:label="SearchFragment" />
+    <dialog
+        android:id="@+id/detailFoodBottomSheet"
+        tools:layout="@layout/bottom_sheet_detail_food"
+        android:name="com.ftech.dev.android_my_food.ui.detailfood.FoodDetailBottomSheet"
+        android:label="DetailFoodBottomSheet" >
+        <action
+            android:id="@+id/action_detailFoodBottomSheet_to_oderDetailFragment"
+            app:destination="@id/oderDetailFragment" />
+    </dialog>
+    <fragment
+        tools:layout="@layout/fragment_order_detail"
+        android:id="@+id/oderDetailFragment"
+        android:name="com.ftech.dev.android_my_food.ui.orderdetail.OderDetailFragment"
+        android:label="OderDetailFragment" />
+    <fragment
+        tools:layout="@layout/fragment_big_food_detail"
+        android:id="@+id/bigFoodDetailFragment"
+        android:name="com.ftech.dev.android_my_food.ui.detailfood.BigFoodDetailFragment"
+        android:label="BigFoodDetailFragment" />
+
+
+</navigation>

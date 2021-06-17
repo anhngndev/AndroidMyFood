@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.ftech.dev.android_my_food.data.model.FoodBig" />
+
+        <variable
+            name="itemPosition"
+            type="Integer" />
+
+        <variable
+            name="itemListener"
+            type="com.ftech.dev.android_my_food.ui.home.FoodBigAdapter.FoodBigListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="313dp"
+        android:layout_height="255dp"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/ripple_click_square"
+        android:onClick="@{()->itemListener.onItemClick(itemPosition,item)}">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/image"
+            imageFoodBig="@{item}"
+            android:layout_width="match_parent"
+            android:layout_height="193dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/food_image_5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius="12dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="152dp"
+            android:background="@drawable/custom_shadow"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:layout_marginHorizontal="21dp"
+            android:layout_marginTop="152dp"
+            android:background="@drawable/border_13_white_fill"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/cera_pro_medim"
+                android:gravity="center"
+                android:text="@{item.name}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/item_food_text_size_big"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Indian Mastery Resto" />
+
+            <RatingBar
+
+                android:id="@+id/rating"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:numStars="5"
+                android:rating="@{item.rate}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                />
+
+            <LinearLayout
+                android:id="@+id/layout_verified"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toStartOf="@id/layout_range"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rating">
+
+                <ImageView
+                    android:id="@+id/imv_verified"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginEnd="3dp"
+                    android:scaleType="fitCenter"
+                    android:scaleX="1.2"
+                    android:src="@drawable/ic_verified" />
+
+                <TextView
+                    android:id="@+id/tv_verified"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.verified}"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/item_food_text_size_small"
+                    tools:text="range" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_range"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toStartOf="@id/layout_timer"
+                app:layout_constraintStart_toEndOf="@id/layout_verified"
+                app:layout_constraintTop_toBottomOf="@id/rating">
+
+                <ImageView
+                    android:id="@+id/imv_range"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginEnd="3dp"
+
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_green_pin" />
+
+                <TextView
+                    android:id="@+id/tv_range"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.range}"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/item_food_text_size_small"
+                    tools:text="Range" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="9dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/layout_range"
+                app:layout_constraintTop_toBottomOf="@id/rating">
+
+                <ImageView
+                    android:id="@+id/imv_timer"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+
+                    android:layout_marginEnd="3dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_timer" />
+
+                <TextView
+                    android:id="@+id/tv_timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{item.timer}"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/item_food_text_size_small"
+                    tools:text="Range" />
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
