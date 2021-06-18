@@ -25,7 +25,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         setAction()
     }
 
-    private fun setAction() {
+    override fun setAction() {
 
         val navBar: BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
         navBar.visibility = View.GONE
@@ -33,18 +33,18 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         binding.layoutRegister.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
-        binding.rightArrowCard.setOnClickListener {
+        binding.ivLogin.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
         }
 
     }
 
-    companion object {
-
-    }
-
     override fun getLayoutId(): Int {
         return R.layout.fragment_login
+    }
+
+    override fun initView() {
+
     }
 
 

@@ -29,6 +29,7 @@
         android:background="@color/background_gray">
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="10dp"
@@ -43,7 +44,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginStart="9dp"
-                    android:layout_marginTop="27dp"
+                    android:layout_marginTop="9dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/shadow_green_circle"
@@ -55,7 +56,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="21dp"
-                    android:layout_marginTop="39dp"
+                    android:layout_marginTop="21dp"
                     android:adjustViewBounds="true"
                     android:padding="4dp"
                     android:scaleType="centerCrop"
@@ -63,11 +64,21 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <ImageView
+                    android:id="@+id/ivBack"
+                    android:background="@drawable/ripple_click_square"
+                    android:layout_width="68dp"
+                    android:layout_height="58dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:id="@+id/tv_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="39dp"
+                    android:layout_marginTop="21dp"
                     android:fontFamily="@font/cera_pro_medim"
                     android:gravity="center"
                     android:text="@string/order_details"
@@ -91,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="14dp"
-                    android:layout_marginTop="35dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/cera_pro_medim"
                     android:gravity="center"
                     android:text="@string/my_cart"
@@ -107,23 +118,30 @@
                     android:id="@+id/imv_food"
                     android:layout_width="126dp"
                     android:layout_height="105dp"
-                    android:layout_marginStart="14dp"
-                    android:layout_marginTop="17dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="15dp"
                     android:src="@drawable/food_image_3"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_title_cart"
                     app:riv_corner_radius="15dp" />
+                <TextView
+                    android:id="@+id/line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/light_gray"
+                    app:layout_constraintTop_toBottomOf="@id/imv_food"
+                    android:layout_marginTop="15dp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_food_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="17dp"
+                    android:layout_marginTop="15dp"
                     android:fontFamily="@font/cera_pro_medim"
                     android:text="@{food.name}"
                     android:textColor="@color/black"
-                    android:textSize="13sp"
+                    android:textSize="15sp"
                     app:layout_constraintStart_toEndOf="@id/imv_food"
                     app:layout_constraintTop_toBottomOf="@id/tv_title_cart"
                     tools:text="IDR 32.000 (+ Tax)" />
@@ -144,50 +162,51 @@
 
                 <ImageView
                     android:id="@+id/imv_zoom_in"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="45dp"
-                    android:background="@drawable/border_12_gray_stroke"
-                    android:padding="6dp"
+                    android:layout_marginTop="33dp"
+                    android:background="@drawable/border_18_gray_stroke"
+                    android:padding="12dp"
                     android:src="@drawable/ic_zoom_in"
                     app:layout_constraintStart_toEndOf="@id/imv_food"
                     app:layout_constraintTop_toBottomOf="@id/tv_food_price" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_amount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="13dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="47dp"
+                    android:layout_width="36dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="42dp"
                     android:fontFamily="@font/cera_pro_medim"
                     android:text="@{viewModel.amount+``}"
                     android:textColor="@color/gray"
-                    android:textSize="13sp"
+                    android:textSize="15sp"
                     app:layout_constraintStart_toEndOf="@id/imv_zoom_in"
                     app:layout_constraintTop_toBottomOf="@id/tv_food_price"
                     tools:text="1" />
 
                 <ImageView
                     android:id="@+id/imv_zoom_out"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="45dp"
-                    android:background="@drawable/border_12_gray_stroke"
-                    android:padding="6dp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="33dp"
+                    android:background="@drawable/border_18_gray_stroke"
+                    android:padding="12dp"
                     android:src="@drawable/ic_zoom_out"
                     app:layout_constraintStart_toEndOf="@id/tv_amount"
                     app:layout_constraintTop_toBottomOf="@id/tv_food_price" />
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imv_recycle"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginTop="45dp"
+                    android:id="@+id/ivDelete"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="33dp"
                     android:layout_marginEnd="26dp"
-                    android:background="@drawable/border_12_gray_fill"
-                    android:padding="5dp"
+                    android:background="@drawable/border_7_light_gray_2_fill"
+                    android:padding="11dp"
                     android:src="@drawable/ic_recycle"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_food_price" />
@@ -207,12 +226,12 @@
                     app:layout_constraintTop_toBottomOf="@id/imv_food" />
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imv_pin"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:id="@+id/ivPin"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="24dp"
-                    android:background="@drawable/border_7_gray_fill"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/border_7_light_gray_2_fill"
                     android:padding="5dp"
                     android:src="@drawable/ic_blue_pin"
                     app:layout_constraintStart_toStartOf="parent"
@@ -222,24 +241,25 @@
                     android:id="@+id/tv_district"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="8dp"
                     android:fontFamily="@font/cera_pro_medim"
                     android:text="Gedongan, Mojokerto City"
                     android:textColor="@color/black"
                     android:textSize="13sp"
-                    app:layout_constraintStart_toEndOf="@id/imv_pin"
-                    app:layout_constraintTop_toTopOf="@id/imv_pin" />
+                    app:layout_constraintStart_toEndOf="@id/ivPin"
+                    app:layout_constraintTop_toTopOf="@id/ivPin" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_country"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="8dp"
                     android:fontFamily="@font/cera_pro_medim"
                     android:text="Mojokerto, East Java"
+                    android:layout_marginTop="5dp"
                     android:textColor="@color/gray"
                     android:textSize="14sp"
-                    app:layout_constraintStart_toEndOf="@id/imv_pin"
+                    app:layout_constraintStart_toEndOf="@id/ivPin"
                     app:layout_constraintTop_toBottomOf="@id/tv_district" />
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -250,29 +270,35 @@
                     android:layout_marginEnd="18dp"
                     android:src="@drawable/ic_small_right_arrow"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/imv_pin" />
-
+                    app:layout_constraintTop_toTopOf="@id/ivPin" />
+                <TextView
+                    android:id="@+id/line4"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/light_gray"
+                    app:layout_constraintTop_toBottomOf="@id/ivPin"
+                    android:layout_marginTop="15dp" />
                 <TextView
                     android:id="@+id/tv_payment_method"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="14dp"
-                    android:layout_marginTop="75dp"
+                    android:layout_marginTop="15dp"
                     android:fontFamily="@font/cera_pro_medim"
                     android:gravity="center"
-                    android:text="Delivery Location"
+                    android:text="@string/payment_method"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_delivery_location" />
+                    app:layout_constraintTop_toBottomOf="@id/line4" />
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imv_wallet"
-                    android:layout_width="65dp"
-                    android:layout_height="40dp"
+                    android:id="@+id/ivWallet"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="17dp"
-                    android:background="@drawable/border_12_gray_fill"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/border_7_light_gray_2_fill"
                     android:padding="7dp"
                     android:src="@drawable/ic_green_wallet"
                     app:layout_constraintStart_toStartOf="parent"
@@ -282,25 +308,25 @@
                     android:id="@+id/tv_payment_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="8dp"
                     android:fontFamily="@font/cera_pro_medim"
                     android:text="Paypal Regular"
                     android:textColor="@color/black"
                     android:textSize="13sp"
-                    app:layout_constraintStart_toEndOf="@id/imv_wallet"
-                    app:layout_constraintTop_toTopOf="@id/imv_wallet" />
+                    app:layout_constraintStart_toEndOf="@id/ivWallet"
+                    app:layout_constraintTop_toTopOf="@id/ivWallet" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_payment_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/cera_pro_medim"
                     android:text="0113*****************"
                     android:textColor="@color/gray"
                     android:textSize="14sp"
-                    app:layout_constraintStart_toEndOf="@id/imv_wallet"
+                    app:layout_constraintStart_toEndOf="@id/ivWallet"
                     app:layout_constraintTop_toBottomOf="@id/tv_payment_name" />
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -311,15 +337,24 @@
                     android:layout_marginEnd="18dp"
                     android:src="@drawable/ic_small_right_arrow"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/imv_wallet" />
+                    app:layout_constraintTop_toTopOf="@id/ivWallet" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
 
+        <TextView
+            android:id="@+id/line3"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/light_gray"
+            app:layout_constraintBottom_toTopOf="@id/order_layout"
+            android:layout_marginTop="15dp" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/order_layout"
+            android:paddingTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -414,7 +449,9 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_delivery_cost" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_checkout"
+                android:onClick="@{}"
+                android:id="@+id/tvCheckout"
+                android:clickable="true"
                 android:layout_width="246dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
@@ -430,7 +467,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_total" />
+                app:layout_constraintTop_toBottomOf="@id/tv_total"
+                android:focusable="true" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

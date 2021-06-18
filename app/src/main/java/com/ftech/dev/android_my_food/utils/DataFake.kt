@@ -18,13 +18,24 @@ object DataFake {
         )
         val food2 = Food(
             "Stir-fried vegetable", R.drawable.food_image_3,
-            "High vitamin", "40000", "91", resources
+            "High vitamin", "20000", "91", resources
+        )
+        val food3 = Food(
+            "Sushi", R.drawable.sushi,
+            "High vitamin", "400000", "98", resources
+        )
+        val food4 = Food(
+            "Wine", R.drawable.wine,
+            "No vitamin", "150000", "82", resources
         )
 
         list.add(food1)
         list.add(food2)
+        list.add(food3)
+        list.add(food4)
         list.add(food1)
         list.add(food2)
+        list.add(food3)
 
         return list
     }
@@ -55,24 +66,34 @@ object DataFake {
             R.drawable.cake_1
         )
 
+        val list4 = mutableListOf<Int>(
+            R.drawable.sushi,
+            R.drawable.sushi_2
+        )
+
         val food1 = FoodBig(
             "Omelet", list1,
-            5, "5000", "95", "45min"
+            5, "5000", "95", "45"
         )
         val food2 = FoodBig(
             "Stir-fried vegetable", list2,
-            4, "4000", "91", "20min"
+            4, "4000", "91", "20"
         )
 
         val food3 = FoodBig(
             "Moon Cake", list3,
-            4, "15000", "98", "10min"
+            4, "15000", "98", "10"
+        )
+        val food4 = FoodBig(
+            "Sushi", list4,
+            5, "150000", "98", "10"
         )
 
         list.add(food1)
         list.add(food2)
         list.add(food3)
-        list.add(food2)
+        list.add(food4)
+        list.add(food1)
 
         return list
     }
@@ -91,12 +112,4 @@ object DataFake {
         return list
     }
 
-    fun getImageFoodData(): MutableList<Int> {
-        val list = mutableListOf<Int>()
-
-        list.add(R.drawable.card_image_1)
-        list.add(R.drawable.card_image_2)
-        list.add(R.drawable.card_image_3)
-        return list
-    }
 }

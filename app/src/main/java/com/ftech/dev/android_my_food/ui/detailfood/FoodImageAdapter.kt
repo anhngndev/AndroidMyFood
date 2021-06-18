@@ -47,8 +47,7 @@ class FoodImageAdapter : RecyclerView.Adapter<FoodImageAdapter.FoodImageViewHold
     }
 
     interface FoodImageListener {
-        fun onItemClick(index: Int, item: Int)
-
+        fun onItemClick(index: Int, item:Int)
     }
 
 }

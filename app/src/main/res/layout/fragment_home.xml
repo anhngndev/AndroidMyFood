@@ -37,11 +37,12 @@
                     app:riv_corner_radius="22dp" />
 
                 <TextView
-                    android:id="@+id/username"
+                    android:id="@+id/tvUsername"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="24dp"
+                    android:background="@drawable/ripple_click_square"
                     android:fontFamily="@font/cera_pro_medim"
                     android:text="Hi Ngoc Anh"
                     android:textColor="@color/black"
@@ -50,7 +51,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/title_1"
+                    android:id="@+id/tvTitle1"
                     android:layout_width="wrap_content"
                     android:layout_height="18dp"
                     android:layout_marginStart="12dp"
@@ -60,15 +61,17 @@
                     android:textColor="@color/gray"
                     android:textSize="14dp"
                     app:layout_constraintStart_toEndOf="@id/image_user"
-                    app:layout_constraintTop_toBottomOf="@id/username" />
+                    app:layout_constraintTop_toBottomOf="@id/tvUsername" />
 
                 <ImageView
-                    android:id="@+id/image_notify"
-                    android:layout_width="19dp"
-                    android:layout_height="21dp"
+                    android:id="@+id/ivNotify"
+                    android:layout_width="49dp"
+                    android:layout_height="51dp"
+                    android:background="@drawable/ripple_click_square"
+                    android:padding="15dp"
                     android:layout_marginStart="12dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginEnd="29dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="25dp"
                     android:src="@drawable/ic_black_bell"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

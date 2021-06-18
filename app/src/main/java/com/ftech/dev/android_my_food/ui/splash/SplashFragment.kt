@@ -22,21 +22,22 @@ class SplashFragment: BaseFragment<FragmentSplashBinding>(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initView(view)
+        initView()
         setAction()
     }
 
-    private fun setAction() {
+    override fun setAction() {
         binding.layout.setOnClickListener {
             findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
         }
     }
 
-    private fun initView(view: View) {
-
+    override fun initView() {
         val navBar: BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
         navBar.visibility = View.GONE
     }
+
+
 
 }
 

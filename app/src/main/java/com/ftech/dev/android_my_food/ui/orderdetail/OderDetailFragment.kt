@@ -42,7 +42,7 @@ class OderDetailFragment :BaseFragment<FragmentOrderDetailBinding>() {
 
     }
 
-    private fun setAction() {
+    override fun setAction() {
         binding.imvZoomIn.setOnClickListener {
             Log.d(TAG, "setAction: ${viewModelFoodDetail.amount.value}")
             viewModelFoodDetail.upAmount()
@@ -60,9 +60,18 @@ class OderDetailFragment :BaseFragment<FragmentOrderDetailBinding>() {
 //            callback.handleOnBackPressed()
 
         }
+        binding.ivDelete.setOnClickListener {
+
+        }
+        binding.ivWallet.setOnClickListener {
+
+        }
+        binding.ivPin.setOnClickListener {
+
+        }
     }
 
-    private fun initView() {
+    override fun initView() {
         observer(viewModelFoodDetail.liveFood){
             it?.let {food->
                 binding.food = food
@@ -73,7 +82,7 @@ class OderDetailFragment :BaseFragment<FragmentOrderDetailBinding>() {
 
     override fun onDestroy() {
         super.onDestroy()
-        viewModelFoodDetail.resetAmount()
+//        viewModelFoodDetail.resetAmount()
         setStateBottomNavigation(true)
     }
 

@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ftech.dev.android_my_food.FoodDetailViewModel
@@ -43,16 +44,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
         val navBar: BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
         navBar.visibility = View.VISIBLE
 
-        initView(view)
+        initView()
         setAction()
     }
 
-    private fun setAction() {
+    override fun setAction() {
+        binding.ivNotify.setOnClickListener {
 
+        }
+        binding.tvUsername.setOnClickListener {
 
+        }
+        binding.tvTitle1.setOnClickListener {
+
+        }
     }
 
-    private fun initView(view: View) {
+    override fun initView() {
         foodList = DataFake.getFoodData()
         cardList = DataFake.getCardData()
         bigFoodList = DataFake.getBigFoodData()
@@ -61,10 +69,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
         val layoutManagerCard = StaggeredGridLayoutManager(1, RecyclerView.HORIZONTAL)
         val layoutManagerBigFood = StaggeredGridLayoutManager(1, RecyclerView.HORIZONTAL)
 
+        val snapHelper = LinearSnapHelper()
+        snapHelper.attachToRecyclerView(binding.slideRecycler)
+
         foodAdapter = FoodAdapter()
         bigAdapter = FoodBigAdapter()
-
-
 
         foodAdapter.callBack = this
         foodAdapter.list = foodList
@@ -82,20 +91,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
 
         binding.cardRecyclerview.layoutManager = layoutManagerCard
         binding.cardRecyclerview.adapter = cardAdapter
-
-        /*binding.slideRecycler.setOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-
-                }
-            }
-
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-            }
-        })*/
-
 
     }
 

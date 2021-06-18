@@ -23,5 +23,15 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         super.onViewCreated(view, savedInstanceState)
     }
 
+    override fun initView() {
+    }
+
+    override fun setAction() {
+        binding.clEditProfile.setOnClickListener {  }
+        binding.clSetting.setOnClickListener {  }
+        binding.clLanguege.setOnClickListener {  }
+        binding.clLogOut.setOnClickListener {  }
+    }
+
 
 }

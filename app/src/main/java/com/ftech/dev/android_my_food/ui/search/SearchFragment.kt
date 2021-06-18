@@ -13,7 +13,7 @@ import com.ftech.dev.android_my_food.utils.observer
 class SearchFragment : BaseFragment<FragmentSearchBinding>(),
     RecentSearchAdapter.RecentSearchListener {
 
-    private val TAG = "SearchFragment"
+        private val TAG = "SearchFragment"
     private val searchViewModel: SearchViewModel by viewModels()
     private var searchAdapter = RecentSearchAdapter()
     var list = listOf<SearchEntity>()
@@ -23,23 +23,38 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        observer(searchViewModel.listSearchLiveData) {
+        initView()
+        setAction()
+
+    }
+
+    override fun setAction() {
+        binding.cardFilterIcon.setOnClickListener {
+            val item = binding.searchEdittext.text.toString()
+            if(!item.equals("")){
+                val searchEntity = SearchEntity(content = item)
+                searchViewModel.insert(searchEntity)
+            }
+        }
+
+        binding.searchEdittext.setOnFocusChangeListener { view, b ->
+//            view.setBackgroundResource(R.drawable.border_10_dark_gray_fill)
+        }
+
+    }
+
+    override fun initView() {
+        observer(searchViewModel.listSearchLiveData2) {
             it?.let { list ->
                 searchAdapter.list = list
             }
         }
-
         binding.rcRecentSearch.adapter = searchAdapter
         searchAdapter.callback = this
-
-        binding.cardFilterIcon.setOnClickListener {
-            val item = binding.searchEdittext.text.toString()
-            val searchEntity = SearchEntity(content = item)
-            searchViewModel.insert(searchEntity)
-        }
     }
 
     override fun onItemClick(index: Int, item: SearchEntity) {
+
 
     }
 

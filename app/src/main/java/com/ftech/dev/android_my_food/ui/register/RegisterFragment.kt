@@ -28,4 +28,11 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>() {
     override fun getLayoutId(): Int {
         return R.layout.fragment_register
     }
+
+    override fun initView() {
+
+    }
+
+    override fun setAction() {
+    }
 }

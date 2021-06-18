@@ -18,6 +18,8 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment() {
     protected lateinit var binding: DB
 
     abstract fun getLayoutId(): Int
+    abstract fun initView()
+    abstract fun setAction()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater,getLayoutId() , container, false)
