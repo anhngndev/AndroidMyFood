@@ -10,15 +10,12 @@ import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.databinding.FragmentOrderDetailBinding
 import com.ftech.dev.android_my_food.utils.observer
 
-class OderDetailFragment :BaseFragment<FragmentOrderDetailBinding>() {
+class OderDetailFragment : BaseFragment<FragmentOrderDetailBinding>() {
 
-    private  val TAG = "OderDetailFragment"
+    private val TAG = "OderDetailFragment"
     private val viewModelFoodDetail: FoodDetailViewModel by activityViewModels()
-//    var total  = 0
 
-//    val callback = requireActivity().onBackPressedDispatcher.addCallback(this){
-//        handleOnBackPressed()
-//    }
+    override fun isCanBackPress() = true
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_order_detail
@@ -29,40 +26,39 @@ class OderDetailFragment :BaseFragment<FragmentOrderDetailBinding>() {
         arguments?.let {
         }
         setStateBottomNavigation(false)
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModelFoodDetail
-        initView()
-
-        setAction()
-
     }
 
     override fun setAction() {
         binding.imvZoomIn.setOnClickListener {
-            Log.d(TAG, "setAction: ${viewModelFoodDetail.amount.value}")
             viewModelFoodDetail.upAmount()
         }
+
         binding.imvZoomOut.setOnClickListener {
-            Log.d(TAG, "setAction: ${viewModelFoodDetail.amount.value}")
             viewModelFoodDetail.downAmount()
         }
+
         binding.tvTitle.setOnClickListener {
             Log.d(TAG, "setAction: ")
 
         }
 
-        binding.imvBack.setOnClickListener {
-//            callback.handleOnBackPressed()
+        binding.tvCheckout.setOnClickListener {
 
         }
+
+        binding.ivBack.setOnClickListener {
+            onBackPress()
+        }
+
         binding.ivDelete.setOnClickListener {
-
+            viewModelFoodDetail.resetAmount()
         }
+
         binding.ivWallet.setOnClickListener {
 
         }
@@ -72,8 +68,8 @@ class OderDetailFragment :BaseFragment<FragmentOrderDetailBinding>() {
     }
 
     override fun initView() {
-        observer(viewModelFoodDetail.liveFood){
-            it?.let {food->
+        observer(viewModelFoodDetail.liveFood) {
+            it?.let { food ->
                 binding.food = food
                 binding.imvFood.setImageResource(food.image)
             }
@@ -82,7 +78,7 @@ class OderDetailFragment :BaseFragment<FragmentOrderDetailBinding>() {
 
     override fun onDestroy() {
         super.onDestroy()
-//        viewModelFoodDetail.resetAmount()
+        viewModelFoodDetail.resetAmount()
         setStateBottomNavigation(true)
     }
 

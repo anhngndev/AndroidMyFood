@@ -40,45 +40,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="9dp"
-                    android:layout_marginTop="9dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/shadow_green_circle"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imv_back"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="21dp"
-                    android:layout_marginTop="21dp"
-                    android:adjustViewBounds="true"
-                    android:padding="4dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_left_arrow"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/ivBack"
-                    android:background="@drawable/ripple_click_square"
-                    android:layout_width="68dp"
+                    android:layout_width="58dp"
                     android:layout_height="58dp"
                     android:adjustViewBounds="true"
+                    android:background="@drawable/ripple_click_square"
+                    android:padding="22dp"
                     android:scaleType="centerCrop"
+                    android:src="@drawable/ic_black_left_arrow"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_title"
+                    android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="21dp"
+                    android:layout_marginTop="19dp"
                     android:fontFamily="@font/cera_pro_medim"
                     android:gravity="center"
                     android:text="@string/order_details"
@@ -94,7 +73,7 @@
                     android:layout_height="0.1dp"
                     android:layout_marginTop="15dp"
                     android:background="@color/light_gray"
-                    app:layout_constraintTop_toBottomOf="@id/tv_title" />
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
 
                 <TextView
@@ -109,7 +88,7 @@
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_title" />
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
 <!--                riv_imageFood="@{food}"-->
 
@@ -161,14 +140,14 @@
                     tools:text="IDR 32.000 (+ Tax)" />
 
                 <ImageView
-                    android:id="@+id/imv_zoom_in"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="33dp"
-                    android:background="@drawable/border_18_gray_stroke"
-                    android:padding="12dp"
-                    android:src="@drawable/ic_zoom_in"
+                    android:id="@+id/imv_zoom_out"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="38dp"
+                    android:background="@{viewModel.amount > 0 ? @drawable/border_7_light_gray_2_fill : @drawable/border_7_light_gray_0_fill}"
+                    android:padding="8dp"
+                    android:src="@{viewModel.amount > 0 ? @drawable/ic_minus : @drawable/ic_black_minus}"
                     app:layout_constraintStart_toEndOf="@id/imv_food"
                     app:layout_constraintTop_toBottomOf="@id/tv_food_price" />
 
@@ -183,19 +162,19 @@
                     android:text="@{viewModel.amount+``}"
                     android:textColor="@color/gray"
                     android:textSize="15sp"
-                    app:layout_constraintStart_toEndOf="@id/imv_zoom_in"
+                    app:layout_constraintStart_toEndOf="@id/imv_zoom_out"
                     app:layout_constraintTop_toBottomOf="@id/tv_food_price"
                     tools:text="1" />
 
                 <ImageView
-                    android:id="@+id/imv_zoom_out"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="33dp"
-                    android:background="@drawable/border_18_gray_stroke"
-                    android:padding="12dp"
-                    android:src="@drawable/ic_zoom_out"
+                    android:id="@+id/imv_zoom_in"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="38dp"
+                    android:background="@drawable/border_7_light_gray_2_fill"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_plus"
                     app:layout_constraintStart_toEndOf="@id/tv_amount"
                     app:layout_constraintTop_toBottomOf="@id/tv_food_price" />
 
@@ -219,7 +198,7 @@
                     android:layout_marginTop="26dp"
                     android:fontFamily="@font/cera_pro_medim"
                     android:gravity="center"
-                    android:text="Delivery Location"
+                    android:text="@string/payment_method"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -390,7 +369,7 @@
                 android:layout_marginStart="56dp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="@{food.formatPriceTotal}"
+                android:text="@{`IDR `+ viewModel.total}"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/dimen_14"
                 app:layout_constraintStart_toEndOf="@id/tv_subtotal"
@@ -417,7 +396,7 @@
                 android:layout_marginStart="56dp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="IDR 5.500"
+                android:text="IDR 0"
                 android:textColor="@color/gray"
                 android:textSize="14dp"
                 app:layout_constraintStart_toEndOf="@id/tv_subtotal"
@@ -442,26 +421,27 @@
                 android:layout_marginStart="56dp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="IDR 41.000"
+                android:text="@{`IDR `+ viewModel.total}"
+                tools:text="IDR 41.000"
                 android:textColor="@color/gray"
                 android:textSize="14dp"
                 app:layout_constraintStart_toEndOf="@id/tv_subtotal"
                 app:layout_constraintTop_toBottomOf="@id/tv_delivery_cost" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:onClick="@{}"
                 android:id="@+id/tvCheckout"
                 android:clickable="true"
                 android:layout_width="246dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:layout_marginBottom="12dp"
-                android:background="@drawable/border_11_blue_fill"
-                android:elevation="2dp"
+                android:background="@drawable/border_11_light_blue_fill"
+                android:elevation="1dp"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center"
                 android:paddingVertical="7dp"
-                android:text="Checkout (42.000)"
+                android:text="@{`Checkout (`+ viewModel.total+`)`}"
+                tools:text="Checkout (42.000)"
                 android:textColor="@color/white"
                 android:textSize="14dp"
                 app:layout_constraintBottom_toBottomOf="parent"

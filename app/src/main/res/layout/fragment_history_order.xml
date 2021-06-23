@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.orderhistory.HistoryOrderFragment">
+
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:adjustViewBounds="true"
+            android:padding="22dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_black_left_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:fontFamily="@font/cera_pro_medim"
+            android:gravity="center"
+            android:text="Order"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/light_gray"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcOrder"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/background_gray"
+            android:paddingTop="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

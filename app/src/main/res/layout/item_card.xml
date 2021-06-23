@@ -20,6 +20,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="126dp"
+        android:background="@drawable/ripple_click_square"
         android:layout_height="80dp">
 
         <ImageView

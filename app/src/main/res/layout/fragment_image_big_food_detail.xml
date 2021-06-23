@@ -16,9 +16,10 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:adjustViewBounds="true"
+            android:padding="20dp"
             android:scaleType="centerCrop"
-            android:background="@drawable/ripple_click_square_circle"
-            android:src="@drawable/ic_green_circle_back"
+            android:background="@drawable/ripple_click_square_border_30"
+            android:src="@drawable/ic_cancel_circle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

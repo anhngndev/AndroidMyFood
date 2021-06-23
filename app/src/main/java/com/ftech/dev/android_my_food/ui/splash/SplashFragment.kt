@@ -22,8 +22,7 @@ class SplashFragment: BaseFragment<FragmentSplashBinding>(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initView()
-        setAction()
+
     }
 
     override fun setAction() {

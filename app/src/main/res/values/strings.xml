@@ -7,6 +7,11 @@
     <string name="share">Share</string>
     <string name="my_cart">My Cart</string>
     <string name="order_details">Order Details</string>
+    <string name="payment_method">Payment method</string>
+    <string name="todo">To do</string>
+    <string name="content">The only Indian restaurant in Indonesia that serves high quality dishes with high flavors. Made with real spices, and made by superior chefs</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

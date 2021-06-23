@@ -44,7 +44,6 @@ class FoodAdapter : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
     override fun getItemCount() = list.size
 
     class FoodViewHolder(val binding: ItemFoodBinding) : RecyclerView.ViewHolder(binding.root) {
-
     }
 
     interface FoodListener {

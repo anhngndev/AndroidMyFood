@@ -9,6 +9,7 @@ class SearchViewModel : ViewModel() {
 
     private val repository = SearchRepository()
     val listSearchLiveData = MutableLiveData<List<SearchEntity>>()
+    val listSearchLiveData2 = repository.getRecentSearchLiveData()
 
     fun insert(searchEntity: SearchEntity) {
         repository.insert(searchEntity)
@@ -17,7 +18,6 @@ class SearchViewModel : ViewModel() {
     fun getRecentSearch() {
         listSearchLiveData.value = repository.getRecentSearch()
     }
-
 
 
 }

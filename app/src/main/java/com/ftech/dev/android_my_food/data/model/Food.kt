@@ -8,13 +8,13 @@ class Food(
     var name: String,
     var image: Int,
     var vitamin: String,
-    var price: String,
+    var price: Int,
     var ratio: String,
     var resources: MutableList<String>
 
 ) {
 
-    fun getResources(): String {
+    fun formatResource(): String {
         var allResource = ""
         for (i in resources) {
             allResource += "$i+ "

@@ -23,7 +23,6 @@ class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
     private lateinit var foodImageAdapter: FoodImageAdapter
     private var foodImageList = mutableListOf<Int>()
 
-
     private val detailViewModel: FoodDetailViewModel by activityViewModels()
     override fun getLayoutId(): Int {
         return R.layout.fragment_big_food_detail
@@ -36,12 +35,7 @@ class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
         setStateBottomNavigation(false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initView()
-        setAction()
-
-    }
+    override fun isCanBackPress() = true
 
     override fun initView() {
         val imageFoodLayoutManager = StaggeredGridLayoutManager(1, RecyclerView.HORIZONTAL)
@@ -68,7 +62,7 @@ class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
     override fun setAction() {
 
         binding.ivBack.setOnClickListener {
-
+            onBackPress()
         }
 
         binding.tvSuperPartner.setOnClickListener {
@@ -91,6 +85,5 @@ class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
         super.onDestroy()
         setStateBottomNavigation(true)
     }
-
 
 }

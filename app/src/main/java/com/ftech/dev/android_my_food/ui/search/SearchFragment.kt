@@ -13,34 +13,28 @@ import com.ftech.dev.android_my_food.utils.observer
 class SearchFragment : BaseFragment<FragmentSearchBinding>(),
     RecentSearchAdapter.RecentSearchListener {
 
-        private val TAG = "SearchFragment"
+    private val TAG = "SearchFragment"
     private val searchViewModel: SearchViewModel by viewModels()
     private var searchAdapter = RecentSearchAdapter()
     var list = listOf<SearchEntity>()
 
     override fun getLayoutId() = R.layout.fragment_search
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        initView()
-        setAction()
-
-    }
-
     override fun setAction() {
-        binding.cardFilterIcon.setOnClickListener {
+        binding.ivSearch.setOnClickListener {
             val item = binding.searchEdittext.text.toString()
-            if(!item.equals("")){
+            if (!item.equals("")) {
                 val searchEntity = SearchEntity(content = item)
                 searchViewModel.insert(searchEntity)
             }
         }
 
         binding.searchEdittext.setOnFocusChangeListener { view, b ->
-//            view.setBackgroundResource(R.drawable.border_10_dark_gray_fill)
         }
 
+        binding.ivBack.setOnClickListener {
+            onBackPress()
+        }
     }
 
     override fun initView() {
@@ -51,11 +45,13 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(),
         }
         binding.rcRecentSearch.adapter = searchAdapter
         searchAdapter.callback = this
+
+        binding.searchEdittext.setOnFocusChangeListener { view, b ->
+        }
+
     }
 
     override fun onItemClick(index: Int, item: SearchEntity) {
-
-
     }
 
 

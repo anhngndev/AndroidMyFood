@@ -10,6 +10,7 @@
 
     <item android:id="@android:id/mask">
         <shape>
+            <corners android:radius="11dp" />
             <solid android:color="?android:colorAccent" />
         </shape>
     </item>

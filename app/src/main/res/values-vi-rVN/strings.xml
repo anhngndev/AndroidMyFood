@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidMyFood</string>
+    <string name="username">Tên đăng nhập</string>
+    <string name="password">Mật khẩu</string>
+    <string name="report">Phản hồi</string>
+    <string name="share">Chia sẻ</string>
+    <string name="my_cart">Giỏ hàng</string>
+    <string name="order_details">Chi tiết</string>
+    <string name="payment_method">Phương thức thanh toán</string>
+    <string name="content">Nhà hàng Ấn Độ duy nhất ở Indonesia phục vụ các món ăn chất lượng cao với hương vị cao. Được làm bằng các loại gia vị thực sự và được thực hiện bởi các đầu bếp giỏi</string>
+    <string name="todo">To do</string>
+</resources>

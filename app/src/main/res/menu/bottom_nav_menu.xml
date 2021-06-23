@@ -8,17 +8,17 @@
 
     <item
         android:id="@+id/marketFragment"
-        android:icon="@drawable/ic_market"
+        android:icon="@drawable/ic_cart"
         android:title="Market" />
 
     <item
         android:id="@+id/searchFragment"
-        android:icon="@drawable/ic_search"
+        android:icon="@drawable/black_search"
         android:title="Search" />
 
     <item
         android:id="@+id/profileFragment"
-        android:icon="@drawable/ic_white_profile"
+        android:icon="@drawable/user_blue"
         android:title="Profile" />
 
 

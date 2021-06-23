@@ -4,6 +4,7 @@ import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.data.model.Card
 import com.ftech.dev.android_my_food.data.model.Food
 import com.ftech.dev.android_my_food.data.model.FoodBig
+import com.ftech.dev.android_my_food.data.model.Order
 
 object DataFake {
 
@@ -14,27 +15,35 @@ object DataFake {
 
         val food1 = Food(
             "Omelet", R.drawable.food_image_1,
-            "High vitamin", "35000", "95", resources
+            "High vitamin", 35000, "95", resources
         )
         val food2 = Food(
             "Stir-fried vegetable", R.drawable.food_image_3,
-            "High vitamin", "20000", "91", resources
+            "High vitamin", 20000, "91", resources
         )
         val food3 = Food(
             "Sushi", R.drawable.sushi,
-            "High vitamin", "400000", "98", resources
+            "High vitamin", 400000, "98", resources
         )
         val food4 = Food(
             "Wine", R.drawable.wine,
-            "No vitamin", "150000", "82", resources
+            "No vitamin", 150000, "82", resources
+        )
+        val food5 = Food(
+            "Corn", R.drawable.corn,
+            "High vitamin", 10000, "89", resources
+        )
+        val food6 = Food(
+            "Chicken", R.drawable.chicken,
+            "High vitamin", 250000, "97", resources
         )
 
         list.add(food1)
         list.add(food2)
         list.add(food3)
         list.add(food4)
-        list.add(food1)
-        list.add(food2)
+        list.add(food5)
+        list.add(food6)
         list.add(food3)
 
         return list
@@ -108,6 +117,25 @@ object DataFake {
         list.add(card3)
         list.add(card3)
         list.add(card2)
+
+        return list
+    }
+
+    fun getOrderData(): MutableList<Order>{
+        val list = mutableListOf<Order>()
+        val order1 = Order("Cơm ngon Hà Nội - Hồng Mai", 62000, "ZaloPay", 2, "08, Jun", true)
+        val order2 = Order("Bento Delichi - Cơm gà xối mỡ", 44000, "ATM Card", 3, "09, May", true)
+        val order3 = Order("Bento Delichi - Cơm gà xối mỡ", 44000, "Tiền mặt", 2, "10, Jun", false)
+        val order4 = Order("Cơm ngon Hà Nội - Hồng Mai", 62000, "ZaloPay", 2, "08, Apr", true)
+        val order5 = Order("Cơm ngon Hà Nội - Hồng Mai", 33000, "ATM Card", 1, "14, Feb", false)
+        val order6 = Order("Jollibee - Hà Nội ", 35000, "ZaloPay", 1, "26, Sep", true)
+
+        list.add(order1)
+        list.add(order2)
+        list.add(order3)
+        list.add(order4)
+        list.add(order5)
+        list.add(order6)
 
         return list
     }

@@ -14,11 +14,14 @@ import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.databinding.FragmentImageBigFoodDetailBinding
 
-class ImageBigFoodDetailFragment : BaseFragment<FragmentImageBigFoodDetailBinding>(), FoodImageAdapter.FoodImageListener {
+class ImageBigFoodDetailFragment : BaseFragment<FragmentImageBigFoodDetailBinding>(),
+    FoodImageAdapter.FoodImageListener {
 
-    private val detailViewModel : FoodDetailViewModel by activityViewModels()
+    private val detailViewModel: FoodDetailViewModel by activityViewModels()
     private lateinit var foodImageAdapter: FoodImageAdapter
     private var foodImageList = mutableListOf<Int>()
+
+    override fun isCanBackPress() = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,13 +32,12 @@ class ImageBigFoodDetailFragment : BaseFragment<FragmentImageBigFoodDetailBindin
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView()
-        setAction()
+
     }
 
     override fun setAction() {
         binding.ivBack.setOnClickListener {
-
+            onBackPress()
         }
 
     }
@@ -45,7 +47,7 @@ class ImageBigFoodDetailFragment : BaseFragment<FragmentImageBigFoodDetailBindin
         val snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(binding.rcFoodImage)
 
-        detailViewModel.liveBigFood.observe(viewLifecycleOwner){
+        detailViewModel.liveBigFood.observe(viewLifecycleOwner) {
             foodImageAdapter = FoodImageAdapter()
             foodImageAdapter.callBack = this
             foodImageAdapter.list = it.image
@@ -58,7 +60,7 @@ class ImageBigFoodDetailFragment : BaseFragment<FragmentImageBigFoodDetailBindin
 
     override fun getLayoutId() = R.layout.fragment_image_big_food_detail
 
-    override fun onItemClick(index: Int, item:Int) {
+    override fun onItemClick(index: Int, item: Int) {
 
     }
 

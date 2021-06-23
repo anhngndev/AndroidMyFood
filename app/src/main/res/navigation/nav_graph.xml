@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -22,10 +22,18 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            app:destination="@id/registerFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -38,43 +46,85 @@
         android:id="@+id/homeFragment"
         android:name="com.ftech.dev.android_my_food.ui.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_customBottomSheetDialogFragment"
             app:destination="@id/detailFoodBottomSheet" />
         <action
             android:id="@+id/action_homeFragment_to_bigFoodDetailFragment"
-            app:destination="@id/bigFoodDetailFragment" />
+            app:destination="@id/bigFoodDetailFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_historyOrderFragment"
+            app:destination="@id/historyOrderFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        tools:layout="@layout/fragment_profile"
         android:name="com.ftech.dev.android_my_food.ui.profile.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
     <fragment
-        tools:layout="@layout/fragment_search"
         android:id="@+id/searchFragment"
         android:name="com.ftech.dev.android_my_food.ui.search.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search" />
     <dialog
         android:id="@+id/detailFoodBottomSheet"
-        tools:layout="@layout/bottom_sheet_detail_food"
         android:name="com.ftech.dev.android_my_food.ui.detailfood.FoodDetailBottomSheet"
-        android:label="DetailFoodBottomSheet" >
+        android:label="DetailFoodBottomSheet"
+        tools:layout="@layout/bottom_sheet_detail_food">
         <action
             android:id="@+id/action_detailFoodBottomSheet_to_oderDetailFragment"
-            app:destination="@id/oderDetailFragment" />
+            app:destination="@id/oderDetailFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </dialog>
     <fragment
-        tools:layout="@layout/fragment_order_detail"
         android:id="@+id/oderDetailFragment"
         android:name="com.ftech.dev.android_my_food.ui.orderdetail.OderDetailFragment"
-        android:label="OderDetailFragment" />
+        android:label="OderDetailFragment"
+        tools:layout="@layout/fragment_order_detail" />
     <fragment
-        tools:layout="@layout/fragment_big_food_detail"
         android:id="@+id/bigFoodDetailFragment"
         android:name="com.ftech.dev.android_my_food.ui.detailfood.BigFoodDetailFragment"
-        android:label="BigFoodDetailFragment" />
+        android:label="BigFoodDetailFragment"
+        tools:layout="@layout/fragment_big_food_detail">
+        <action
+            android:id="@+id/action_bigFoodDetailFragment_to_imageBigFoodDetailFragment"
+            app:destination="@id/imageBigFoodDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/imageBigFoodDetailFragment"
+        android:name="com.ftech.dev.android_my_food.ui.detailfood.ImageBigFoodDetailFragment"
+        android:label="ImageBigFoodDetailFragment"
+        tools:layout="@layout/fragment_image_big_food_detail" />
+    <fragment
+        android:id="@+id/historyOrderFragment"
+        android:name="com.ftech.dev.android_my_food.ui.orderhistory.HistoryOrderFragment"
+        android:label="HistoryOrderFragment"
+        tools:layout="@layout/fragment_history_order" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.ftech.dev.android_my_food.ui.profile.EditProfileFragment"
+        android:label="EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profile" />
 
 
 </navigation>

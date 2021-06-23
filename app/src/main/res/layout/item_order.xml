@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="androidx.lifecycle.MutableLiveData" />
+
+        <import type="java.util.Stack" />
+
+        <import type="com.ftech.dev.android_my_food.data.model.Order" />
+
+        <import type="com.ftech.dev.android_my_food.ui.orderhistory.OrderAdapter.OrderListener" />
+
+        <variable
+            name="item"
+            type="Order" />
+
+        <variable
+            name="itemPosition"
+            type="Integer" />
+
+        <variable
+            name="itemListener"
+            type="OrderListener" />
+
+        <variable
+            name="liveOrderStatus"
+            type="MutableLiveData&lt;Stack&lt;Order>>" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/white_fill">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/ivStatus"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:src="@{liveOrderStatus.search(item) == -1 ? @drawable/ic_warn : @drawable/ic_check}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius="8dp" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6sp"
+            android:fontFamily="@font/cera_pro_medim"
+            android:gravity="center"
+            android:text="@{item.formatStatus}"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@id/ivStatus"
+            app:layout_constraintTop_toTopOf="@id/ivStatus"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/tvDots"
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/border_2_gray_fill"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@id/tvStatus"
+            app:layout_constraintTop_toTopOf="@id/ivStatus" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:fontFamily="@font/cera_pro_medim"
+            android:gravity="center"
+            android:text="@{item.date}"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@id/tvStatus"
+            app:layout_constraintTop_toTopOf="@id/ivStatus"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/cera_pro_medim"
+            android:gravity="center"
+            android:text="@{item.name}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivStatus"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/tvDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:text="@{item.total +`đ (`+ item.paymentMethod+`)`}"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            tools:text="@string/report" />
+
+        <TextView
+            android:id="@+id/tvAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:text="@{item.amount + `món`}"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/tvDetail"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            tools:text="@string/report" />
+
+        <TextView
+            android:id="@+id/tvDots2"
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/border_2_gray_fill"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@id/tvDetail"
+            app:layout_constraintTop_toBottomOf="@id/tvName" />
+
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/light_gray_0"
+            app:layout_constraintTop_toBottomOf="@id/tvDetail" />
+
+        <ImageView
+            android:id="@+id/ivMore"
+            android:layout_width="15dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="19dp"
+            android:padding="4dp"
+            android:src="@drawable/ic_gray_right_arrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvName" />
+
+        <TextView
+            android:id="@+id/reOrder"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:background="@drawable/white_fill"
+            android:gravity="center"
+            android:onClick="@{() -> itemListener.onItemClick(itemPosition,item)}"
+            android:text="Đặt lại"
+            android:textColor="@color/light_blue"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@id/line" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

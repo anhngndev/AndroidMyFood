@@ -5,9 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ftech.dev.android_my_food.R
-import com.ftech.dev.android_my_food.databinding.FoodImageItemBinding
-import com.ftech.dev.android_my_food.databinding.ItemFoodBinding
-import com.ftech.dev.android_my_food.ui.home.FoodAdapter
+import com.ftech.dev.android_my_food.databinding.ItemFoodImageBinding
 
 class FoodImageAdapter : RecyclerView.Adapter<FoodImageAdapter.FoodImageViewHolder>() {
     var list: MutableList<Int> = mutableListOf()
@@ -20,14 +18,12 @@ class FoodImageAdapter : RecyclerView.Adapter<FoodImageAdapter.FoodImageViewHold
 
     override fun getItemCount() = list.size
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodImageViewHolder {
 
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = DataBindingUtil.inflate<FoodImageItemBinding>(
+        val binding = DataBindingUtil.inflate<ItemFoodImageBinding>(
             layoutInflater,
-            R.layout.food_image_item,
+            R.layout.item_food_image,
             parent,
             false
         )
@@ -41,13 +37,13 @@ class FoodImageAdapter : RecyclerView.Adapter<FoodImageAdapter.FoodImageViewHold
         holder.binding.itemListener = callBack
     }
 
-
-    class FoodImageViewHolder(val binding: FoodImageItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class FoodImageViewHolder(val binding: ItemFoodImageBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
     }
 
     interface FoodImageListener {
-        fun onItemClick(index: Int, item:Int)
+        fun onItemClick(index: Int, item: Int)
     }
 
 }

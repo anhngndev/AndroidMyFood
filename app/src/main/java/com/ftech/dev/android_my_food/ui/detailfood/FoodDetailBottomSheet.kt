@@ -16,10 +16,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class FoodDetailBottomSheet : BottomSheetDialogFragment() {
 
-    lateinit var binding : BottomSheetDetailFoodBinding
+    lateinit var binding: BottomSheetDetailFoodBinding
     private val detailViewModel: FoodDetailViewModel by activityViewModels()
-    lateinit var food:Food
-
+    lateinit var food: Food
 
     companion object {
         const val TAG = "CustomBottomSheetDialogFragment"
@@ -30,7 +29,8 @@ class FoodDetailBottomSheet : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.bottom_sheet_detail_food, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.bottom_sheet_detail_food, container, false)
         return binding.root
     }
 
@@ -42,20 +42,12 @@ class FoodDetailBottomSheet : BottomSheetDialogFragment() {
             dismiss()
         }
 
-
         binding.tvAddOrder.setOnClickListener {
-//            findNavController().navigate(R.id.action_detailFoodBottomSheet_to_oderDetailFragment)
-
-            dismiss()
+            findNavController().navigate(R.id.action_detailFoodBottomSheet_to_oderDetailFragment)
         }
 
-        detailViewModel.liveFood.observe(viewLifecycleOwner) { food->
-            binding.apply {
-                tvName.text = food.name
-                imvFood.setImageResource(food.image)
-                tvDescription.text = food.getResources()
-                tvPrice.text = food.getFormatPrice()
-            }
+        detailViewModel.liveFood.observe(viewLifecycleOwner) { food ->
+            binding.item = food
         }
     }
 

@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
 }
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -54,6 +55,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0-rc01'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.firebase:firebase-auth:21.0.1'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -69,7 +71,7 @@ dependencies {
     // LiveData
 
     // navigation component
-    def nav_version = "2.3.5"
+    def nav_version = "2.4.0-alpha03"
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
@@ -96,6 +98,11 @@ dependencies {
     // glide
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
     // viewpager
+
+    //firebase
+    implementation platform('com.google.firebase:firebase-bom:28.1.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 
 }

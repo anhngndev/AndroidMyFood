@@ -8,8 +8,7 @@ import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.data.model.FoodBig
 import com.ftech.dev.android_my_food.databinding.ItemBigFoodBinding
 
-class FoodBigAdapter: RecyclerView.Adapter<FoodBigAdapter.FoodBigViewHolder>() {
-
+class FoodBigAdapter : RecyclerView.Adapter<FoodBigAdapter.FoodBigViewHolder>() {
 
     var list: MutableList<FoodBig> = mutableListOf()
         set(value) {
@@ -19,11 +18,9 @@ class FoodBigAdapter: RecyclerView.Adapter<FoodBigAdapter.FoodBigViewHolder>() {
 
     var callBack: FoodBigListener? = null
 
-    class FoodBigViewHolder(val binding: ItemBigFoodBinding) : RecyclerView.ViewHolder(binding.root) {
-
+    class FoodBigViewHolder(val binding: ItemBigFoodBinding) :
+        RecyclerView.ViewHolder(binding.root) {
     }
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodBigViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

@@ -7,6 +7,7 @@ import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import com.bumptech.glide.Glide
 import com.ftech.dev.android_my_food.data.model.Card
 import com.ftech.dev.android_my_food.data.model.Food
 import com.ftech.dev.android_my_food.data.model.FoodBig
@@ -21,15 +22,21 @@ fun Application.initApplication() {
 }
 
 
+
+
 @BindingAdapter("riv_imageFood")
 fun RoundedImageView.setRoundImage(item: Food) {
-    setImageResource(item.image)
+//    setImageResource(item.image)
+    Glide.with(this).load(item.image).into(this)
+
     // TODO: 16/06/2021 anhnd fix
 }
 
 @BindingAdapter("imageFoodBig")
 fun RoundedImageView.setImageBigFood(item: FoodBig) {
-    setImageResource(item.image[1])
+//    setImageResource(item.image[0])
+    Glide.with(this).load(item.image[0]).into(this)
+
 }
 
 @BindingAdapter("iv_image")
@@ -40,6 +47,8 @@ fun ImageView.setImage(item: Card) {
 @BindingAdapter("iv_image_1")
 fun ImageView.setImage(item: Int) {
     setImageResource(item)
+//    Glide.with(this).load(item).into(this)
+
 }
 
 

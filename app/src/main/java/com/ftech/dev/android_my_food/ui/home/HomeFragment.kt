@@ -1,8 +1,12 @@
 package com.ftech.dev.android_my_food.ui.home
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.HandlerThread
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -26,14 +30,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
     private lateinit var foodAdapter: FoodAdapter
     private var foodList = mutableListOf<Food>()
 
-    private lateinit var cardAdapter: CardAdapter
-    private var cardList = mutableListOf<Card>()
-
     private lateinit var bigAdapter: FoodBigAdapter
     private var bigFoodList = mutableListOf<FoodBig>()
 
     private val detailViewModel: FoodDetailViewModel by activityViewModels()
-
+    var handler = Handler()
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_home
@@ -41,16 +42,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val navBar: BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
-        navBar.visibility = View.VISIBLE
+        handler.postDelayed(Runnable {
+            binding.view.visibility = View.GONE
+        }, 800)
 
-        initView()
-        setAction()
+        setStateBottomNavigation(true)
+
     }
 
     override fun setAction() {
         binding.ivNotify.setOnClickListener {
-
+            findNavController().navigate(R.id.action_homeFragment_to_historyOrderFragment)
         }
         binding.tvUsername.setOnClickListener {
 
@@ -58,11 +60,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
         binding.tvTitle1.setOnClickListener {
 
         }
+
+
     }
 
     override fun initView() {
         foodList = DataFake.getFoodData()
-        cardList = DataFake.getCardData()
+//        cardList = DataFake.getCardData()
         bigFoodList = DataFake.getBigFoodData()
 
         val layoutManagerFood = StaggeredGridLayoutManager(1, RecyclerView.VERTICAL)
@@ -87,10 +91,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
         binding.slideRecycler.layoutManager = layoutManagerBigFood
         binding.slideRecycler.adapter = bigAdapter
 
-        cardAdapter = CardAdapter(cardList, this)
-
-        binding.cardRecyclerview.layoutManager = layoutManagerCard
-        binding.cardRecyclerview.adapter = cardAdapter
+//        cardAdapter = CardAdapter(cardList, this)
+//        binding.cardRecyclerview.layoutManager = layoutManagerCard
+//        binding.cardRecyclerview.adapter = cardAdapter
 
     }
 
@@ -99,8 +102,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
         super.onCreate(savedInstanceState)
         arguments?.let {
         }
-
     }
+
 
     override fun onItemClick(index: Int, item: Food) {
         Log.d(TAG, "onItemClick: ")
@@ -110,8 +113,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
     }
 
     override fun onItemClick(index: Int, item: Card) {
-
-
     }
 
     override fun onItemClick(index: Int, item: FoodBig) {

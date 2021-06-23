@@ -9,19 +9,24 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="red">#FF0000</color>
+    <color name="red_app">#FF3939</color>
     <color name="dark_red">#D30000</color>
 
     <color name="light_blue">#02B0BB</color>
     <color name="blue">#0E87DF</color>
+    <color name="blue_app">#3D50FF</color>
 
     <color name="green">#00DA71</color>
     <color name="dark_green">#00733C</color>
     <color name="transition_green">#3C00DA71</color>
+    <color name="transition">#00FFFFFF</color>
     <color name="transition_green_2">#8F00DA71</color>
 
+    <color name="light_gray_0">#2DC3C3C3</color>
     <color name="light_gray">#AFAFAF</color>
     <color name="light_gray_2">#79C4C4C4</color>
     <color name="gray">#636773</color>
     <color name="dark_gray">#424242</color>
-    <color name="background_gray">#F2F2F2</color>
+    <color name="background_gray">#F5F5F5</color>
+    <color name="background_gray_2">#E8E8E8</color>
 </resources>

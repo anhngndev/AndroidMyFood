@@ -10,12 +10,17 @@ import com.ftech.dev.android_my_food.databinding.ItemCardBinding
 
 class CardAdapter(
     var list: MutableList<Card>,
-    var callBack:CardListener
+    var callBack: CardListener
 ) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = DataBindingUtil.inflate<ItemCardBinding>(layoutInflater,R.layout.item_card, parent, false)
+        val binding = DataBindingUtil.inflate<ItemCardBinding>(
+            layoutInflater,
+            R.layout.item_card,
+            parent,
+            false
+        )
         return CardViewHolder(binding)
     }
 
