@@ -13,11 +13,12 @@ import com.ftech.dev.android_my_food.ui.main.MainViewModel
 
 abstract class BaseFragment<DB : ViewDataBinding> : Fragment() {
 
-    private val mainViewModel by activityViewModels<MainViewModel>()
+//    private val mainViewModel by activityViewModels<MainViewModel>()
 
     protected lateinit var binding: DB
 
     abstract fun getLayoutId(): Int
+    open fun initBinding() {}
     abstract fun initView()
     abstract fun setAction()
     open fun isCanBackPress() = false
@@ -29,6 +30,7 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         binding.lifecycleOwner = viewLifecycleOwner
+        initBinding()
         return binding.root
     }
 
@@ -41,13 +43,8 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment() {
         setAction()
     }
 
-    fun setStateBottomNavigation(value: Boolean) {
-        mainViewModel.stateNavigationBotstom.value = value
-    }
-
     private fun setDispatcherOnBackPress() {
         requireActivity().onBackPressedDispatcher.addCallback(this) {
-//            onBackPress()
         }
     }
 

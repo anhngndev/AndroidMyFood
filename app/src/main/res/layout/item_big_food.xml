@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.ftech.dev.android_my_food.data.model.FoodBig" />
+            type="com.ftech.dev.android_my_food.data.model.BigFood" />
 
         <variable
             name="itemPosition"

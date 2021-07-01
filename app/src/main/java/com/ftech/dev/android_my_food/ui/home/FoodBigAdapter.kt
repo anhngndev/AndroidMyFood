@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ftech.dev.android_my_food.R
-import com.ftech.dev.android_my_food.data.model.FoodBig
+import com.ftech.dev.android_my_food.data.model.BigFood
 import com.ftech.dev.android_my_food.databinding.ItemBigFoodBinding
 
 class FoodBigAdapter : RecyclerView.Adapter<FoodBigAdapter.FoodBigViewHolder>() {
 
-    var list: MutableList<FoodBig> = mutableListOf()
+    var list: MutableList<BigFood> = mutableListOf()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -43,7 +43,7 @@ class FoodBigAdapter : RecyclerView.Adapter<FoodBigAdapter.FoodBigViewHolder>() 
     override fun getItemCount() = list.size
 
     interface FoodBigListener {
-        fun onItemClick(index: Int, item: FoodBig)
+        fun onItemClick(index: Int, item: BigFood)
 
     }
 }

@@ -1,4 +1,4 @@
-package com.ftech.dev.android_my_food.ui.detailfood
+package com.ftech.dev.android_my_food.ui.fooddetail
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

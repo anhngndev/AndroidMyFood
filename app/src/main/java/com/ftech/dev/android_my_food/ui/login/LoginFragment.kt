@@ -1,21 +1,23 @@
 package com.ftech.dev.android_my_food.ui.login
 
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.ftech.dev.android_my_food.R
+import com.ftech.dev.android_my_food.UserInforViewModel
 import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.databinding.FragmentLoginBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import meow.bottomnavigation.MeowBottomNavigation
 
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private var firebaseAuth = FirebaseAuth.getInstance()
+    private val userViewModel : UserInforViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,17 +33,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     override fun setAction() {
 
-        val navBar: BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
-        navBar.visibility = View.GONE
-
         binding.layoutRegister.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
         binding.tvLogin.setOnClickListener {
             login()
         }
-
-
     }
 
     override fun getLayoutId(): Int {
@@ -67,6 +64,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             firebaseAuth.signInWithEmailAndPassword(mail.toString(), pass.toString())
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
+                        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return@addOnCompleteListener
+                        val name = sharedPref.getString(mail.toString()+"name", "not found name")
+                        val phone = sharedPref.getString(mail.toString()+"sdt", "not found phone number")
+                        userViewModel.userLiveData.value = firebaseAuth.currentUser
+                        userViewModel.userNameLivaData.value = name
+                        userViewModel.userPhoneNumberLivaData.value = phone
                         findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                     }
                 }

@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.ftech.dev.android_my_food.ui.cart.CartViewModel" />
+
+        <variable
+            name="viewModel"
+            type="CartViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.cart.CartFragment">
+
+        <RelativeLayout
+            android:id="@+id/rlTopBar"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/ripple_click_square"
+                android:padding="22dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_black_left_arrow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="19dp"
+                android:fontFamily="@font/cera_pro_medim"
+                android:gravity="center"
+                android:text="Cart"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/light_gray"
+            app:layout_constraintTop_toBottomOf="@id/rlTopBar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nsvCart"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/background_gray"
+            app:layout_constraintBottom_toTopOf="@id/rlPayment"
+            app:layout_constraintTop_toBottomOf="@id/line">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/rlAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/white"
+                    android:paddingStart="22dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="25dp">
+
+                    <TextView
+                        android:id="@+id/tvPhoneTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/cera_pro_medim"
+                        android:hint="Giao hàng đến"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvMainAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvPhoneTitle"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/cera_pro_bold"
+                        android:text="434 Trần Khát Trân"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        tools:hint="@string/phone_number" />
+
+                    <TextView
+                        android:id="@+id/tvEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvPhoneTitle"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/ripple_click_square"
+                        android:fontFamily="@font/cera_pro_medim"
+                        android:text="Thay đổi"
+                        android:textColor="@color/light_blue"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvFullAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvMainAddress"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="80dp"
+                        android:ellipsize="end"
+                        android:ems="3"
+                        android:lines="1"
+
+                        android:fontFamily="@font/cera_pro_light"
+                        android:singleLine="true"
+                        android:text="434 Trần Khát Trân, P.Phố Huế, Q.Hai Bà Trưng, TP.Hà Nội"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvAddDetailAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvFullAddress"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="40dp"
+                        android:drawableStart="@drawable/ic_gray_plus"
+                        android:drawablePadding="4dp"
+                        android:fontFamily="@font/cera_pro_light"
+                        android:text="Thêm vào tòa nhà, tầng, số phòng."
+                        android:textSize="16sp" />
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlDetailCart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rlAddress"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:paddingStart="22dp"
+                    android:paddingTop="10dp">
+
+
+                    <TextView
+                        android:id="@+id/tvDetailCardTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/cera_pro_medim"
+                        android:hint="Đơn hàng của bạn"
+                        android:textSize="13sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcItemInCart"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvDetailCardTitle"
+                        android:layout_marginTop="4dp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                    <TextView
+                        android:id="@+id/tvNone"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        android:layout_below="@id/tvDetailCardTitle"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        tv_visibility_2="@{viewModel}"
+                        android:text="Vui lòng đặt thêm hàng!"
+                        android:fontFamily="@font/cera_pro_medim"
+                        android:textSize="15sp" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tvDirect"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rlDetailCart"
+                    android:background="@color/white"
+                    android:drawableStart="@drawable/ic_document"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/cera_pro_light"
+                    android:paddingVertical="12dp"
+                    android:paddingStart="22dp"
+                    android:text="Bạn có muốn nhắn gì với nhà hàng không?"
+                    android:textSize="15sp" />
+
+                <RelativeLayout
+                    android:id="@+id/rlSumItUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvDirect"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/white"
+                    android:paddingStart="22dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/tvAmountItem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/cera_pro_light"
+                        android:text="@{`Tạm tính (`+ viewModel.amount +` món)`}"
+                        android:textColor="@color/black"
+                        android:textSize="13sp"
+                        tools:text="Tạm tính (7 món)" />
+
+                    <TextView
+                        android:id="@+id/tvFoodPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/cera_pro_light"
+                        android:text="@{viewModel.total +`đ`}"
+                        android:textColor="@color/black"
+                        android:textSize="13sp"
+                        tools:text="203000đ" />
+
+                    <TextView
+                        android:id="@+id/tvShip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvAmountItem"
+                        android:layout_marginTop="8dp"
+                        android:drawableEnd="@drawable/ic_question"
+                        android:drawablePadding="4dp"
+                        android:fontFamily="@font/cera_pro_light"
+                        android:text="Phí áp dụng: 0.5km"
+                        android:textColor="@color/black"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvShipPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvAmountItem"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/cera_pro_light"
+                        android:text="0đ"
+                        android:textColor="@color/black"
+                        android:textSize="13sp" />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:id="@+id/rlPayment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="14dp"
+            android:paddingBottom="18dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/tvPaymentMethod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/rlOrder"
+                android:layout_toStartOf="@id/tvCenter"
+                android:drawableStart="@drawable/ic_money"
+                android:drawableEnd="@drawable/ic_upload"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/cera_pro_light"
+                android:paddingStart="22dp"
+                android:paddingEnd="18dp"
+                android:text="Tiền mặt"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvCenter"
+
+                android:layout_width="1dp"
+                android:layout_height="22dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/light_gray" />
+
+            <TextView
+                android:id="@+id/tvAddPromo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/rlOrder"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@id/tvCenter"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/cera_pro_medim"
+                android:gravity="center"
+                android:text="ADD A PROMO"
+                android:textColor="@color/light_blue"
+                android:textSize="15sp" />
+
+            <RelativeLayout
+                android:id="@+id/rlOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCenter"
+                android:layout_marginTop="18dp"
+                android:paddingHorizontal="22dp">
+
+                <TextView
+                    android:id="@+id/tvTotalTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:hint="Tổng cộng"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvTotalTitle"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:text="@{viewModel.total +`đ`}"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    tools:text="220000đ" />
+
+                <TextView
+                    android:id="@+id/tvOrder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/border_5_light_blue_fill"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:paddingHorizontal="80dp"
+                    android:paddingVertical="14dp"
+                    android:text="Đặt hàng"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

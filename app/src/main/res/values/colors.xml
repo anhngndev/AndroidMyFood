@@ -12,15 +12,22 @@
     <color name="red_app">#FF3939</color>
     <color name="dark_red">#D30000</color>
 
-    <color name="light_blue">#02B0BB</color>
+    <color name="light_blue">#57c1c1</color>
     <color name="blue">#0E87DF</color>
     <color name="blue_app">#3D50FF</color>
+    <color name="dark_blue">#085ca2</color>
 
     <color name="green">#00DA71</color>
-    <color name="dark_green">#00733C</color>
+    <color name="dark_green">#06ac86</color>
     <color name="transition_green">#3C00DA71</color>
     <color name="transition">#00FFFFFF</color>
     <color name="transition_green_2">#8F00DA71</color>
+
+
+    <color name="pink">#fea3c2</color>
+
+
+    <color name="yellow">#f8c007</color>
 
     <color name="light_gray_0">#2DC3C3C3</color>
     <color name="light_gray">#AFAFAF</color>

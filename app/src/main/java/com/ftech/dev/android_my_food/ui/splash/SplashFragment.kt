@@ -32,8 +32,7 @@ class SplashFragment: BaseFragment<FragmentSplashBinding>(){
     }
 
     override fun initView() {
-        val navBar: BottomNavigationView = requireActivity().findViewById(R.id.bottom_navigation)
-        navBar.visibility = View.GONE
+
     }
 
 

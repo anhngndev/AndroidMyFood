@@ -90,7 +90,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
-<!--                riv_imageFood="@{food}"-->
+                <!--                riv_imageFood="@{food}"-->
 
 
                 <com.makeramen.roundedimageview.RoundedImageView
@@ -100,16 +100,18 @@
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="15dp"
                     android:src="@drawable/food_image_3"
+                    riv_imageFood="@{viewModel.liveFood}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_title_cart"
                     app:riv_corner_radius="15dp" />
+
                 <TextView
                     android:id="@+id/line2"
                     android:layout_width="match_parent"
                     android:layout_height="0.1dp"
+                    android:layout_marginTop="15dp"
                     android:background="@color/light_gray"
-                    app:layout_constraintTop_toBottomOf="@id/imv_food"
-                    android:layout_marginTop="15dp" />
+                    app:layout_constraintTop_toBottomOf="@id/imv_food" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_food_name"
@@ -132,7 +134,7 @@
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/cera_pro_medim"
-                    android:text="@{food.formatPrice}"
+                    android:text="@{`IDR `+ food.price +`(+ Tax)`}"
                     android:textColor="@color/gray"
                     android:textSize="14sp"
                     app:layout_constraintStart_toEndOf="@id/imv_food"
@@ -154,11 +156,11 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_amount"
                     android:layout_width="36dp"
-                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="42dp"
                     android:fontFamily="@font/cera_pro_medim"
+                    android:gravity="center"
                     android:text="@{viewModel.amount+``}"
                     android:textColor="@color/gray"
                     android:textSize="15sp"
@@ -233,9 +235,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
                     android:fontFamily="@font/cera_pro_medim"
                     android:text="Mojokerto, East Java"
-                    android:layout_marginTop="5dp"
                     android:textColor="@color/gray"
                     android:textSize="14sp"
                     app:layout_constraintStart_toEndOf="@id/ivPin"
@@ -250,13 +252,15 @@
                     android:src="@drawable/ic_small_right_arrow"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/ivPin" />
+
                 <TextView
                     android:id="@+id/line4"
                     android:layout_width="match_parent"
                     android:layout_height="0.1dp"
+                    android:layout_marginTop="15dp"
                     android:background="@color/light_gray"
-                    app:layout_constraintTop_toBottomOf="@id/ivPin"
-                    android:layout_marginTop="15dp" />
+                    app:layout_constraintTop_toBottomOf="@id/ivPin" />
+
                 <TextView
                     android:id="@+id/tv_payment_method"
                     android:layout_width="wrap_content"
@@ -327,16 +331,16 @@
             android:id="@+id/line3"
             android:layout_width="match_parent"
             android:layout_height="0.1dp"
+            android:layout_marginTop="15dp"
             android:background="@color/light_gray"
-            app:layout_constraintBottom_toTopOf="@id/order_layout"
-            android:layout_marginTop="15dp" />
+            app:layout_constraintBottom_toTopOf="@id/order_layout" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/order_layout"
-            android:paddingTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
+            android:paddingTop="15dp"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -369,7 +373,8 @@
                 android:layout_marginStart="56dp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="@{`IDR `+ viewModel.total}"
+                android:text="@{viewModel.total+``}"
+
                 android:textColor="@color/gray"
                 android:textSize="@dimen/dimen_14"
                 app:layout_constraintStart_toEndOf="@id/tv_subtotal"
@@ -396,7 +401,7 @@
                 android:layout_marginStart="56dp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="IDR 0"
+                android:text="0"
                 android:textColor="@color/gray"
                 android:textSize="14dp"
                 app:layout_constraintStart_toEndOf="@id/tv_subtotal"
@@ -421,34 +426,34 @@
                 android:layout_marginStart="56dp"
                 android:layout_marginTop="12dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="@{`IDR `+ viewModel.total}"
-                tools:text="IDR 41.000"
+                android:text="@{viewModel.total+``}"
                 android:textColor="@color/gray"
                 android:textSize="14dp"
                 app:layout_constraintStart_toEndOf="@id/tv_subtotal"
-                app:layout_constraintTop_toBottomOf="@id/tv_delivery_cost" />
+                app:layout_constraintTop_toBottomOf="@id/tv_delivery_cost"
+                tools:text="IDR 41.000" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvCheckout"
-                android:clickable="true"
                 android:layout_width="246dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/border_11_light_blue_fill"
+                android:clickable="true"
                 android:elevation="1dp"
-                android:fontFamily="@font/roboto_bold"
+                android:focusable="true"
+                android:fontFamily="@font/cera_pro_medim"
                 android:gravity="center"
-                android:paddingVertical="7dp"
+                android:paddingVertical="10dp"
                 android:text="@{`Checkout (`+ viewModel.total+`)`}"
-                tools:text="Checkout (42.000)"
                 android:textColor="@color/white"
                 android:textSize="14dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_total"
-                android:focusable="true" />
+                tools:text="Checkout (42.000)" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

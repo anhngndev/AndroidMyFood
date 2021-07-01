@@ -10,6 +10,7 @@ class SearchViewModel : ViewModel() {
     private val repository = SearchRepository()
     val listSearchLiveData = MutableLiveData<List<SearchEntity>>()
     val listSearchLiveData2 = repository.getRecentSearchLiveData()
+    var keySearch = MutableLiveData<String>("")
 
     fun insert(searchEntity: SearchEntity) {
         repository.insert(searchEntity)

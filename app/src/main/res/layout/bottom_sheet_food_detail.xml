@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.ftech.dev.android_my_food.data.model.Food" />
+
+        <variable
+            name="item"
+            type="Food" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_40_white_fill"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginHorizontal="161dp"
+            android:layout_marginTop="11dp"
+            android:background="@drawable/border_2_gray_fill"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imv_cancel"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ripple_click_square_circle"
+            android:padding="10dp"
+            android:src="@drawable/ic_cancel_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/imv_food"
+            riv_imageFood="@{item}"
+            android:layout_width="match_parent"
+            android:layout_height="246dp"
+            android:layout_marginHorizontal="27dp"
+            android:layout_marginTop="42dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/food_image_3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius="15dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/cera_pro_medim"
+            android:gravity="center_vertical"
+            android:text="@{item.name}"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imv_food" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="123dp"
+            android:fontFamily="@font/cera_pro_medim"
+            android:lineSpacingExtra="5dp"
+            android:maxLines="2"
+            android:text="Nguyên liệu"
+            android:textColor="@color/gray"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="110dp"
+            android:fontFamily="@font/cera_pro_medim"
+            android:gravity="center_vertical"
+            android:text="@{`IDR `+ item.price +`(+ Tax)`}"
+            android:textColor="@color/light_blue"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_description"
+            tools:text="@string/username" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/border_6_red_fill"
+            android:fontFamily="@font/cera_pro_medim"
+            android:gravity="center"
+            android:paddingHorizontal="13dp"
+            android:paddingVertical="3dp"
+            android:text="@string/report"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_share"
+            app:layout_constraintTop_toBottomOf="@id/tv_price" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/border_6_dark_green_fill"
+            android:drawableEnd="@drawable/ic_share"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/cera_pro_medim"
+            android:gravity="center"
+            android:paddingHorizontal="13dp"
+            android:paddingVertical="3dp"
+            android:text="@string/share"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_price" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_add_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/border_11_light_blue_fill"
+            android:fontFamily="@font/cera_pro_medim"
+            android:gravity="center"
+            android:paddingHorizontal="27dp"
+            android:paddingVertical="10dp"
+            android:text="Add Order"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_share" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -25,7 +25,6 @@ class HistoryOrderFragment : BaseFragment<FragmentHistoryOrderBinding>(),
         arguments?.let {
 
         }
-        setStateBottomNavigation(false)
 
     }
 

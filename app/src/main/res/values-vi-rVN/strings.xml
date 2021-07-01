@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AndroidMyFood</string>
+    <string name="app_name">Hock-y</string>
     <string name="username">Tên đăng nhập</string>
     <string name="password">Mật khẩu</string>
     <string name="report">Phản hồi</string>
@@ -10,4 +10,9 @@
     <string name="payment_method">Phương thức thanh toán</string>
     <string name="content">Nhà hàng Ấn Độ duy nhất ở Indonesia phục vụ các món ăn chất lượng cao với hương vị cao. Được làm bằng các loại gia vị thực sự và được thực hiện bởi các đầu bếp giỏi</string>
     <string name="todo">To do</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="profile">Thông tin cá nhân</string>
+    <string name="phone_number">Số điện thoại</string>
+    <string name="hello_blank_fragment">Frgament rỗng</string>
+    <string name="voucher_1">Giảm 35k đơn từ 90k | Nhập mã MOMOT6 | Áp dụng cho thanh toán từ MOMO đến hết 25/06/2021</string>
 </resources>

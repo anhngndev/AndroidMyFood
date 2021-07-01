@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.ftech.dev.android_my_food.data.source.local.ItemInCartEntity"/>
+        <import type="com.ftech.dev.android_my_food.ui.cart.CartAdapter.CartListener"/>
+        <variable
+            name="item"
+            type="ItemInCartEntity" />
+
+        <variable
+            name="listener"
+            type="CartListener" />
+    </data>
+
+    <RelativeLayout
+        android:background="@drawable/ripple_click_square"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingEnd="22dp">
+
+        <TextView
+
+            android:id="@+id/tvAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/cera_pro_medim"
+            tools:text="4X"
+            android:text="@{item.amount +`X`}"
+            android:textColor="@color/gray"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:text="@{item.nameItem}"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="30dp"
+            android:layout_toStartOf="@id/tvTotal"
+            android:layout_toEndOf="@id/tvAmount"
+            android:ellipsize="end"
+            android:ems="3"
+            android:fontFamily="@font/cera_pro_medim"
+            android:lines="1"
+            tools:text="Comw chien bo"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvTotal"
+            android:text="@{item.total +`đ`}"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/ripple_click_square_circle"
+            android:layout_centerVertical="true"
+            android:drawableEnd="@drawable/ic_remove_button"
+            android:drawablePadding="6dp"
+            android:onClick="@{()-> listener.onDeleteItem(item)}"
+            android:fontFamily="@font/cera_pro_medim"
+            tools:text="240000đ"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/background_gray"/>
+
+    </RelativeLayout>
+</layout>

@@ -15,7 +15,7 @@
 
         <variable
             name="itemListener"
-            type="com.ftech.dev.android_my_food.ui.detailfood.FoodImageAdapter.FoodImageListener" />
+            type="com.ftech.dev.android_my_food.ui.fooddetail.FoodImageAdapter.FoodImageListener" />
 
     </data>
 

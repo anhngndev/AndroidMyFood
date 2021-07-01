@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.ftech.dev.android_my_food.data.model.Voucher" />
+
+        <import type="com.ftech.dev.android_my_food.ui.voucher.VoucherAdapter.VoucherListener" />
+
+        <import type="com.ftech.dev.android_my_food.FoodDetailViewModel" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="item"
+            type="Voucher" />
+
+        <variable
+            name="listener"
+            type="VoucherListener" />
+
+    </data>
+
+        <RelativeLayout
+            android:layout_marginStart="15dp"
+            android:layout_width="260dp"
+            android:layout_height="80dp"
+            tools:background="@drawable/border_60_dark_blue_fill"
+            android:background="@{item.owner.equals(`Zalo`)? @drawable/border_60_dark_green_fill : item.owner.equals(`Momo`) ? @drawable/border_60_pink_fill :item.owner.equals(`Pepsi`) ? @drawable/border_60_dark_blue_fill : @drawable/border_60_yellow_fill}"
+            android:onClick="@{()-> listener.onItemClick(position,item)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/rivVoucher"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                riv_imageVoucher="@{item}"
+                app:riv_corner_radius_bottom_left="40dp" />
+
+
+            <TextView
+                android:id="@+id/tvContent"
+                android:layout_width="match_parent"
+                android:layout_marginEnd="60dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/rivVoucher"
+                android:layout_marginStart="2dp"
+                android:fontFamily="@font/cera_pro_medim"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="2dp"
+                android:lines="2"
+                android:text="@{item.content}"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                tools:text="Khao 25k nhập ZALOPAYT7" />
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/ic_white_right_arrow" />
+
+        </RelativeLayout>
+</layout>

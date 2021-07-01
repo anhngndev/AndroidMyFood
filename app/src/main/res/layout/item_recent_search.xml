@@ -3,6 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="com.ftech.dev.android_my_food.ui.search.RecentSearchAdapter.RecentSearchListener"/>
+        <variable
+            name="listener"
+            type="RecentSearchListener" />
+
         <variable
             name="item"
             type="com.ftech.dev.android_my_food.data.source.local.SearchEntity" />
@@ -11,20 +16,22 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
         <androidx.appcompat.widget.AppCompatTextView
-
+            android:onClick="@{()-> listener.onItemClick(item)}"
             android:id="@+id/tv_search_content"
-            android:text="@{item.content}"
-            android:textColor="@color/red"
-            android:fontFamily="@font/cera_pro_medim"
-            android:textSize="17sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:background="@drawable/ripple_click_square_circle"
+            android:fontFamily="@font/cera_pro_medim"
+            android:paddingEnd="5dp"
+            android:text="@{item.content}"
+            android:textColor="@color/red"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

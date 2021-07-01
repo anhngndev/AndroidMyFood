@@ -19,7 +19,6 @@ class RecentSearchAdapter : RecyclerView.Adapter<RecentSearchAdapter.RecentSearc
 
     class RecentSearchViewHolder(val binding: ItemRecentSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecentSearchViewHolder {
@@ -36,12 +35,13 @@ class RecentSearchAdapter : RecyclerView.Adapter<RecentSearchAdapter.RecentSearc
     override fun onBindViewHolder(holder: RecentSearchViewHolder, position: Int) {
         val item = list[position]
         holder.binding.item = item
+        holder.binding.listener = callback
     }
 
     override fun getItemCount() = list.size
 
     interface RecentSearchListener {
-        fun onItemClick(index: Int, item: SearchEntity)
+        fun onItemClick(item: SearchEntity)
 
     }
 }

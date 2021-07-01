@@ -5,7 +5,7 @@ android:color="@color/light_gray">
 <item>
     <shape xmlns:android="http://schemas.android.com/apk/res/android">
         <corners android:radius="10dp"/>
-        <solid android:color="@color/light_gray_0"/>
+        <solid android:color="@color/light_gray_2"/>
     </shape>
 </item>
 

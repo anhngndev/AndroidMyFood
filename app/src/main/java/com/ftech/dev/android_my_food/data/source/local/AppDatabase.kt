@@ -6,10 +6,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.ftech.dev.android_my_food.utils.getApplication
 
-@Database(entities = [SearchEntity::class], version = 1)
+@Database(entities = [SearchEntity::class,  ItemInCartEntity::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun searchDao(): SearchDao
+    abstract fun itemInCartDao(): ItemInCartDao
 
     companion object {
         fun getInstance(): AppDatabase {

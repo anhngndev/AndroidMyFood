@@ -1,4 +1,4 @@
-package com.ftech.dev.android_my_food.ui.detailfood
+package com.ftech.dev.android_my_food.ui.fooddetail
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -11,12 +11,12 @@ import androidx.navigation.fragment.findNavController
 import com.ftech.dev.android_my_food.FoodDetailViewModel
 import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.data.model.Food
-import com.ftech.dev.android_my_food.databinding.BottomSheetDetailFoodBinding
+import com.ftech.dev.android_my_food.databinding.BottomSheetFoodDetailBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class FoodDetailBottomSheet : BottomSheetDialogFragment() {
 
-    lateinit var binding: BottomSheetDetailFoodBinding
+    lateinit var binding: BottomSheetFoodDetailBinding
     private val detailViewModel: FoodDetailViewModel by activityViewModels()
     lateinit var food: Food
 
@@ -30,7 +30,7 @@ class FoodDetailBottomSheet : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding =
-            DataBindingUtil.inflate(inflater, R.layout.bottom_sheet_detail_food, container, false)
+            DataBindingUtil.inflate(inflater, R.layout.bottom_sheet_food_detail, container, false)
         return binding.root
     }
 

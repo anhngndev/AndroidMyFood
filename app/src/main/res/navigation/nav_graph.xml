@@ -11,6 +11,10 @@
         android:label="SplashFragment"
         tools:layout="@layout/fragment_splash">
         <action
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right"
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
@@ -23,17 +27,17 @@
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right" />
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right" />
     </fragment>
 
     <fragment
@@ -48,22 +52,49 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right"
             android:id="@+id/action_homeFragment_to_customBottomSheetDialogFragment"
             app:destination="@id/detailFoodBottomSheet" />
         <action
             android:id="@+id/action_homeFragment_to_bigFoodDetailFragment"
             app:destination="@id/bigFoodDetailFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right"/>
+
         <action
-            android:id="@+id/action_homeFragment_to_historyOrderFragment"
-            app:destination="@id/historyOrderFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment"
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right"/>
+        <action
+            android:id="@+id/action_homeFragment_to_voucherFragment"
+            app:destination="@id/voucherFragment"
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_cartFragment"
+            app:destination="@id/cartFragment"
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right"/>
+
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -73,46 +104,73 @@
         <action
             android:id="@+id/action_profileFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right" />
+        <action
+            android:id="@+id/action_profileFragment_to_historyOrderFragment"
+            app:destination="@id/historyOrderFragment"
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.ftech.dev.android_my_food.ui.search.SearchFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right"
+            android:id="@+id/action_searchFragment_to_detailFoodBottomSheet"
+            app:destination="@id/detailFoodBottomSheet" />
+    </fragment>
     <dialog
         android:id="@+id/detailFoodBottomSheet"
-        android:name="com.ftech.dev.android_my_food.ui.detailfood.FoodDetailBottomSheet"
+        android:name="com.ftech.dev.android_my_food.ui.fooddetail.FoodDetailBottomSheet"
         android:label="DetailFoodBottomSheet"
-        tools:layout="@layout/bottom_sheet_detail_food">
+        tools:layout="@layout/bottom_sheet_food_detail">
         <action
             android:id="@+id/action_detailFoodBottomSheet_to_oderDetailFragment"
             app:destination="@id/oderDetailFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right" />
     </dialog>
     <fragment
         android:id="@+id/oderDetailFragment"
         android:name="com.ftech.dev.android_my_food.ui.orderdetail.OderDetailFragment"
         android:label="OderDetailFragment"
-        tools:layout="@layout/fragment_order_detail" />
+        tools:layout="@layout/fragment_order_detail" >
+        <action
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right"
+            android:id="@+id/action_oderDetailFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bigFoodDetailFragment"
-        android:name="com.ftech.dev.android_my_food.ui.detailfood.BigFoodDetailFragment"
+        android:name="com.ftech.dev.android_my_food.ui.fooddetail.BigFoodDetailFragment"
         android:label="BigFoodDetailFragment"
         tools:layout="@layout/fragment_big_food_detail">
         <action
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right"
             android:id="@+id/action_bigFoodDetailFragment_to_imageBigFoodDetailFragment"
             app:destination="@id/imageBigFoodDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/imageBigFoodDetailFragment"
-        android:name="com.ftech.dev.android_my_food.ui.detailfood.ImageBigFoodDetailFragment"
+        android:name="com.ftech.dev.android_my_food.ui.fooddetail.ImageBigFoodDetailFragment"
         android:label="ImageBigFoodDetailFragment"
         tools:layout="@layout/fragment_image_big_food_detail" />
     <fragment
@@ -125,6 +183,16 @@
         android:name="com.ftech.dev.android_my_food.ui.profile.EditProfileFragment"
         android:label="EditProfileFragment"
         tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/voucherFragment"
+        android:name="com.ftech.dev.android_my_food.ui.voucher.VoucherFragment"
+        android:label="VoucherFragment"
+        tools:layout="@layout/fragment_voucher" />
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.ftech.dev.android_my_food.ui.cart.CartFragment"
+        android:label="CartFragment"
+        tools:layout="@layout/fragment_cart" />
 
 
 </navigation>

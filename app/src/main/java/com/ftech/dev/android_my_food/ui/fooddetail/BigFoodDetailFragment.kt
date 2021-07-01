@@ -1,8 +1,7 @@
-package com.ftech.dev.android_my_food.ui.detailfood
+package com.ftech.dev.android_my_food.ui.fooddetail
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -11,10 +10,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ftech.dev.android_my_food.FoodDetailViewModel
 import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.base.BaseFragment
-import com.ftech.dev.android_my_food.data.model.Card
 import com.ftech.dev.android_my_food.databinding.FragmentBigFoodDetailBinding
-import com.ftech.dev.android_my_food.ui.home.CardAdapter
-import com.ftech.dev.android_my_food.utils.DataFake
 
 class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
     FoodImageAdapter.FoodImageListener {
@@ -32,7 +28,6 @@ class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
         super.onCreate(savedInstanceState)
         arguments?.let {
         }
-        setStateBottomNavigation(false)
     }
 
     override fun isCanBackPress() = true
@@ -49,8 +44,6 @@ class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
             foodImageAdapter = FoodImageAdapter()
             foodImageAdapter.callBack = this
             foodImageAdapter.list = food.image
-
-            Log.d(TAG, "initView: ${foodImageAdapter.list.size}")
 
             binding.rvFood.layoutManager = imageFoodLayoutManager
             binding.rvFood.adapter = foodImageAdapter
@@ -83,7 +76,6 @@ class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
 
     override fun onDestroy() {
         super.onDestroy()
-        setStateBottomNavigation(true)
     }
 
 }
