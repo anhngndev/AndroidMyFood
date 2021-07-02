@@ -181,6 +181,13 @@
             app:popExitAnim="@anim/slide_pop_exit_left_to_right"
             android:id="@+id/action_bigFoodDetailFragment_to_detailFoodBottomSheet"
             app:destination="@id/detailFoodBottomSheet" />
+        <action
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right"
+            android:id="@+id/action_bigFoodDetailFragment_to_ratingBottomSheet"
+            app:destination="@id/ratingBottomSheet" />
     </fragment>
     <fragment
         android:id="@+id/imageBigFoodDetailFragment"
@@ -220,6 +227,11 @@
             android:id="@+id/action_allFoodFragment_to_detailFoodBottomSheet"
             app:destination="@id/detailFoodBottomSheet" />
     </fragment>
+    <dialog
+        android:id="@+id/ratingBottomSheet"
+        tools:layout="@layout/bottom_sheet_rating"
+        android:name="com.ftech.dev.android_my_food.ui.description.RatingBottomSheet"
+        android:label="RatingBottomSheet" />
 
 
 </navigation>

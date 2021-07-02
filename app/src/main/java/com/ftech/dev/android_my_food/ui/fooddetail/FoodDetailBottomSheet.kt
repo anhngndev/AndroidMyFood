@@ -49,6 +49,7 @@ class FoodDetailBottomSheet : BottomSheetDialogFragment() {
         detailViewModel.liveFood.observe(viewLifecycleOwner) { food ->
             binding.item = food
         }
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

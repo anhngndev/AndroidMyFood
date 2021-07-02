@@ -33,6 +33,7 @@ class SplashActivity : AppCompatActivity() {
             }
 
             override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
+
                 startActivity(intent)
             }
 

@@ -71,6 +71,9 @@ class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
         binding.tvName.setOnClickListener {
 
         }
+        binding.llRate.setOnClickListener {
+            findNavController().navigate(R.id.action_bigFoodDetailFragment_to_ratingBottomSheet)
+        }
 
     }
 

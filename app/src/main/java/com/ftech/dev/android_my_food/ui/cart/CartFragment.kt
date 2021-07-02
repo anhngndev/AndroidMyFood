@@ -88,12 +88,12 @@ class CartFragment : BaseFragment<FragmentCartBinding>(), CartAdapter.CartListen
 
     override fun setAction() {
         binding.ivBack.setOnClickListener {
-            findNavController().popBackStack(R.id.homeFragment,false)
+            onBackPress()
         }
 
         binding.tvOrder.setOnClickListener {
             cartViewModel.deleteAll()
-            onBackPress()
+            findNavController().popBackStack(R.id.homeFragment,false)
         }
         binding.tvAddPromo.setOnClickListener {
 

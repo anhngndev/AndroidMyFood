@@ -16,6 +16,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile">Profile</string>
     <string name="voucher_1">35k off orders from 90k | Enter code MOMOT6 | Applicable for payments from MOMO until the end of June 25, 2021</string>
+    <string name="rating_des">Reviews are collected from customers who have ordered each item at the store. You can refer to choose the right restaurant.
+        Do not forget to leave a review after each order so that the store can improve its service, as well as light the way for many other mouths to eat!</string>
 
 
 </resources>

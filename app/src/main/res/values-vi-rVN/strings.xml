@@ -15,4 +15,5 @@
     <string name="phone_number">Số điện thoại</string>
     <string name="hello_blank_fragment">Frgament rỗng</string>
     <string name="voucher_1">Giảm 35k đơn từ 90k | Nhập mã MOMOT6 | Áp dụng cho thanh toán từ MOMO đến hết 25/06/2021</string>
+    <string name="rating_des">Đánh giá được thu thập từ khách hàng đã đặt từng món tại cửa hàng. Bạn có thể tham khảo để chọn quán ăn phù hợp.</string>
 </resources>
