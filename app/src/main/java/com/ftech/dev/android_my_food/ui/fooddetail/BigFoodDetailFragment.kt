@@ -1,7 +1,6 @@
 package com.ftech.dev.android_my_food.ui.fooddetail
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -10,16 +9,21 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ftech.dev.android_my_food.FoodDetailViewModel
 import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.base.BaseFragment
+import com.ftech.dev.android_my_food.data.model.Food
 import com.ftech.dev.android_my_food.databinding.FragmentBigFoodDetailBinding
+import com.ftech.dev.android_my_food.ui.home.FoodAdapterVer
+import com.ftech.dev.android_my_food.utils.observer
 
 class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
-    FoodImageAdapter.FoodImageListener {
+    FoodImageAdapter.FoodImageListener,
+    FoodAdapterVer.FoodListener{
 
     private val TAG = "BigFoodDetailFragment"
     private lateinit var foodImageAdapter: FoodImageAdapter
+    private var foodAdapter = FoodAdapterVer()
     private var foodImageList = mutableListOf<Int>()
 
-    private val detailViewModel: FoodDetailViewModel by activityViewModels()
+    private val foodsViewModel: FoodDetailViewModel by activityViewModels()
     override fun getLayoutId(): Int {
         return R.layout.fragment_big_food_detail
     }
@@ -37,7 +41,7 @@ class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
         val snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(binding.rvFood)
 
-        detailViewModel.liveBigFood.observe(viewLifecycleOwner) { food ->
+        foodsViewModel.liveBigFood.observe(viewLifecycleOwner) { food ->
             binding.item = food
             foodImageList = food.image
 
@@ -49,22 +53,22 @@ class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
             binding.rvFood.adapter = foodImageAdapter
         }
 
+        foodAdapter.list = foodsViewModel.foodsLiveData.value!!
+        foodAdapter.callBack = this
+        binding.rcFood.adapter = foodAdapter
 
+        observer(foodsViewModel.foodsLiveData) {
+            it?.let { list ->
+                foodAdapter.list = list
+            }
+        }
     }
 
     override fun setAction() {
-
         binding.ivBack.setOnClickListener {
             onBackPress()
         }
-
-        binding.tvSuperPartner.setOnClickListener {
-
-        }
         binding.tvName.setOnClickListener {
-
-        }
-        binding.ivMake.setOnClickListener {
 
         }
 
@@ -74,8 +78,11 @@ class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
         findNavController().navigate(R.id.action_bigFoodDetailFragment_to_imageBigFoodDetailFragment)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onItemClick(index: Int, item: Food) {
+        foodsViewModel.liveFood.value = (item)
+        foodsViewModel.amount.value = 1
+        foodsViewModel.total.value = item.getPriceToInt()
+        findNavController().navigate(R.id.action_bigFoodDetailFragment_to_detailFoodBottomSheet)
     }
 
 }

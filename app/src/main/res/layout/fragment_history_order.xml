@@ -51,6 +51,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcOrder"
             android:layout_width="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_height="0dp"
             android:background="@color/background_gray"
             android:paddingTop="36dp"

@@ -9,13 +9,13 @@
 
         <import type="java.util.Stack" />
 
-        <import type="com.ftech.dev.android_my_food.data.model.Order" />
+        <import type="com.ftech.dev.android_my_food.data.source.local.OrderEntity" />
 
         <import type="com.ftech.dev.android_my_food.ui.orderhistory.OrderAdapter.OrderListener" />
 
         <variable
             name="item"
-            type="Order" />
+            type="OrderEntity" />
 
         <variable
             name="itemPosition"
@@ -27,7 +27,7 @@
 
         <variable
             name="liveOrderStatus"
-            type="MutableLiveData&lt;Stack&lt;Order>>" />
+            type="MutableLiveData&lt;Stack&lt;OrderEntity>>" />
 
     </data>
 
@@ -56,7 +56,7 @@
             android:layout_marginStart="6sp"
             android:fontFamily="@font/cera_pro_medim"
             android:gravity="center"
-            android:text="@{item.formatStatus}"
+            android:text="@{item.status? `Đã giao`: `Đã hủy`}"
             android:textSize="13sp"
             app:layout_constraintStart_toEndOf="@id/ivStatus"
             app:layout_constraintTop_toTopOf="@id/ivStatus"

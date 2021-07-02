@@ -7,12 +7,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.data.model.Order
+import com.ftech.dev.android_my_food.data.source.local.OrderEntity
 import com.ftech.dev.android_my_food.databinding.ItemOrderBinding
 import java.util.*
 
 class OrderAdapter : RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
 
-    var list: MutableList<Order> = mutableListOf()
+    var list: MutableList<OrderEntity> = mutableListOf()
         set(value) {
             field = value
             val status = liveOrderStatus.value
@@ -21,14 +22,14 @@ class OrderAdapter : RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
 
     var callBack: OrderListener? = null
 
-    var liveOrderStatus = MutableLiveData<Stack<Order>>()
+    var liveOrderStatus = MutableLiveData<Stack<OrderEntity>>()
 
     class OrderViewHolder(val binding: ItemOrderBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
 
     interface OrderListener {
-        fun onItemClick(index: Int, item: Order)
+        fun onItemClick(index: Int, item: OrderEntity)
 
     }
 

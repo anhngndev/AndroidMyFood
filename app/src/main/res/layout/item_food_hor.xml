@@ -15,135 +15,88 @@
 
         <variable
             name="itemListener"
-            type="com.ftech.dev.android_my_food.ui.home.FoodAdapter.FoodListener" />
+            type="com.ftech.dev.android_my_food.ui.home.FoodAdapterHor.FoodListener" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/ripple_click_square"
+        android:layout_width="136dp"
+        android:layout_height="216dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/border_10_transition_blue_fill"
         android:onClick="@{()->itemListener.onItemClick(itemPosition ,item)}">
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginEnd="3dp"
-            android:background="@drawable/border_right_8_white_fill"
-            android:elevation="0.5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="107dp"
-                android:layout_marginTop="7dp"
-                android:fontFamily="@font/cera_pro_medim"
-                android:text="@{item.name}"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@string/username" />
-
-            <TextView
-                android:id="@+id/tv_vitamin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="120dp"
-                android:layout_marginBottom="9dp"
-                android:fontFamily="@font/cera_pro_medim"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/item_food_text_size_small"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:text="Vitamin" />
-
-            <TextView
-                android:id="@+id/tv_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="9dp"
-                android:fontFamily="@font/cera_pro_medim"
-                android:text="@{item.price +``}"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/item_food_text_size_small"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tv_ratio"
-                app:layout_constraintStart_toEndOf="@id/tv_vitamin"
-                tools:text="@string/username" />
-
-            <TextView
-                android:id="@+id/tv_ratio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="9dp"
-                android:fontFamily="@font/cera_pro_medim"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/item_food_text_size_small"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:text="Ratio" />
-
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="20dp"
-                android:layout_marginEnd="3dp"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/ic_body"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tv_vitamin" />
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="3dp"
-                android:src="@drawable/ic_price"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tv_price" />
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="3dp"
-                android:src="@drawable/ic_face"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tv_ratio" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvImage"
-            android:layout_width="96dp"
-            app:cardCornerRadius="8dp"
-            android:layout_height="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:fontFamily="@font/cera_pro_medim"
+            android:text="PROMO"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp"
+            android:background="@drawable/border_10_light_blue_fill_for_promo"/>
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:ems="3"
+            android:fontFamily="@font/cera_pro_medim"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@{item.name}"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rivFood"
+            tools:text="@string/username" />
 
-            <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/image"
-                riv_imageFood="@{item}"
-                android:layout_width="96dp"
-                android:background="@drawable/color_app_gradient"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:riv_corner_radius="8dp" />
+        <TextView
+            android:id="@+id/tvRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:drawableStart="@drawable/ic_star"
+            android:drawablePadding="2dp"
+            android:fontFamily="@font/cera_pro_light"
+            android:gravity="center"
+            android:text="4.5"
+            android:textColor="@color/gray"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_name" />
 
-        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="9dp"
+            android:fontFamily="@font/cera_pro_medim"
+            android:text="@{`$ ` + item.price}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRate"
+            tools:text="price" />
 
-
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/rivFood"
+            riv_imageFood="@{item}"
+            android:layout_width="match_parent"
+            android:layout_height="136dp"
+            android:scaleType="fitXY"
+            android:padding="17dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius="53dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

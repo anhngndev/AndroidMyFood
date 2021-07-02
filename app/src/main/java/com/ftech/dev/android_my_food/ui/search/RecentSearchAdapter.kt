@@ -41,6 +41,7 @@ class RecentSearchAdapter : RecyclerView.Adapter<RecentSearchAdapter.RecentSearc
     override fun getItemCount() = list.size
 
     interface RecentSearchListener {
+
         fun onItemClick(item: SearchEntity)
 
     }

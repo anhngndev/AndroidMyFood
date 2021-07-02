@@ -6,9 +6,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.data.model.Food
-import com.ftech.dev.android_my_food.databinding.ItemFoodBinding
+import com.ftech.dev.android_my_food.databinding.ItemFoodHorBinding
+import com.ftech.dev.android_my_food.databinding.ItemFoodVerBinding
 
-class FoodAdapter : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
+class FoodAdapterVer : RecyclerView.Adapter<FoodAdapterVer.FoodViewHolder>() {
 
     var list: MutableList<Food> = mutableListOf()
         set(value) {
@@ -18,18 +19,18 @@ class FoodAdapter : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
     var callBack: FoodListener? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodAdapter.FoodViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodAdapterVer.FoodViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = DataBindingUtil.inflate<ItemFoodBinding>(
+        val binding = DataBindingUtil.inflate<ItemFoodVerBinding>(
             layoutInflater,
-            R.layout.item_food,
+            R.layout.item_food_ver,
             parent,
             false
         )
         return FoodViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holderFood: FoodAdapter.FoodViewHolder, position: Int) {
+    override fun onBindViewHolder(holderFood: FoodAdapterVer.FoodViewHolder, position: Int) {
         val item = list[position]
         holderFood.binding.item = item
         holderFood.binding.itemPosition = position
@@ -43,7 +44,7 @@ class FoodAdapter : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
     override fun getItemCount() = list.size
 
-    class FoodViewHolder(val binding: ItemFoodBinding) : RecyclerView.ViewHolder(binding.root) {
+    class FoodViewHolder(val binding: ItemFoodVerBinding) : RecyclerView.ViewHolder(binding.root) {
     }
 
     interface FoodListener {

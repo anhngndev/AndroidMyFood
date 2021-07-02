@@ -18,23 +18,22 @@ import com.ftech.dev.android_my_food.data.model.Card
 import com.ftech.dev.android_my_food.data.model.Food
 import com.ftech.dev.android_my_food.data.model.BigFood
 import com.ftech.dev.android_my_food.data.model.Voucher
-import com.ftech.dev.android_my_food.data.source.remote.HttpRequestMethod
 import com.ftech.dev.android_my_food.data.source.remote.HttpRequestTask
 import com.ftech.dev.android_my_food.databinding.FragmentHomeBinding
 import com.ftech.dev.android_my_food.ui.cart.CartViewModel
 import com.ftech.dev.android_my_food.ui.voucher.VoucherAdapter
 import com.ftech.dev.android_my_food.utils.DataFake
-import com.ftech.dev.android_my_food.utils.NetWorkUtils
+import com.ftech.dev.android_my_food.utils.observer
 import java.util.*
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListener,
-    CardAdapter.CardListener, FoodBigAdapter.FoodBigListener , VoucherAdapter.VoucherListener ,
-    HttpRequestTask.Callback{
-    private var touchHelper : ItemTouchHelper? = null
+class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapterHor.FoodListener,
+    CardAdapter.CardListener, FoodBigAdapter.FoodBigListener, VoucherAdapter.VoucherListener,
+    HttpRequestTask.Callback {
+    private var touchHelper: ItemTouchHelper? = null
 
     private val TAG = "HomeFragment"
 
-    private lateinit var foodAdapter: FoodAdapter
+    private lateinit var foodAdapter: FoodAdapterHor
 
     private lateinit var voucherAdapter: VoucherAdapter
     private var voucherList = mutableListOf<Voucher>()
@@ -44,7 +43,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
 
     private val detailViewModel: FoodDetailViewModel by activityViewModels()
     private val cartViewModel: CartViewModel by activityViewModels()
-    private val userInforViewModel : UserInforViewModel by activityViewModels()
+    private val userInforViewModel: UserInforViewModel by activityViewModels()
 
     var handler = Handler()
 
@@ -59,9 +58,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        observer(cartViewModel.isOrdering) {
+            if (!it!!) {
+                binding.tvCompleteOrder.visibility = View.VISIBLE
+                handler.postDelayed(Runnable {
+                    binding.tvCompleteOrder.visibility = View.GONE
+                }, 2000)
+                cartViewModel.isOrdering.value = true
+            }
+        }
         handler.postDelayed(Runnable {
             binding.view.visibility = View.GONE
         }, 1000)
+
     }
 
     override fun setAction() {
@@ -86,14 +96,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
         binding.tvSearch.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }
+
+        binding.tvMore.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_allFoodFragment)
+        }
     }
 
     override fun initView() {
         detailViewModel.getFoods()
 
-        detailViewModel.foodsLiveData.observe(viewLifecycleOwner){
+        detailViewModel.foodsLiveData.observe(viewLifecycleOwner) {
             Log.d(TAG, "initView: ${it.size}")
-            foodAdapter = FoodAdapter()
+            foodAdapter = FoodAdapterHor()
             foodAdapter.list = detailViewModel.foodsLiveData.value!!
             foodAdapter.callBack = this
             binding.popularRecyclerview.adapter = foodAdapter
@@ -123,23 +137,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
         binding.slideRecycler.adapter = bigAdapter
 
 //      Drag Drop
-        touchHelper =
-            ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
-                override fun onMove(
-                    p0: RecyclerView,
-                    p1: RecyclerView.ViewHolder,
-                    p2: RecyclerView.ViewHolder
-                ): Boolean {
-                    val sourcePosition = p1.adapterPosition
-                    val targetPosition = p2.adapterPosition
-                    Collections.swap(foodAdapter.list,sourcePosition,targetPosition)
-                    binding.popularRecyclerview.adapter?.notifyItemMoved(sourcePosition,targetPosition)
-                    return true
-                }
-
-                override fun onSwiped(p0: RecyclerView.ViewHolder, p1: Int) {
-                }
-            })
+//        touchHelper =
+//            ItemTouchHelper(object :
+//                ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
+//                override fun onMove(
+//                    p0: RecyclerView,
+//                    p1: RecyclerView.ViewHolder,
+//                    p2: RecyclerView.ViewHolder
+//                ): Boolean {
+//                    val sourcePosition = p1.adapterPosition
+//                    val targetPosition = p2.adapterPosition
+//                    Collections.swap(foodAdapter.list, sourcePosition, targetPosition)
+//                    binding.popularRecyclerview.adapter?.notifyItemMoved(
+//                        sourcePosition,
+//                        targetPosition
+//                    )
+//                    return true
+//                }
+//
+//                override fun onSwiped(p0: RecyclerView.ViewHolder, p1: Int) {
+//                }
+//            })
 
         touchHelper?.attachToRecyclerView(binding.popularRecyclerview)
     }
@@ -173,6 +191,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapter.FoodListen
         Log.e(TAG, "not connection")
     }
 
-    fun completeOrder(){
+    fun completeOrder() {
     }
 }

@@ -91,13 +91,12 @@
             android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/border_40_white_fill"
+            android:background="@drawable/white_fill"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/border_40_white_fill">
+                android:layout_height="match_parent">
 
 
                 <TextView
@@ -117,7 +116,7 @@
 
 
                 <RatingBar
-                    android:id="@+id/rating"
+                    android:id="@+id/tvRate"
                     style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -136,7 +135,7 @@
                     android:layout_marginTop="14dp"
                     android:orientation="horizontal"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rating">
+                    app:layout_constraintTop_toBottomOf="@id/tvRate">
 
                     <ImageView
                         android:id="@+id/imv_verified"
@@ -166,7 +165,7 @@
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toStartOf="@id/layout_timer"
                     app:layout_constraintStart_toEndOf="@id/layout_verified"
-                    app:layout_constraintTop_toBottomOf="@id/rating">
+                    app:layout_constraintTop_toBottomOf="@id/tvRate">
 
                     <ImageView
                         android:id="@+id/imv_range"
@@ -198,7 +197,7 @@
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/layout_range"
-                    app:layout_constraintTop_toBottomOf="@id/rating">
+                    app:layout_constraintTop_toBottomOf="@id/tvRate">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imv_timer"
@@ -257,70 +256,61 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_about" />
 
 
-                <TextView
-                    android:id="@+id/tvLine1"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcFood"
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="@color/gray"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
                     app:layout_constraintTop_toBottomOf="@id/tvDescription"
-                    android:layout_marginTop="15dp"/>
+                    android:background="@color/white"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/tvDescription" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
 
         <RelativeLayout
+            android:id="@+id/rlInformation"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:background="@color/white"
+            android:layout_height="120dp"
             app:layout_anchor="@id/nestedScrollView"
-            app:layout_anchorGravity="bottom">
-
-        </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/ivMake"
-            android:layout_width="80dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="29dp"
-            android:layout_marginBottom="36dp"
+            android:layout_marginHorizontal="15dp"
             android:background="@drawable/border_10_white_fill"
-            android:elevation="2dp"
-            android:padding="3dp"
-            android:src="@drawable/expand"
-            app:layout_anchor="@id/nestedScrollView"
-            app:layout_anchorGravity="bottom|start" />
+            app:layout_anchorGravity="top|right|end">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="29dp"
-            android:layout_marginBottom="100dp"
-            android:drawableEnd="@drawable/ic_expand"
-            android:drawablePadding="6dp"
-            android:padding="3dp"
-            android:src="@drawable/expand"
-            android:text="Expand"
-            android:textColor="@color/light_blue"
-            android:textSize="16sp"
-            app:layout_anchor="@id/nestedScrollView"
-            app:layout_anchorGravity="bottom|start" />
+            <TextView
+                android:id="@+id/tvColab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/light_blue"
+                android:drawableStart="@drawable/ic_checked_food"
+                android:drawablePadding="4dp"
+                android:layout_centerHorizontal="true"
+                android:text="ĐỐI TÁC CỦA TASTY ANH"
+                android:textSize="14sp"/>
 
-        <TextView
-            android:id="@+id/tvSuperPartner"
-            android:layout_width="wrap_content"
-            android:layout_height="42dp"
-            android:layout_marginEnd="21dp"
-            android:layout_marginBottom="36dp"
-            android:background="@drawable/border_11_light_blue_fill"
-            android:gravity="center"
-            android:lineSpacingExtra="4dp"
-            android:paddingHorizontal="18dp"
-            android:text="Super Partner"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_anchor="@id/nestedScrollView"
-            app:layout_anchorGravity="bottom|end" />
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/tvColab"
+                android:background="@drawable/ripple_click_square"
+                android:fontFamily="@font/cera_pro_medim"
+                android:text="@{item.name}"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                tools:text="Indian Mastery Resto" />
+
+            <
+        </RelativeLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
@@ -332,9 +322,8 @@
             android:src="@drawable/ic_like"
             app:fabSize="mini"
             android:tint="@color/white"
-            app:layout_anchor="@id/nestedScrollView"
+            app:layout_anchor="@id/rlInformation"
             app:layout_anchorGravity="top|right|end" />
-
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

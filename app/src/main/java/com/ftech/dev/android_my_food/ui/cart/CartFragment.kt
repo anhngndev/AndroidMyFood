@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ViewFlipper
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat.getSystemService
@@ -87,26 +88,12 @@ class CartFragment : BaseFragment<FragmentCartBinding>(), CartAdapter.CartListen
 
     override fun setAction() {
         binding.ivBack.setOnClickListener {
-//            onBackPress()
             findNavController().popBackStack(R.id.homeFragment,false)
         }
 
         binding.tvOrder.setOnClickListener {
             cartViewModel.deleteAll()
-
-            var builder = NotificationCompat.Builder(requireContext(),"1" )
-                .setSmallIcon(R.drawable.ic_cutlery)
-                .setContentTitle("Hock-y")
-                .setContentText("Order Success...")
-                .setStyle(NotificationCompat.BigTextStyle()
-                    .bigText("Order Success..."))
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
-            with(NotificationManagerCompat.from(requireContext())) {
-                // notificationId is a unique int for each notification that you must define
-                notify(1, builder.build())
-            }
-
+            onBackPress()
         }
         binding.tvAddPromo.setOnClickListener {
 
@@ -131,6 +118,5 @@ class CartFragment : BaseFragment<FragmentCartBinding>(), CartAdapter.CartListen
         cartViewModel.liveItemInCart.value = item
         cartViewModel.downAmount()
     }
-
 
 }

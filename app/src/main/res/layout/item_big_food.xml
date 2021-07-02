@@ -20,9 +20,10 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="313dp"
-        android:layout_height="255dp"
+        android:layout_width="340dp"
+        android:layout_height="225dp"
         android:layout_marginStart="15dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/ripple_click_square"
         android:onClick="@{()->itemListener.onItemClick(itemPosition,item)}">
 
@@ -30,149 +31,82 @@
             android:id="@+id/image"
             imageFoodBig="@{item}"
             android:layout_width="match_parent"
-            android:layout_height="193dp"
+            android:layout_height="225dp"
             android:adjustViewBounds="true"
-            tools:background="@drawable/color_app_gradient"
             android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent"
-            app:riv_corner_radius="12dp" />
+            app:riv_corner_radius="12dp"
+            tools:background="@drawable/color_app_gradient" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="152dp"
-            android:background="@drawable/custom_shadow"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="88dp"
+        <RelativeLayout
+            android:layout_width="168dp"
+            android:layout_height="110dp"
             android:layout_marginHorizontal="21dp"
-            android:layout_marginTop="152dp"
-            android:background="@drawable/border_13_white_fill"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/border_10_transition_black_fill"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
             <TextView
-
                 android:id="@+id/tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/cera_pro_medim"
-                android:gravity="center"
+                android:gravity="center_vertical"
+                android:paddingStart="12dp"
+                android:paddingEnd="4dp"
                 android:text="@{item.name}"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 tools:text="Indian Mastery Resto" />
 
-            <RatingBar
-
-                android:id="@+id/rating"
-                style="?android:attr/ratingBarStyleSmall"
+            <TextView
+                android:id="@+id/tvRate"
+                android:layout_below="@id/tv_name"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:numStars="5"
-                android:rating="@{item.rate}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_name"
-                />
+                android:drawableStart="@drawable/ic_star"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/cera_pro_medim"
 
-            <LinearLayout
-                android:id="@+id/layout_verified"
-                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:text="@{item.rate+``}"
+                android:textColor="@color/white"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toStartOf="@id/layout_range"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rating">
+                android:layout_below="@id/tvRate"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:fontFamily="@font/cera_pro_medim"
+                android:singleLine="true"
+                android:text="Ruby2- Gold mark City"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
 
-                <ImageView
-                    android:id="@+id/imv_verified"
-                    android:layout_width="17dp"
-                    android:layout_height="17dp"
-                    android:layout_marginEnd="3dp"
-                    android:scaleType="fitCenter"
-                    android:scaleX="1.2"
-                    android:src="@drawable/ic_verified" />
-
-                <TextView
-                    android:id="@+id/tv_verified"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{item.verified}"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/item_food_text_size_small"
-                    tools:text="range" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_range"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tvVoucher"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toStartOf="@id/layout_timer"
-                app:layout_constraintStart_toEndOf="@id/layout_verified"
-                app:layout_constraintTop_toBottomOf="@id/rating">
-
-                <ImageView
-                    android:id="@+id/imv_range"
-                    android:layout_width="17dp"
-                    android:layout_height="17dp"
-                    android:layout_marginEnd="3dp"
-
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_green_pin" />
-
-                <TextView
-                    android:id="@+id/tv_range"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{item.range}"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/item_food_text_size_small"
-                    tools:text="Range" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_timer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="7dp"
-                android:layout_marginEnd="9dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/layout_range"
-                app:layout_constraintTop_toBottomOf="@id/rating">
-
-                <ImageView
-                    android:id="@+id/imv_timer"
-                    android:layout_width="17dp"
-                    android:layout_height="17dp"
-
-                    android:layout_marginEnd="3dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/ic_timer" />
-
-                <TextView
-                    android:id="@+id/tv_timer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{item.timer}"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/item_food_text_size_small"
-                    tools:text="Range" />
-            </LinearLayout>
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_below="@id/tvAddress"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:fontFamily="@font/cera_pro_light"
+                android:singleLine="true"
+                android:textStyle="italic"
+                android:text="* Free ship today 02/07"
+                android:textColor="@color/white"
+                android:textSize="11sp" />
+        </RelativeLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

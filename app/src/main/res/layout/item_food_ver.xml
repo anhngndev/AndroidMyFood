@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.ftech.dev.android_my_food.data.model.Food" />
+
+        <variable
+            name="itemPosition"
+            type="Integer" />
+
+        <variable
+            name="itemListener"
+            type="com.ftech.dev.android_my_food.ui.home.FoodAdapterVer.FoodListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="109dp">
+
+        <View
+            android:id="@+id/vLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/background_gray"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/ripple_click_square"
+            android:elevation="0.5dp"
+            android:onClick="@{()->itemListener.onItemClick(itemPosition ,item)}"
+            android:paddingVertical="10dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="23dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vLine">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvImage"
+                android:layout_width="88dp"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="8dp">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/image"
+                    riv_imageFood="@{item}"
+                    android:layout_width="88dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/color_app_gradient"
+                    android:scaleType="fitXY"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:riv_corner_radius="4dp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="107dp"
+                android:layout_marginTop="7dp"
+                android:drawableStart="@drawable/ic_checked_food"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/cera_pro_medim"
+                android:text="@{item.name}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="@string/username" />
+
+            <TextView
+                android:id="@+id/tvRestaurant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvName"
+                android:layout_marginStart="107dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/cera_pro_light"
+                android:text="Wine Restaurant"
+                android:textColor="@color/gray"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="107dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/cera_pro_medim"
+                android:text="@{`$ `+item.price}"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                tools:text="Wine Restaurant" />
+
+
+            <TextView
+                android:id="@+id/tvDots2"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="27dp"
+                android:layout_marginBottom="15dp"
+                android:layout_toEndOf="@id/tvPrice"
+                android:background="@drawable/border_2_gray_fill"
+                android:fontFamily="@font/roboto_light"
+                android:gravity="center" />
+
+
+            <TextView
+                android:id="@+id/tvTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp"
+                android:layout_toEndOf="@id/tvPrice"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/cera_pro_medim"
+                android:text="15min"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

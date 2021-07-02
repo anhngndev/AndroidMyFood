@@ -4,12 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.ftech.dev.android_my_food.FoodDetailViewModel
 import com.ftech.dev.android_my_food.R
-import com.ftech.dev.android_my_food.data.model.Food
 import com.ftech.dev.android_my_food.data.model.Voucher
 import com.ftech.dev.android_my_food.databinding.ItemVoucherBinding
-import com.ftech.dev.android_my_food.ui.home.FoodAdapter
 
 class VoucherAdapter : RecyclerView.Adapter<VoucherAdapter.VoucherViewHolder>() {
 

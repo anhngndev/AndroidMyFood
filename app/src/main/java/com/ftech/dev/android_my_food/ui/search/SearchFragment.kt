@@ -1,13 +1,11 @@
 package com.ftech.dev.android_my_food.ui.search
 
 import android.annotation.SuppressLint
-import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView.OnEditorActionListener
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -17,7 +15,8 @@ import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.data.model.Food
 import com.ftech.dev.android_my_food.data.source.local.SearchEntity
 import com.ftech.dev.android_my_food.databinding.FragmentSearchBinding
-import com.ftech.dev.android_my_food.ui.home.FoodAdapter
+import com.ftech.dev.android_my_food.ui.home.FoodAdapterHor
+import com.ftech.dev.android_my_food.ui.home.FoodAdapterVer
 import com.ftech.dev.android_my_food.utils.hideKeyboard
 import com.ftech.dev.android_my_food.utils.observer
 import java.util.*
@@ -25,13 +24,13 @@ import java.util.*
 
 class SearchFragment : BaseFragment<FragmentSearchBinding>(),
     RecentSearchAdapter.RecentSearchListener,
-    FoodAdapter.FoodListener {
+    FoodAdapterVer.FoodListener {
 
     private val TAG = "SearchFragment"
     private val searchViewModel: SearchViewModel by viewModels()
     private val foodsViewModel: FoodDetailViewModel by activityViewModels()
+    private var foodAdapter = FoodAdapterVer()
     private var searchAdapter = RecentSearchAdapter()
-    private var foodAdapter = FoodAdapter()
     private var handler = Handler()
 
     var list = listOf<SearchEntity>()
@@ -44,8 +43,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(),
     override fun initBinding() {
         binding.searchViewModel = searchViewModel
     }
-
-
 
     override fun setAction() {
 
@@ -101,7 +98,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(),
     private fun performSearch(keySearch: String) {
         foodsTemp = mutableListOf()
         if (keySearch != "") {
-
             for (d in foodsViewModel.foodsLiveData.value!!) {
                 if (d.name.lowercase(Locale.getDefault())
                         .contains(keySearch.lowercase(Locale.getDefault()))

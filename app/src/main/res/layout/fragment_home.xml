@@ -5,11 +5,14 @@
 
     <data>
 
-        <import type="com.ftech.dev.android_my_food.ui.cart.CartViewModel"/>
-        <import type="com.ftech.dev.android_my_food.UserInforViewModel"/>
+        <import type="com.ftech.dev.android_my_food.ui.cart.CartViewModel" />
+
+        <import type="com.ftech.dev.android_my_food.UserInforViewModel" />
+
         <variable
             name="userInforViewModel"
             type="UserInforViewModel" />
+
         <variable
             name="cartViewModel"
             type="CartViewModel" />
@@ -26,6 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="2dp"
+            android:overScrollMode="never"
+            android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -33,204 +38,264 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.makeramen.roundedimageview.RoundedImageView
-                    android:id="@+id/image_user"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="18dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/user_avt"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:riv_corner_radius="22dp" />
+                <RelativeLayout
+                    android:id="@+id/rlTopBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingBottom="15dp"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/tvUsername"
-                    android:layout_width="wrap_content"
-                    android:layout_height="23dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="18dp"
-                    android:background="@drawable/ripple_click_square"
-                    android:fontFamily="@font/cera_pro_bold"
-                    android:text="@{`Hi ` + userInforViewModel.userNameLivaData}"
-                    tools:text="Hi Ngoc Anh"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    app:layout_constraintStart_toEndOf="@id/image_user"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/rivUser"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="18dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/user_avt"
+                        app:riv_corner_radius="22dp" />
 
-                <TextView
-                    android:id="@+id/tvTitle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="18dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="2dp"
-                    android:fontFamily="@font/cera_pro_medim"
-                    android:text="What are you cooking today?"
-                    android:textColor="@color/gray"
-                    android:textSize="14dp"
-                    app:layout_constraintStart_toEndOf="@id/image_user"
-                    app:layout_constraintTop_toBottomOf="@id/tvUsername" />
+                    <TextView
+                        android:id="@+id/tvUsername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="23dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_toEndOf="@id/rivUser"
+                        android:background="@drawable/ripple_click_square"
+                        android:fontFamily="@font/cera_pro_bold"
+                        android:text="@{`Hi ` + userInforViewModel.userNameLivaData}"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        tools:text="Hi Ngoc Anh" />
+
+                    <TextView
+                        android:id="@+id/tvTitle1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="18dp"
+                        android:layout_below="@id/tvUsername"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@id/rivUser"
+                        android:fontFamily="@font/cera_pro_medim"
+                        android:text="What are you eating today?"
+                        android:textColor="@color/gray"
+                        android:textSize="14dp" />
+
+                    <ImageView
+                        android:id="@+id/ivMenu"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="17dp"
+                        android:background="@drawable/ripple_click_square_circle"
+                        android:paddingHorizontal="11dp"
+                        android:paddingVertical="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_menu" />
 
 
-                <ImageView
-                    android:id="@+id/ivMenu"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="17dp"
-                    android:background="@drawable/ripple_click_square_circle"
-                    android:paddingVertical="10dp"
-                    android:paddingHorizontal="11dp"
-                    android:src="@drawable/ic_menu"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-                <ImageView
-                    android:id="@+id/ivNotify"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="17dp"
-                    android:background="@drawable/ripple_click_square_circle"
-                    android:padding="9dp"
-                    android:src="@drawable/ic_email"
-                    app:layout_constraintEnd_toStartOf="@id/iv_cart"
-                    app:layout_constraintTop_toTopOf="parent" />
-                <ImageView
-                    android:id="@+id/iv_cart"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="17dp"
-                    android:background="@drawable/ripple_click_square_circle"
-                    android:padding="9dp"
-                    android:src="@drawable/ic_shopping_cart"
-                    app:layout_constraintEnd_toStartOf="@id/ivMenu"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <ImageView
+                        android:id="@+id/ivNotify"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="17dp"
+                        android:layout_toStartOf="@id/iv_cart"
+                        android:background="@drawable/ripple_click_square_circle"
+                        android:padding="9dp"
+                        android:src="@drawable/ic_email" />
 
-                <TextView
-                    android:id="@+id/tvNotifyCount"
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"
-                    tv_visibility = "@{cartViewModel}"
-                    android:background="@drawable/border_7_red_fill"
-                    android:fontFamily="@font/cera_pro_medim"
-                    android:gravity="center"
-                    android:text="@{cartViewModel.amount+``}"
-                    android:textColor="@color/white"
-                    android:textSize="8sp"
-                    app:layout_constraintEnd_toEndOf="@id/iv_cart"
-                    app:layout_constraintTop_toTopOf="@id/ivNotify" />
+
+                    <ImageView
+                        android:id="@+id/iv_cart"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="17dp"
+                        android:layout_toStartOf="@id/ivMenu"
+                        android:background="@drawable/ripple_click_square_circle"
+                        android:padding="9dp"
+                        android:src="@drawable/ic_shopping_cart" />
+
+                    <TextView
+                        android:id="@+id/tvNotifyCount"
+                        tv_visibility="@{cartViewModel}"
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="3dp"
+                        android:layout_toStartOf="@id/ivMenu"
+                        android:background="@drawable/border_7_red_fill"
+                        android:fontFamily="@font/cera_pro_medim"
+                        android:gravity="center"
+                        android:text="@{cartViewModel.amount+``}"
+                        android:textColor="@color/white"
+                        android:textSize="8sp" />
+
+
+                    <TextView
+                        android:id="@+id/tvSearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:layout_below="@id/rivUser"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/border_10_light_gray_fill"
+                        android:drawableStart="@drawable/ic_gray_search"
+                        android:drawablePadding="15dp"
+                        android:fontFamily="@font/cera_pro_light"
+                        android:gravity="center_vertical"
+                        android:hint="Tìm nhà hàng, món ăn"
+                        android:paddingStart="15dp"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/tvLine"
                     android:layout_width="match_parent"
                     android:layout_height="0.1dp"
-                    android:layout_marginTop="15dp"
                     android:background="@color/light_gray"
-                    app:layout_constraintTop_toBottomOf="@+id/tvSearch" />
-
-                <TextView
-                    android:fontFamily="@font/cera_pro_light"
-                    android:id="@+id/tvSearch"
-                    android:textSize="14sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:drawableStart="@drawable/ic_gray_search"
-                    android:paddingStart="15dp"
-                    android:drawablePadding="15dp"
-                    android:hint="Tìm nhà hàng, món ăn"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/border_10_white_fill"
-                    app:layout_constraintTop_toBottomOf="@+id/image_user" />
+                    app:layout_constraintTop_toBottomOf="@+id/rlTopBar" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/slide_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="255dp"
-                    android:layout_marginTop="15dp"
+                    android:background="@color/white"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    android:paddingTop="15dp"
                     app:layout_constraintTop_toBottomOf="@+id/tvLine"
                     tools:layout_editor_absoluteX="-22dp" />
 
-                <TextView
+                <RelativeLayout
+                    android:id="@+id/rlFood"
                     android:layout_width="match_parent"
-                    android:layout_height="0.1dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/light_gray"
-                    app:layout_constraintTop_toBottomOf="@+id/slide_recycler" />
-
-
-                <TextView
-                    android:id="@+id/title_popular"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="13dp"
-                    android:layout_marginTop="15dp"
-
-                    android:fontFamily="@font/cera_pro_medim"
-                    android:gravity="center"
-                    android:text="Popular"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/slide_recycler" />
-
-                <TextView
-                    android:id="@+id/description_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="21dp"
-                    android:fontFamily="@font/cera_pro_medim"
-                    android:gravity="center"
-                    android:text="Food menu`s"
-                    android:textColor="@color/gray"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toEndOf="@id/title_popular"
-                    app:layout_constraintTop_toBottomOf="@id/slide_recycler" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/popular_recyclerview"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="15dp"
                     android:layout_marginTop="10dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    android:orientation="vertical"
-                    android:layout_marginEnd="23dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/title_popular" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvVoucher"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
                     android:background="@color/white"
-                    app:layout_constraintTop_toBottomOf="@id/popular_recyclerview"
+                    android:paddingBottom="15dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/slide_recycler">
+
+                    <TextView
+                        android:id="@+id/tvFood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/cera_pro_medim"
+                        android:gravity="center"
+                        android:text="Tasty Food today"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tvMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginEnd="15dp"
+                        android:background="@drawable/ripple_click_square_circle"
+                        android:drawableEnd="@drawable/ic_gray_right_arrow"
+                        android:drawablePadding="5dp"
+                        android:fontFamily="@font/cera_pro_medim"
+                        android:gravity="center"
+                        android:paddingVertical="5dp"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="5dp"
+                        android:text="See more"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/popular_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="216dp"
+                        android:layout_below="@id/tvFood"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:overScrollMode="never"
+                        android:scrollbars="none"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/rlVoucher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:paddingVertical="15dp"/>
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/white"
+                    android:paddingTop="15dp"
+                    android:scrollbars="none"
+                    app:layout_constraintTop_toBottomOf="@id/rlFood">
+
+                    <TextView
+                        android:id="@+id/tvVoucher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="15dp"
+                        android:fontFamily="@font/cera_pro_medim"
+                        android:text="Hot Voucher"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvVoucher"
+                        android:layout_width="match_parent"
+                        android:layout_height="110dp"
+                        android:layout_below="@id/tvVoucher"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white"
+                        android:overScrollMode="never"
+                        android:scrollbars="none" />
+
+                </RelativeLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.core.widget.NestedScrollView>
 
         <FrameLayout
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#A4232323"
+            android:background="@color/transition_black"
             android:visibility="visible"
             tools:ignore="MissingConstraints,NotSibling">
 
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:background="@drawable/border_6_white_fill"
+                android:gravity="center"
+                android:paddingTop="50dp"
+                android:text="Loading..."
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ProgressBar
                 android:id="@+id/progress_bar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:padding="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -238,6 +303,21 @@
 
         </FrameLayout>
 
+        <TextView
+            android:id="@+id/tvCompleteOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/border_11_light_blue_fill"
+            android:fontFamily="@font/cera_pro_bold"
+            android:padding="20dp"
+            android:text="Đặt hàng thành công!"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
