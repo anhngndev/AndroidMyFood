@@ -13,6 +13,12 @@ interface ItemInCartDao {
     @Query("SELECT *FROM tbl_itemincart")
     fun getAllItemInCart(): List<ItemInCartEntity>
 
+     @Query("SELECT *FROM tbl_itemincart where nameItem =:name")
+    fun getItemInCartByName(name:String): ItemInCartEntity
+
+    @Query("SELECT EXISTS(SELECT * FROM tbl_itemincart WHERE nameItem = :name)")
+    fun isFoodIsExist(name:String) : Boolean
+
     @Delete
     fun delete(itemInCartEntity: ItemInCartEntity)
 
@@ -21,5 +27,6 @@ interface ItemInCartDao {
 
     @Query("SELECT *FROM tbl_itemincart order by id + 0 desc")
     fun getAllItemInCartLiveData(): LiveData<MutableList<ItemInCartEntity>>
+
 
 }

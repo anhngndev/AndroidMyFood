@@ -24,4 +24,6 @@ class ItemInCartRepository {
     fun getAllItemInCartLiveData(): LiveData<MutableList<ItemInCartEntity>> {
         return itemInCartDao.getAllItemInCartLiveData()
     }
+
+    fun isFoodExist(name:String)=  itemInCartDao.isFoodIsExist(name)
 }

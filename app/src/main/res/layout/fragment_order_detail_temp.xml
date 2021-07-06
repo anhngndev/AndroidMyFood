@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+
+        <variable
+            name="amount"
+            type="Integer" />
+
+        <variable
+            name="total"
+            type="Integer" />
+
+        <variable
+            name="food"
+            type="com.ftech.dev.android_my_food.data.model.Food" />
+
+        <variable
+            name="viewModel"
+            type="com.ftech.dev.android_my_food.FoodDetailViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_gray">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@id/order_layout"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <ImageView
+                    android:id="@+id/ivBack"
+                    android:layout_width="58dp"
+                    android:layout_height="58dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/ripple_click_square"
+                    android:padding="22dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_black_left_arrow"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:gravity="center"
+                    android:text="@string/order_details"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/line"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/light_gray"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+
+                <TextView
+                    android:id="@+id/tv_title_cart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:gravity="center"
+                    android:text="@string/my_cart"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+                <!--                riv_imageFood="@{food}"-->
+
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/imv_food"
+                    android:layout_width="126dp"
+                    android:layout_height="105dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/food_image_3"
+                    riv_imageFood="@{viewModel.liveFood}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title_cart"
+                    app:riv_corner_radius="15dp" />
+
+                <TextView
+                    android:id="@+id/line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/light_gray"
+                    app:layout_constraintTop_toBottomOf="@id/imv_food" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_food_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:text="@{food.name}"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toEndOf="@id/imv_food"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title_cart"
+                    tools:text="IDR 32.000 (+ Tax)" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_food_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:text="@{`IDR `+ food.price +`(+ Tax)`}"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/imv_food"
+                    app:layout_constraintTop_toBottomOf="@id/tv_food_name"
+                    tools:text="IDR 32.000 (+ Tax)" />
+
+                <ImageView
+                    android:id="@+id/imv_zoom_out"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="38dp"
+                    android:background="@{viewModel.amount > 0 ? @drawable/border_7_light_gray_2_fill : @drawable/border_7_light_gray_0_fill}"
+                    android:padding="8dp"
+                    android:src="@{viewModel.amount > 0 ? @drawable/ic_minus : @drawable/ic_black_minus}"
+                    app:layout_constraintStart_toEndOf="@id/imv_food"
+                    app:layout_constraintTop_toBottomOf="@id/tv_food_price" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_amount"
+                    android:layout_width="36dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="42dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:gravity="center"
+                    android:text="@{viewModel.amount+``}"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toEndOf="@id/imv_zoom_out"
+                    app:layout_constraintTop_toBottomOf="@id/tv_food_price"
+                    tools:text="1" />
+
+                <ImageView
+                    android:id="@+id/imv_zoom_in"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="38dp"
+                    android:background="@drawable/border_7_light_gray_2_fill"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_plus"
+                    app:layout_constraintStart_toEndOf="@id/tv_amount"
+                    app:layout_constraintTop_toBottomOf="@id/tv_food_price" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivDelete"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="33dp"
+                    android:layout_marginEnd="26dp"
+                    android:background="@drawable/border_7_light_gray_2_fill"
+                    android:padding="11dp"
+                    android:src="@drawable/ic_recycle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_food_price" />
+
+                <TextView
+                    android:id="@+id/tv_delivery_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="26dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:gravity="center"
+                    android:text="@string/payment_method"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imv_food" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivPin"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/border_7_light_gray_2_fill"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_blue_pin"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_delivery_location" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_district"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:text="Gedongan, Mojokerto City"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toEndOf="@id/ivPin"
+                    app:layout_constraintTop_toTopOf="@id/ivPin" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:text="Mojokerto, East Java"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/ivPin"
+                    app:layout_constraintTop_toBottomOf="@id/tv_district" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imv_more_delivery_location"
+                    android:layout_width="12dp"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginEnd="18dp"
+                    android:src="@drawable/ic_small_right_arrow"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ivPin" />
+
+                <TextView
+                    android:id="@+id/line4"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/light_gray"
+                    app:layout_constraintTop_toBottomOf="@id/ivPin" />
+
+                <TextView
+                    android:id="@+id/tv_payment_method"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:gravity="center"
+                    android:text="@string/payment_method"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/line4" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivWallet"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/border_7_light_gray_2_fill"
+                    android:padding="7dp"
+                    android:src="@drawable/ic_green_wallet"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_payment_method" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_payment_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:text="Paypal Regular"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toEndOf="@id/ivWallet"
+                    app:layout_constraintTop_toTopOf="@id/ivWallet" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_payment_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/cera_pro_medim"
+                    android:text="0113*****************"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/ivWallet"
+                    app:layout_constraintTop_toBottomOf="@id/tv_payment_name" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imv_more_payment_method"
+                    android:layout_width="12dp"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginEnd="18dp"
+                    android:src="@drawable/ic_small_right_arrow"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ivWallet" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <TextView
+            android:id="@+id/line3"
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/light_gray"
+            app:layout_constraintBottom_toTopOf="@id/order_layout" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/order_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:paddingTop="15dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_order_infor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cera_pro_medim"
+                android:text="Order Info"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_subtotal"
+                android:layout_width="204dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Order Info"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_order_infor" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_result_subtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@{viewModel.total+``}"
+
+                android:textColor="@color/gray"
+                android:textSize="@dimen/dimen_14"
+                app:layout_constraintStart_toEndOf="@id/tv_subtotal"
+                app:layout_constraintTop_toBottomOf="@id/tv_order_infor"
+                tools:ignore="SpUsage"
+                tools:text="IDR 35.500" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_delivery_cost"
+                android:layout_width="204dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Delivery Cost"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_size_14"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_subtotal" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_result_delivery_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="0"
+                android:textColor="@color/gray"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@id/tv_subtotal"
+                app:layout_constraintTop_toBottomOf="@id/tv_subtotal" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_total"
+                android:layout_width="204dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Total"
+                android:textColor="@color/gray"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_delivery_cost" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_result_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@{viewModel.total+``}"
+                android:textColor="@color/gray"
+                android:textSize="14dp"
+                app:layout_constraintStart_toEndOf="@id/tv_subtotal"
+                app:layout_constraintTop_toBottomOf="@id/tv_delivery_cost"
+                tools:text="IDR 41.000" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCheckout"
+                android:layout_width="246dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/border_11_light_blue_fill"
+                android:clickable="true"
+                android:elevation="1dp"
+                android:focusable="true"
+                android:fontFamily="@font/cera_pro_medim"
+                android:gravity="center"
+                android:paddingVertical="10dp"
+                android:text="@{`Checkout (`+ viewModel.total+`)`}"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_total"
+                tools:text="Checkout (42.000)" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</layout>

@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/white_fill">
+        android:background="@drawable/white_fill_stroke">
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/ivStatus"
@@ -165,10 +165,10 @@
             android:id="@+id/reOrder"
             android:layout_width="match_parent"
             android:layout_height="38dp"
-            android:background="@drawable/white_fill"
+            android:background="@drawable/white_fill_stroke"
             android:gravity="center"
             android:onClick="@{() -> itemListener.onItemClick(itemPosition,item)}"
-            android:text="Đặt lại"
+            android:text="@string/reorder"
             android:textColor="@color/light_blue"
             android:textSize="15sp"
             app:layout_constraintTop_toBottomOf="@id/line" />

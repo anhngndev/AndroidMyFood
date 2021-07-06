@@ -54,7 +54,7 @@ fun TextView.setVisibilityV3(string: String) {
 fun TextView.setTextByAmount(amount: Int) {
     if (amount!=0){
         this.text = "$amount món ăn được tìm thấy"
-    } else this.text = "Recent search"
+    } else this.text = "Tìm kiếm gần đây"
 }
 
 @BindingAdapter("rv_visibility")

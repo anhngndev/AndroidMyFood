@@ -55,7 +55,7 @@
                     android:layout_width="88dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/color_app_gradient"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:riv_corner_radius="4dp" />

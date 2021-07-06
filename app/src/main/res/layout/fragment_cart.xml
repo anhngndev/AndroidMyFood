@@ -45,7 +45,7 @@
                 android:layout_marginTop="19dp"
                 android:fontFamily="@font/cera_pro_medim"
                 android:gravity="center"
-                android:text="Cart"
+                android:text="@string/cart"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
         </RelativeLayout>
@@ -85,7 +85,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/cera_pro_medim"
-                        android:hint="Giao hàng đến"
+                        android:hint="@string/delivery_to"
                         android:textSize="13sp" />
 
                     <TextView
@@ -110,7 +110,7 @@
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/ripple_click_square"
                         android:fontFamily="@font/cera_pro_medim"
-                        android:text="Thay đổi"
+                        android:text="@string/change"
                         android:textColor="@color/light_blue"
                         android:textSize="13sp" />
 
@@ -140,7 +140,7 @@
                         android:drawableStart="@drawable/ic_gray_plus"
                         android:drawablePadding="4dp"
                         android:fontFamily="@font/cera_pro_light"
-                        android:text="Thêm vào tòa nhà, tầng, số phòng."
+                        android:text="@string/add_detail_address"
                         android:textSize="16sp" />
 
 
@@ -163,7 +163,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/cera_pro_medim"
-                        android:hint="Đơn hàng của bạn"
+                        android:hint="@string/your_order"
                         android:textSize="13sp" />
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -183,7 +183,7 @@
                         android:layout_marginTop="4dp"
                         android:gravity="center_vertical"
                         tv_visibility_2="@{viewModel}"
-                        android:text="Vui lòng đặt thêm hàng!"
+                        android:text="@string/order_more"
                         android:fontFamily="@font/cera_pro_medim"
                         android:textSize="15sp" />
 
@@ -195,13 +195,14 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/rlDetailCart"
                     android:background="@color/white"
-                    android:drawableStart="@drawable/ic_document"
                     android:drawablePadding="10dp"
                     android:fontFamily="@font/cera_pro_light"
                     android:paddingVertical="12dp"
                     android:paddingStart="22dp"
-                    android:text="Bạn có muốn nhắn gì với nhà hàng không?"
-                    android:textSize="15sp" />
+                    android:text="@string/chat_with_res"
+                    android:textSize="15sp"
+                    app:drawableStartCompat="@drawable/ic_document"
+                    tools:ignore="RtlSymmetry" />
 
                 <RelativeLayout
                     android:id="@+id/rlSumItUp"
@@ -212,17 +213,18 @@
                     android:background="@color/white"
                     android:paddingStart="22dp"
                     android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
+                    android:paddingBottom="10dp"
+                    tools:ignore="RtlSymmetry">
 
                     <TextView
                         android:id="@+id/tvAmountItem"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/cera_pro_light"
-                        android:text="@{`Tạm tính (`+ viewModel.amount +` món)`}"
+                        android:text="@{`Provisional (`+ viewModel.amount +` món)`}"
                         android:textColor="@color/black"
                         android:textSize="13sp"
-                        tools:text="Tạm tính (7 món)" />
+                        tools:text="Provisional (7 món)" />
 
                     <TextView
                         android:id="@+id/tvFoodPrice"
@@ -242,12 +244,12 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tvAmountItem"
                         android:layout_marginTop="8dp"
-                        android:drawableEnd="@drawable/ic_question"
                         android:drawablePadding="4dp"
                         android:fontFamily="@font/cera_pro_light"
-                        android:text="Phí áp dụng: 0.5km"
+                        android:text="@string/delivery_cost"
                         android:textColor="@color/black"
-                        android:textSize="13sp" />
+                        android:textSize="13sp"
+                        app:drawableEndCompat="@drawable/ic_question" />
 
                     <TextView
                         android:id="@+id/tvShipPrice"
@@ -285,15 +287,15 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@id/rlOrder"
                 android:layout_toStartOf="@id/tvCenter"
-                android:drawableStart="@drawable/ic_money"
-                android:drawableEnd="@drawable/ic_upload"
                 android:drawablePadding="8dp"
                 android:fontFamily="@font/cera_pro_light"
                 android:paddingStart="22dp"
                 android:paddingEnd="18dp"
-                android:text="Tiền mặt"
+                android:text="@string/cash"
                 android:textColor="@color/black"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                app:drawableStartCompat="@drawable/ic_money"
+                app:drawableEndCompat="@drawable/ic_upload" />
 
             <TextView
                 android:id="@+id/tvCenter"
@@ -313,7 +315,7 @@
                 android:drawablePadding="8dp"
                 android:fontFamily="@font/cera_pro_medim"
                 android:gravity="center"
-                android:text="ADD A PROMO"
+                android:text="@string/add_promo"
                 android:textColor="@color/light_blue"
                 android:textSize="15sp" />
 
@@ -331,7 +333,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/cera_pro_medim"
-                    android:hint="Tổng cộng"
+                    android:hint="@string/total"
                     android:textSize="13sp" />
 
                 <TextView
@@ -356,7 +358,7 @@
                     android:fontFamily="@font/cera_pro_medim"
                     android:paddingHorizontal="80dp"
                     android:paddingVertical="14dp"
-                    android:text="Đặt hàng"
+                    android:text="@string/order"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 

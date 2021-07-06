@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ViewFlipper
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat.getSystemService
@@ -34,7 +35,7 @@ class CartFragment : BaseFragment<FragmentCartBinding>(), CartAdapter.CartListen
     private val cartViewModel: CartViewModel by activityViewModels()
     private var cartAdapter = CartAdapter()
     var list = mutableListOf<ItemInCartEntity>()
-    var touchHelper : ItemTouchHelper? = null
+    var touchHelper: ItemTouchHelper? = null
 
     override fun getLayoutId() = R.layout.fragment_cart
 
@@ -46,7 +47,7 @@ class CartFragment : BaseFragment<FragmentCartBinding>(), CartAdapter.CartListen
 
     override fun initView() {
 
-        cartViewModel.listItemInCartLiveData.observe(viewLifecycleOwner){
+        cartViewModel.listItemInCartLiveData.observe(viewLifecycleOwner) {
             it?.let { list ->
                 cartAdapter.list = list
             }
@@ -62,9 +63,9 @@ class CartFragment : BaseFragment<FragmentCartBinding>(), CartAdapter.CartListen
         cartAdapter.callBack = this
         binding.rcItemInCart.adapter = cartAdapter
 
-//
         touchHelper =
-            ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
+            ItemTouchHelper(object :
+                ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
                 override fun onMove(
                     p0: RecyclerView,
                     p1: RecyclerView.ViewHolder,
@@ -72,8 +73,8 @@ class CartFragment : BaseFragment<FragmentCartBinding>(), CartAdapter.CartListen
                 ): Boolean {
                     val sourcePosition = p1.adapterPosition
                     val targetPosition = p2.adapterPosition
-                    Collections.swap(cartAdapter.list,sourcePosition,targetPosition)
-                    binding.rcItemInCart.adapter?.notifyItemMoved(sourcePosition,targetPosition)
+                    Collections.swap(cartAdapter.list, sourcePosition, targetPosition)
+                    binding.rcItemInCart.adapter?.notifyItemMoved(sourcePosition, targetPosition)
                     return true
                 }
 
@@ -93,7 +94,7 @@ class CartFragment : BaseFragment<FragmentCartBinding>(), CartAdapter.CartListen
 
         binding.tvOrder.setOnClickListener {
             cartViewModel.deleteAll()
-            findNavController().popBackStack(R.id.homeFragment,false)
+            findNavController().popBackStack(R.id.homeFragment, false)
         }
         binding.tvAddPromo.setOnClickListener {
 
@@ -114,9 +115,19 @@ class CartFragment : BaseFragment<FragmentCartBinding>(), CartAdapter.CartListen
     }
 
     override fun onDeleteItem(item: ItemInCartEntity) {
-        cartViewModel.delete(item)
-        cartViewModel.liveItemInCart.value = item
-        cartViewModel.downAmount()
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Hock-y")
+        builder.setMessage("Delete ${item.nameItem.toString()} ?")
+            .setCancelable(false)
+            .setPositiveButton("Yes") { dialog, id ->
+                cartViewModel.delete(item)
+                cartViewModel.liveItemInCart.value = item
+                cartViewModel.downAmount()
+            }
+            .setNegativeButton("No") { dialog, id ->
+                dialog.cancel()
+            }
+        val alert = builder.create()
+        alert.show()
     }
-
 }

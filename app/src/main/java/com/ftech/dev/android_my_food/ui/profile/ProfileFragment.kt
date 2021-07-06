@@ -51,20 +51,17 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         binding.tvLanguage.setOnClickListener { }
 
         binding.tvLogOut.setOnClickListener {
-            val builder =
-                AlertDialog.Builder(requireContext())
+            val builder = AlertDialog.Builder(requireContext())
             builder.setTitle("Foody")
             builder.setMessage("Do you want to log out?")
                 .setCancelable(false)
-                .setPositiveButton(
-                    "Yes"
-                ) { dialog, id ->
+                .setPositiveButton("Yes") { dialog, id ->
                     firebaseAuth.signOut()
                     findNavController().popBackStack(R.id.loginFragment, false)
                 }
-                .setNegativeButton(
-                    "No"
-                ) { dialog, id -> dialog.cancel() }
+                .setNegativeButton("No") { dialog, id ->
+                    dialog.cancel()
+                }
             val alert = builder.create()
             alert.show()
         }

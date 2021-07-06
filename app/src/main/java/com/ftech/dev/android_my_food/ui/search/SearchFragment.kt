@@ -15,7 +15,6 @@ import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.data.model.Food
 import com.ftech.dev.android_my_food.data.source.local.SearchEntity
 import com.ftech.dev.android_my_food.databinding.FragmentSearchBinding
-import com.ftech.dev.android_my_food.ui.home.FoodAdapterHor
 import com.ftech.dev.android_my_food.ui.home.FoodAdapterVer
 import com.ftech.dev.android_my_food.utils.hideKeyboard
 import com.ftech.dev.android_my_food.utils.observer
@@ -125,7 +124,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(),
         foodsViewModel.liveFood.value = (item)
         foodsViewModel.amount.value = 1
         foodsViewModel.total.value = item.getPriceToInt()
-        findNavController().navigate(R.id.action_searchFragment_to_detailFoodBottomSheet)
+        findNavController().navigate(R.id.action_searchFragment_to_oderDetailFragment)
     }
 
 }

@@ -58,17 +58,19 @@
 
                     <TextView
                         android:id="@+id/tvUsername"
+                        android:singleLine="true"
                         android:layout_width="wrap_content"
                         android:layout_height="23dp"
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="18dp"
+                        android:layout_toStartOf="@id/ivNotify"
                         android:layout_toEndOf="@id/rivUser"
                         android:background="@drawable/ripple_click_square"
                         android:fontFamily="@font/cera_pro_bold"
-                        android:text="@{`Hi ` + userInforViewModel.userNameLivaData}"
+                        android:text="@{`Xin chào ` + userInforViewModel.userNameLivaData}"
                         android:textColor="@color/black"
                         android:textSize="18dp"
-                        tools:text="Hi Ngoc Anh" />
+                        tools:text="Xin chào Ngoc Anh" />
 
                     <TextView
                         android:id="@+id/tvTitle1"
@@ -79,7 +81,7 @@
                         android:layout_marginTop="2dp"
                         android:layout_toEndOf="@id/rivUser"
                         android:fontFamily="@font/cera_pro_medim"
-                        android:text="What are you eating today?"
+                        android:text="@string/eating_today"
                         android:textColor="@color/gray"
                         android:textSize="14dp" />
 
@@ -148,7 +150,7 @@
                         android:drawablePadding="15dp"
                         android:fontFamily="@font/cera_pro_light"
                         android:gravity="center_vertical"
-                        android:hint="Tìm nhà hàng, món ăn"
+                        android:hint="@string/find_des"
                         android:paddingStart="15dp"
                         android:textSize="14sp" />
 
@@ -190,7 +192,7 @@
                         android:layout_marginTop="15dp"
                         android:fontFamily="@font/cera_pro_medim"
                         android:gravity="center"
-                        android:text="Tasty Food today"
+                        android:text="@string/food_today"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -209,7 +211,7 @@
                         android:paddingVertical="5dp"
                         android:paddingStart="15dp"
                         android:paddingEnd="5dp"
-                        android:text="See more"
+                        android:text="@string/see_more"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
 
@@ -217,7 +219,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/popular_recyclerview"
                         android:layout_width="match_parent"
-                        android:layout_height="216dp"
+                        android:layout_height="220dp"
                         android:layout_below="@id/tvFood"
                         android:layout_marginTop="10dp"
                         android:orientation="horizontal"
@@ -246,7 +248,7 @@
                         android:layout_alignParentTop="true"
                         android:layout_marginStart="15dp"
                         android:fontFamily="@font/cera_pro_medim"
-                        android:text="Hot Voucher"
+                        android:text="@string/hot_voucher"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -280,8 +282,8 @@
                 android:layout_gravity="center"
                 android:background="@drawable/border_6_white_fill"
                 android:gravity="center"
-                android:paddingTop="50dp"
-                android:text="Loading..."
+                android:paddingTop="45dp"
+                android:text="@string/loading"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"

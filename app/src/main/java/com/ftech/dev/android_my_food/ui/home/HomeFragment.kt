@@ -29,18 +29,14 @@ import java.util.*
 class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapterHor.FoodListener,
     CardAdapter.CardListener, FoodBigAdapter.FoodBigListener, VoucherAdapter.VoucherListener,
     HttpRequestTask.Callback {
+
     private var touchHelper: ItemTouchHelper? = null
-
     private val TAG = "HomeFragment"
-
     private lateinit var foodAdapter: FoodAdapterHor
-
     private lateinit var voucherAdapter: VoucherAdapter
     private var voucherList = mutableListOf<Voucher>()
-
     private lateinit var bigAdapter: FoodBigAdapter
     private var bigFoodList = mutableListOf<BigFood>()
-
     private val detailViewModel: FoodDetailViewModel by activityViewModels()
     private val cartViewModel: CartViewModel by activityViewModels()
     private val userInforViewModel: UserInforViewModel by activityViewModels()
@@ -64,7 +60,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapterHor.FoodLis
                 binding.tvCompleteOrder.visibility = View.VISIBLE
                 handler.postDelayed(Runnable {
                     binding.tvCompleteOrder.visibility = View.GONE
-                }, 2000)
+                }, 2500)
                 cartViewModel.isOrdering.value = true
             }
         }
@@ -75,6 +71,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapterHor.FoodLis
     }
 
     override fun setAction() {
+        binding.view.setOnClickListener {
+
+        }
         binding.ivNotify.setOnClickListener {
         }
 
@@ -166,7 +165,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapterHor.FoodLis
         detailViewModel.liveFood.value = (item)
         detailViewModel.amount.value = 1
         detailViewModel.total.value = item.getPriceToInt()
-        findNavController().navigate(R.id.action_homeFragment_to_customBottomSheetDialogFragment)
+        findNavController().navigate(R.id.action_homeFragment_to_oderDetailFragment)
     }
 
     override fun onItemClick(index: Int, item: Card) {
@@ -193,4 +192,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapterHor.FoodLis
 
     fun completeOrder() {
     }
+
 }

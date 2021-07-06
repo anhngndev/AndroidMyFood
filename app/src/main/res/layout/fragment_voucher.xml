@@ -64,6 +64,7 @@
                 android:layout_alignParentEnd="true"
                 android:id="@+id/ivVoucher"/>
             <TextView
+                android:maxLines="3"
                 android:id="@+id/tvForImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,7 +73,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="30dp"
                 android:fontFamily="@font/staatliches_regular"
-                android:textSize="38sp"
+                android:textSize="40sp"
                 android:textColor="@color/white"
                 android:text="@{item.content.toUpperCase()}"
                 tools:text="THANH TOÁN ZALOPAY KHAO ĐÃ TAY 25K"/>
@@ -97,7 +98,7 @@
             android:text="@{item.description}"
             tools:text="@string/voucher_1"
             android:gravity="center"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintTop_toBottomOf="@id/tvLine"
             android:layout_marginTop="11dp"
             android:paddingHorizontal="15dp"/>

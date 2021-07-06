@@ -32,7 +32,7 @@
             android:layout_marginTop="19dp"
             android:fontFamily="@font/cera_pro_medim"
             android:gravity="center"
-            android:text="Tasty Food today"
+            android:text="@string/food_today"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,9 +73,10 @@
                         android:layout_marginEnd="140dp"
                         android:fontFamily="@font/staatliches_regular"
                         android:lines="3"
-                        android:text="ĂN GÌ NHỈ TOÀN MÓN NGON"
+                        android:maxLines="3"
+                        android:text="@string/eat_des"
                         android:textColor="@color/white"
-                        android:textSize="38sp" />
+                        android:textSize="40sp" />
 
                 </RelativeLayout>
 
@@ -96,9 +97,9 @@
                     android:layout_marginTop="11dp"
                     android:gravity="center"
                     android:paddingHorizontal="15dp"
-                    android:text="@string/voucher_1"
+                    android:text="@string/top_food"
                     android:textColor="@color/gray"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     tools:fontFamily="@font/cera_pro_light" />
 
                 <androidx.recyclerview.widget.RecyclerView

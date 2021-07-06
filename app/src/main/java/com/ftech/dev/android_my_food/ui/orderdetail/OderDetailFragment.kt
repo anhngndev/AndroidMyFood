@@ -43,22 +43,17 @@ class OderDetailFragment : BaseFragment<FragmentOrderDetailBinding>() {
             foodDetailViewModel.downAmount()
         }
 
-        binding.tvTitle.setOnClickListener {
-            Log.d(TAG, "setAction: ")
-
-        }
-
         binding.tvCheckout.setOnClickListener {
             if(foodDetailViewModel.amount.value!! > 0) {
-                val a = binding.tvAmount.text.toString()
-                val t = binding.tvResultTotal.text.toString()
                 val itemInCartEntity = ItemInCartEntity(
                     nameItem = binding.food!!.name,
-                    amount = a.toInt(),
-                    total = t.toInt()
+                    amount = foodDetailViewModel.amount.value!!.toInt(),
+                    total = foodDetailViewModel.total.value!!.toInt()
                 )
                 cartViewModel.insert(itemInCartEntity)
+
                 cartViewModel.liveItemInCart.value = itemInCartEntity
+
                 cartViewModel.upAmount()
                 cartViewModel.listItemInCartLiveData.value?.add(itemInCartEntity)
                 foodDetailViewModel.resetAmount()
@@ -70,25 +65,9 @@ class OderDetailFragment : BaseFragment<FragmentOrderDetailBinding>() {
             onBackPress()
         }
 
-        binding.ivDelete.setOnClickListener {
-            foodDetailViewModel.resetAmount()
-        }
-
-        binding.ivWallet.setOnClickListener {
-
-        }
-        binding.ivPin.setOnClickListener {
-
-        }
     }
 
     override fun initView() {
-//        observer(viewModelFoodDetail.liveFood) {
-//            it?.let { food ->
-//                binding.food = food
-////                binding.imvFood.setImageResource(food.image)
-//            }
-//        }
 
     }
 

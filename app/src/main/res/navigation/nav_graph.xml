@@ -52,13 +52,6 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
-            app:enterAnim="@anim/slide_enter_left_to_right"
-            app:exitAnim="@anim/slide_exit_right_to_left"
-            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
-            app:popExitAnim="@anim/slide_pop_exit_left_to_right"
-            android:id="@+id/action_homeFragment_to_customBottomSheetDialogFragment"
-            app:destination="@id/detailFoodBottomSheet" />
-        <action
             android:id="@+id/action_homeFragment_to_bigFoodDetailFragment"
             app:destination="@id/bigFoodDetailFragment"
             app:enterAnim="@anim/slide_enter_left_to_right"
@@ -101,6 +94,13 @@
             app:popExitAnim="@anim/slide_pop_exit_left_to_right"
             android:id="@+id/action_homeFragment_to_allFoodFragment"
             app:destination="@id/allFoodFragment" />
+        <action
+            app:enterAnim="@anim/slide_enter_left_to_right"
+            app:exitAnim="@anim/slide_exit_right_to_left"
+            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right"
+            android:id="@+id/action_homeFragment_to_oderDetailFragment"
+            app:destination="@id/oderDetailFragment" />
 
     </fragment>
     <fragment
@@ -132,23 +132,14 @@
             app:enterAnim="@anim/slide_enter_left_to_right"
             app:exitAnim="@anim/slide_exit_right_to_left"
             app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
-            app:popExitAnim="@anim/slide_pop_exit_left_to_right"
-            android:id="@+id/action_searchFragment_to_detailFoodBottomSheet"
-            app:destination="@id/detailFoodBottomSheet" />
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right"   android:id="@+id/action_searchFragment_to_oderDetailFragment"
+            app:destination="@id/oderDetailFragment" />
     </fragment>
     <dialog
         android:id="@+id/detailFoodBottomSheet"
         android:name="com.ftech.dev.android_my_food.ui.fooddetail.FoodDetailBottomSheet"
         android:label="DetailFoodBottomSheet"
-        tools:layout="@layout/bottom_sheet_food_detail">
-        <action
-            android:id="@+id/action_detailFoodBottomSheet_to_oderDetailFragment"
-            app:destination="@id/oderDetailFragment"
-            app:enterAnim="@anim/slide_enter_left_to_right"
-            app:exitAnim="@anim/slide_exit_right_to_left"
-            app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
-            app:popExitAnim="@anim/slide_pop_exit_left_to_right" />
-    </dialog>
+        tools:layout="@layout/bottom_sheet_food_detail"/>
     <fragment
         android:id="@+id/oderDetailFragment"
         android:name="com.ftech.dev.android_my_food.ui.orderdetail.OderDetailFragment"
@@ -179,15 +170,14 @@
             app:exitAnim="@anim/slide_exit_right_to_left"
             app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
             app:popExitAnim="@anim/slide_pop_exit_left_to_right"
-            android:id="@+id/action_bigFoodDetailFragment_to_detailFoodBottomSheet"
-            app:destination="@id/detailFoodBottomSheet" />
+            android:id="@+id/action_bigFoodDetailFragment_to_ratingBottomSheet"
+            app:destination="@id/ratingBottomSheet" />
         <action
             app:enterAnim="@anim/slide_enter_left_to_right"
             app:exitAnim="@anim/slide_exit_right_to_left"
             app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
-            app:popExitAnim="@anim/slide_pop_exit_left_to_right"
-            android:id="@+id/action_bigFoodDetailFragment_to_ratingBottomSheet"
-            app:destination="@id/ratingBottomSheet" />
+            app:popExitAnim="@anim/slide_pop_exit_left_to_right" android:id="@+id/action_bigFoodDetailFragment_to_oderDetailFragment"
+            app:destination="@id/oderDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/imageBigFoodDetailFragment"
@@ -224,8 +214,8 @@
             app:exitAnim="@anim/slide_exit_right_to_left"
             app:popEnterAnim="@anim/slide_pop_enter_right_to_left"
             app:popExitAnim="@anim/slide_pop_exit_left_to_right"
-            android:id="@+id/action_allFoodFragment_to_detailFoodBottomSheet"
-            app:destination="@id/detailFoodBottomSheet" />
+            android:id="@+id/action_allFoodFragment_to_oderDetailFragment"
+            app:destination="@id/oderDetailFragment" />
     </fragment>
     <dialog
         android:id="@+id/ratingBottomSheet"

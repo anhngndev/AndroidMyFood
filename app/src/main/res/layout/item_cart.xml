@@ -53,6 +53,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:paddingHorizontal="8dp"
             android:id="@+id/tvTotal"
             android:text="@{item.total +`đ`}"
             android:layout_width="wrap_content"

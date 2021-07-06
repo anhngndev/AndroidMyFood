@@ -43,7 +43,6 @@ class FoodDetailBottomSheet : BottomSheetDialogFragment() {
         }
 
         binding.tvAddOrder.setOnClickListener {
-            findNavController().navigate(R.id.action_detailFoodBottomSheet_to_oderDetailFragment)
         }
 
         detailViewModel.liveFood.observe(viewLifecycleOwner) { food ->

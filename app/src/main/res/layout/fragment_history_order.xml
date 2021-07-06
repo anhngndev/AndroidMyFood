@@ -33,7 +33,7 @@
             android:layout_marginTop="19dp"
             android:fontFamily="@font/cera_pro_medim"
             android:gravity="center"
-            android:text="Order"
+            android:text="@string/history_order"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"

@@ -13,13 +13,14 @@ import com.ftech.dev.android_my_food.data.model.Food
 import com.ftech.dev.android_my_food.databinding.FragmentBigFoodDetailBinding
 import com.ftech.dev.android_my_food.ui.home.FoodAdapterVer
 import com.ftech.dev.android_my_food.utils.observer
+import java.util.*
 
 class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
     FoodImageAdapter.FoodImageListener,
     FoodAdapterVer.FoodListener{
 
     private val TAG = "BigFoodDetailFragment"
-    private lateinit var foodImageAdapter: FoodImageAdapter
+    private var foodImageAdapter = FoodImageAdapter()
     private var foodAdapter = FoodAdapterVer()
     private var foodImageList = mutableListOf<Int>()
 
@@ -37,31 +38,44 @@ class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
     override fun isCanBackPress() = true
 
     override fun initView() {
-        val imageFoodLayoutManager = StaggeredGridLayoutManager(1, RecyclerView.HORIZONTAL)
         val snapHelper = LinearSnapHelper()
         snapHelper.attachToRecyclerView(binding.rvFood)
 
         foodsViewModel.liveBigFood.observe(viewLifecycleOwner) { food ->
             binding.item = food
             foodImageList = food.image
-
-            foodImageAdapter = FoodImageAdapter()
-            foodImageAdapter.callBack = this
             foodImageAdapter.list = food.image
 
-            binding.rvFood.layoutManager = imageFoodLayoutManager
-            binding.rvFood.adapter = foodImageAdapter
         }
 
-        foodAdapter.list = foodsViewModel.foodsLiveData.value!!
+        foodImageAdapter.callBack = this
+        binding.rvFood.adapter = foodImageAdapter
+
+        foodAdapter.list = performFilter(foodsViewModel.liveBigFood.value?.category!!)
         foodAdapter.callBack = this
         binding.rcFood.adapter = foodAdapter
 
-        observer(foodsViewModel.foodsLiveData) {
-            it?.let { list ->
-                foodAdapter.list = list
+//        observer(foodsViewModel.foodsLiveData) {
+//            it?.let { list ->
+//                foodAdapter.list = list
+//            }
+//        }
+    }
+
+    private fun performFilter(keySearch: String) : MutableList<Food>{
+        var foodsTemp = mutableListOf<Food>()
+        if (keySearch != "") {
+            for (d in foodsViewModel.foodsLiveData.value!!) {
+                if (d.id.lowercase(Locale.getDefault())
+                        .contains(keySearch.lowercase(Locale.getDefault()))
+                ) {
+                    foodsTemp.add(d)
+                }
             }
+        } else {
+            foodAdapter.list = foodsTemp
         }
+        return foodsTemp
     }
 
     override fun setAction() {
@@ -85,7 +99,7 @@ class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
         foodsViewModel.liveFood.value = (item)
         foodsViewModel.amount.value = 1
         foodsViewModel.total.value = item.getPriceToInt()
-        findNavController().navigate(R.id.action_bigFoodDetailFragment_to_detailFoodBottomSheet)
+        findNavController().navigate(R.id.action_bigFoodDetailFragment_to_oderDetailFragment)
     }
 
 }

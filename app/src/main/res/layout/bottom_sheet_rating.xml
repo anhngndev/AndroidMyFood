@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
     </data>
 
+
     <LinearLayout
-        android:background="@drawable/border_40_white_fill"
+        style="@style/AppBottomSheetDialogTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="15dp"
-        android:orientation="vertical">
+        android:background="@color/transition"
+        android:orientation="vertical"
+        android:paddingBottom="50dp">
 
         <ImageView
             android:id="@+id/ivCancel"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:background="@drawable/ripple_click_square_circle"
             android:padding="17dp"
-            android:src="@drawable/ic_cancel" />
+            android:src="@drawable/ic_gray_cancel" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -31,21 +35,20 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/cera_pro_bold"
-            android:text="Đánh giá cửa hàng"
+            android:text="@string/store_reviews"
             android:textColor="@color/black"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingHorizontal="15dp"
-            android:lineSpacingExtra="4dp"
             android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/cera_pro_light"
+            android:lineSpacingExtra="6dp"
+            android:paddingHorizontal="15dp"
             android:text="@string/rating_des"
             android:textColor="@color/black"
-            android:textSize="14sp" />
-
+            android:textSize="15sp" />
     </LinearLayout>
 </layout>

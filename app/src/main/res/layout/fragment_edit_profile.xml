@@ -57,7 +57,7 @@
                 android:layout_marginTop="19dp"
                 android:fontFamily="@font/cera_pro_medim"
                 android:gravity="center"
-                android:text="Edit Profile"
+                android:text="@string/edit_profile"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +73,7 @@
                 android:fontFamily="@font/cera_pro_medim"
                 android:gravity="center"
                 android:paddingEnd="8dp"
-                android:text="Update"
+                android:text="@string/update"
                 android:textColor="@color/light_blue"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:hint="Số điện thoại"
+                android:hint="@string/phone_number"
                 android:textSize="14sp" />
 
             <TextView
@@ -118,7 +118,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/ripple_click_square"
-                android:text="Chỉnh sửa"
+                android:text="@string/change"
                 android:textColor="@color/light_blue"
                 android:textSize="13sp" />
 
@@ -142,7 +142,7 @@
                 android:layout_marginTop="2dp"
                 android:textColor="@{isFocusName ? @color/light_blue : @color/gray}"
 
-                android:hint="Tên"
+                android:hint="@string/name"
                 android:textSize="14sp" />
 
             <EditText
@@ -152,7 +152,7 @@
                 android:layout_below="@id/tvNameTitle"
                 android:layout_marginTop="8dp"
                 android:background="@color/white"
-                android:hint="@string/username"
+                android:hint="@string/name"
                 android:text="@{userViewModel.userNameLivaData}"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
@@ -182,7 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:hint="Email"
+                android:hint="@string/email"
                 android:textSize="14sp" />
 
             <EditText
@@ -221,7 +221,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:hint="Pass"
+                android:hint="@string/password"
                 android:textSize="14sp" />
 
             <EditText
@@ -231,7 +231,7 @@
                 android:layout_below="@id/tvPassTitle"
                 android:layout_marginTop="8dp"
                 android:background="@color/white"
-                android:hint="Mật khẩu mới"
+                android:hint="@string/new_pass"
                 android:inputType="textPassword"
                 tools:text="Ngoc Anh"
                 android:textColor="@color/black"
@@ -254,7 +254,7 @@
             android:layout_marginBottom="30dp"
             android:background="@drawable/ripple_click_square"
             android:gravity="center"
-            android:text="Thoát ra"
+            android:text="@string/exit"
             android:textColor="@color/light_blue"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent" />

@@ -2,13 +2,10 @@ package com.ftech.dev.android_my_food.ui.cart
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ftech.dev.android_my_food.data.model.Food
-import com.ftech.dev.android_my_food.data.model.Voucher
 import com.ftech.dev.android_my_food.data.repository.ItemInCartRepository
 import com.ftech.dev.android_my_food.data.repository.OrderRepository
 import com.ftech.dev.android_my_food.data.source.local.ItemInCartEntity
 import com.ftech.dev.android_my_food.data.source.local.OrderEntity
-import com.ftech.dev.android_my_food.data.source.local.SearchEntity
 
 class CartViewModel : ViewModel() {
 
@@ -23,22 +20,17 @@ class CartViewModel : ViewModel() {
     var isOrdering = MutableLiveData<Boolean>(true)
 
     var total = MutableLiveData<Int>(0)
-    var promo = MutableLiveData<Int>(0)
 
-    fun upAmount(v: Int = 1) {
+    fun upAmount() {
         amount.value = liveItemInCart.value?.amount?.let { amount.value?.plus(it) }
         total.value = liveItemInCart.value?.total?.let { total.value?.plus(it) }
     }
 
-    fun downAmount(v: Int = 1) {
+    fun downAmount() {
         if (amount.value!! > 0) {
             amount.value = liveItemInCart.value?.amount?.let { amount.value?.minus(it) }
             total.value = liveItemInCart.value?.total?.let { total.value?.minus(it) }
         }
-    }
-
-    fun addPromo(voucher: Voucher){
-
     }
 
     fun deleteAll(){
@@ -68,4 +60,5 @@ class CartViewModel : ViewModel() {
     fun insertOrder(orderEntity: OrderEntity){
         orderRepository.insert(orderEntity)
     }
+
 }
