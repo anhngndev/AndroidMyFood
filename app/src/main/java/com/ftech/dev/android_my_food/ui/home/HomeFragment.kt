@@ -135,29 +135,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapterHor.FoodLis
         binding.slideRecycler.layoutManager = layoutManagerBigFood
         binding.slideRecycler.adapter = bigAdapter
 
-//      Drag Drop
-//        touchHelper =
-//            ItemTouchHelper(object :
-//                ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
-//                override fun onMove(
-//                    p0: RecyclerView,
-//                    p1: RecyclerView.ViewHolder,
-//                    p2: RecyclerView.ViewHolder
-//                ): Boolean {
-//                    val sourcePosition = p1.adapterPosition
-//                    val targetPosition = p2.adapterPosition
-//                    Collections.swap(foodAdapter.list, sourcePosition, targetPosition)
-//                    binding.popularRecyclerview.adapter?.notifyItemMoved(
-//                        sourcePosition,
-//                        targetPosition
-//                    )
-//                    return true
-//                }
-//
-//                override fun onSwiped(p0: RecyclerView.ViewHolder, p1: Int) {
-//                }
-//            })
-
         touchHelper?.attachToRecyclerView(binding.popularRecyclerview)
     }
 
