@@ -7,5 +7,14 @@ class MainViewModel  : ViewModel(){
 
     val stateNavigationBotstom = MutableLiveData(false)
 
+    val stateLoading = MutableLiveData(false)
 
+    fun showLoading() {
+        stateLoading.value = true
+    }
+
+    fun hideLoading(){
+        stateLoading.value = false
+
+    }
 }

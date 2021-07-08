@@ -5,24 +5,23 @@ import android.app.Application
 import android.content.Context
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.ftech.dev.android_my_food.data.model.BigFood
 import com.ftech.dev.android_my_food.data.model.Card
 import com.ftech.dev.android_my_food.data.model.Food
-import com.ftech.dev.android_my_food.data.model.BigFood
 import com.ftech.dev.android_my_food.data.model.Voucher
 import com.ftech.dev.android_my_food.ui.cart.CartViewModel
-import com.ftech.dev.android_my_food.ui.search.SearchViewModel
 import com.makeramen.roundedimageview.RoundedImageView
 
-private var application : Application?=null
+private var application: Application? = null
 
 fun getApplication() = application!!
 
@@ -52,7 +51,7 @@ fun TextView.setVisibilityV3(string: String) {
 
 @BindingAdapter("tv_set_text_by_amount")
 fun TextView.setTextByAmount(amount: Int) {
-    if (amount!=0){
+    if (amount != 0) {
         this.text = "$amount món ăn được tìm thấy"
     } else this.text = "Tìm kiếm gần đây"
 }
@@ -72,10 +71,27 @@ fun RecyclerView.setVisibilityV2(key: String) {
 }
 
 @BindingAdapter("tv_visibility_2")
-fun TextView.setVisibilityV2(viewModel: CartViewModel) {
-    visibility = if (viewModel.amount.value!! > 0)
+//fun TextView.setVisibilityV2(viewModel: CartViewModel) {
+//    visibility = if (viewModel.amount.value!! > 0)
+//        View.GONE
+//    else View.VISIBLE
+//}
+
+fun TextView.setVisibilityV2(value: Int) {
+    visibility = if (value > 0) {
         View.GONE
-    else View.VISIBLE
+    } else {
+        View.VISIBLE
+    }
+}
+
+@BindingAdapter("fl_visibility")
+fun FrameLayout.setVisibility(value: Boolean) {
+    visibility = if (value) {
+        View.VISIBLE
+    } else {
+        View.GONE
+    }
 }
 
 @BindingAdapter("riv_imageVoucher")

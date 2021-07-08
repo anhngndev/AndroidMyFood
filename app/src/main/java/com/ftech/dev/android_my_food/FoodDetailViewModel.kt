@@ -3,12 +3,10 @@ package com.ftech.dev.android_my_food
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.fragment.findNavController
 import com.ftech.dev.android_my_food.data.model.Food
 import com.ftech.dev.android_my_food.data.model.BigFood
 import com.ftech.dev.android_my_food.data.model.Voucher
 import com.ftech.dev.android_my_food.data.repository.DataResponseRepository
-import com.ftech.dev.android_my_food.data.source.local.ItemInCartEntity
 
 class FoodDetailViewModel : ViewModel() {
 
@@ -17,7 +15,7 @@ class FoodDetailViewModel : ViewModel() {
 
     val foodsLiveData = MutableLiveData<MutableList<Food>>()
 
-    val tempFoodsLiveData = MutableLiveData<MutableList<Food>>()
+    val currentFoodsLiveData = MutableLiveData<MutableList<Food>>()
     var tempAmountFood = MutableLiveData<Int>(0)
 
     val liveFood = MutableLiveData<Food>()
@@ -45,19 +43,43 @@ class FoodDetailViewModel : ViewModel() {
     }
 
     fun getFoods() {
-        val temp  = mutableListOf<Food>()
+        val temp = mutableListOf<Food>()
         dataResponseRepository.getFoodList(onSuccess = {
             foodsLiveData.value = it
             it.forEachIndexed { index, food ->
-                if (index < 10) {
+                if (index < 7) {
                     temp.add(food)
+                    Log.d(TAG, "getFoods: $index")
                 }
             }
-            tempFoodsLiveData.value = temp.toMutableList()
+            currentFoodsLiveData.value = temp.toMutableList()
         }, onError = {
             Log.d(TAG, "getFoods: ${it}")
         })
     }
+
+    fun loadMore(value: Int) {
+        val newList = currentFoodsLiveData.value!!
+        val fullList = foodsLiveData.value!!
+        val currSize = currentFoodsLiveData.value?.size!!
+        var des = 0
+        if(currSize != fullList.size) {
+            des = if (currSize + value >= fullList.size) {
+                fullList.size
+            } else {
+                currSize + value
+            }
+            for (i in currSize until des) {
+                newList.add(fullList[i])
+            }
+            currentFoodsLiveData.value = newList
+        }
+    }
+
+    fun resetCurrentFoods() {
+        currentFoodsLiveData.value?.clear()
+    }
+
 
 //    fun getTempFoods(amount: Int) {
 //        if (tempAmountFood.value == 0){
@@ -95,7 +117,6 @@ class FoodDetailViewModel : ViewModel() {
 //        Log.d(TAG, "getTempFoods: ${tempFoodsLiveData.value?.size}")
 //
 //    }
-
 
 
 }

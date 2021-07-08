@@ -88,9 +88,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(),
         searchAdapter.callback = this
 
         binding.edtSearch.setOnFocusChangeListener { view, b ->
-
         }
-
     }
 
     @SuppressLint("DefaultLocale")

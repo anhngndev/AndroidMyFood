@@ -2,6 +2,7 @@ package com.ftech.dev.android_my_food.ui.login
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
@@ -10,6 +11,9 @@ import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.UserInforViewModel
 import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.databinding.FragmentLoginBinding
+import com.ftech.dev.android_my_food.ui.cart.CartViewModel
+import com.ftech.dev.android_my_food.ui.main.MainViewModel
+import com.ftech.dev.android_my_food.utils.onDebouncedClick
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
@@ -18,6 +22,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     private var firebaseAuth = FirebaseAuth.getInstance()
     private val userViewModel : UserInforViewModel by activityViewModels()
+    private val cartViewModel : CartViewModel by activityViewModels()
+    private val mainViewModel : MainViewModel by activityViewModels()
+    private var handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +40,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     override fun setAction() {
 
-        binding.layoutRegister.setOnClickListener {
+        binding.layoutRegister.onDebouncedClick {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
-        binding.tvLogin.setOnClickListener {
+
+        binding.tvLogin.onDebouncedClick {
             login()
         }
     }
@@ -57,6 +65,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     }
 
     private fun login() {
+        mainViewModel.showLoading()
+
         val mail = binding.edtMail.text
         val pass = binding.edtPass.text
 
@@ -70,6 +80,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                         userViewModel.userLiveData.value = firebaseAuth.currentUser
                         userViewModel.userNameLivaData.value = name
                         userViewModel.userPhoneNumberLivaData.value = phone
+                        mainViewModel.hideLoading()
                         findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
                     }
                 }

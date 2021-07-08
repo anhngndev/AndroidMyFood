@@ -7,6 +7,7 @@ import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
@@ -24,8 +25,12 @@ import com.ftech.dev.android_my_food.ui.cart.CartViewModel
 class MainActivity : AppCompatActivity() {
 
     private val cartViewModel: CartViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels()
+    private var handler = Handler()
     private lateinit var navController: NavController
+
     lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,42 +39,31 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
-//        createNotificationChannel()
-
-//        val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
-//        cartViewModel.amount.value = sharedPref.getInt("amount", 0)
-//        cartViewModel.total.value = sharedPref.getInt("total", 0)
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        binding.viewModel = mainViewModel
         val navHostFragment = supportFragmentManager.findFragmentById(
             R.id.nav_host_fragment
         ) as NavHostFragment
         navController = navHostFragment.navController
 
-
-//        NAVIGATION BOTTOM
-//        binding.bottomNavigation.setupWithNavController(navController)
-//        mainViewModel.stateNavigationBotstom.observe(this, { state ->
-//            if (state) {
-//                binding.bottomNavigation.visibility = View.VISIBLE
-//            } else {
-//                binding.bottomNavigation.visibility = View.GONE
-//            }
-//        })
-
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-//        val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
-//        with (sharedPref.edit()) {
-//            putInt("amount", cartViewModel.amount.value!!)
-//            putInt("total", cartViewModel.total.value!!)
-//            apply()
-//        }
+    override fun onResume() {
+        super.onResume()
+        mainViewModel.stateLoading.observe(this) {
+            if (it) {
+                binding.view.visibility = View.VISIBLE
+            } else {
+                binding.view.visibility = View.GONE
+            }
+        }
     }
 
+    override fun onStop() {
+        super.onStop()
+        cartViewModel.deleteAll()
+    }
 
 
     @SuppressLint("WrongConstant")

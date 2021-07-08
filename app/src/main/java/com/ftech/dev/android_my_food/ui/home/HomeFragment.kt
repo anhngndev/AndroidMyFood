@@ -1,6 +1,5 @@
 package com.ftech.dev.android_my_food.ui.home
 
-import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
@@ -40,8 +39,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapterHor.FoodLis
     private val detailViewModel: FoodDetailViewModel by activityViewModels()
     private val cartViewModel: CartViewModel by activityViewModels()
     private val userInforViewModel: UserInforViewModel by activityViewModels()
-
-    var handler = Handler()
+    private var handler = Handler()
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_home
@@ -50,24 +48,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapterHor.FoodLis
     override fun initBinding() {
         binding.cartViewModel = cartViewModel
         binding.userInforViewModel = userInforViewModel
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        observer(cartViewModel.isOrdering) {
-            if (!it!!) {
-                binding.tvCompleteOrder.visibility = View.VISIBLE
-                handler.postDelayed(Runnable {
-                    binding.tvCompleteOrder.visibility = View.GONE
-                }, 2500)
-                cartViewModel.isOrdering.value = true
-            }
-        }
-        handler.postDelayed(Runnable {
-            binding.view.visibility = View.GONE
-        }, 1000)
-
     }
 
     override fun setAction() {
@@ -102,6 +82,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapterHor.FoodLis
     }
 
     override fun initView() {
+        observer(cartViewModel.isOrdering) {
+            if (!it!!) {
+                binding.tvCompleteOrder.visibility = View.VISIBLE
+                handler.postDelayed(Runnable {
+                    binding.tvCompleteOrder.visibility = View.GONE
+                }, 2500)
+                cartViewModel.isOrdering.value = true
+            }
+        }
+
+        handler.postDelayed(Runnable {
+            binding.view.visibility = View.GONE
+        }, 1000)
+
         detailViewModel.getFoods()
 
         detailViewModel.foodsLiveData.observe(viewLifecycleOwner) {
@@ -166,8 +160,4 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapterHor.FoodLis
     override fun onFailed(error: Exception?) {
         Log.e(TAG, "not connection")
     }
-
-    fun completeOrder() {
-    }
-
 }

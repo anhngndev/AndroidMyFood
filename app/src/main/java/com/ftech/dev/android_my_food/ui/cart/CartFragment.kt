@@ -1,39 +1,25 @@
 package com.ftech.dev.android_my_food.ui.cart
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.content.Context
 import android.os.Build
-import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
+import android.os.Handler
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ViewFlipper
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.data.source.local.ItemInCartEntity
-import com.ftech.dev.android_my_food.data.source.local.SearchEntity
 import com.ftech.dev.android_my_food.databinding.FragmentCartBinding
-import com.ftech.dev.android_my_food.ui.search.RecentSearchAdapter
-import com.ftech.dev.android_my_food.ui.search.SearchViewModel
-import com.ftech.dev.android_my_food.utils.observer
 import java.util.*
 
 class CartFragment : BaseFragment<FragmentCartBinding>(), CartAdapter.CartListener {
     private val TAG = "CartFragment"
     private val cartViewModel: CartViewModel by activityViewModels()
     private var cartAdapter = CartAdapter()
+    private var handler = Handler()
     var list = mutableListOf<ItemInCartEntity>()
     var touchHelper: ItemTouchHelper? = null
 
@@ -87,14 +73,21 @@ class CartFragment : BaseFragment<FragmentCartBinding>(), CartAdapter.CartListen
         touchHelper?.attachToRecyclerView(binding.rcItemInCart)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun setAction() {
         binding.ivBack.setOnClickListener {
             onBackPress()
         }
 
         binding.tvOrder.setOnClickListener {
-            cartViewModel.deleteAll()
-            findNavController().popBackStack(R.id.homeFragment, false)
+            if (cartViewModel.checkOut()) {
+                findNavController().popBackStack(R.id.homeFragment, false)
+            } else{
+                binding.tvNotifyAdd.visibility = View.VISIBLE
+                handler.postDelayed(Runnable {
+                    binding.tvNotifyAdd.visibility = View.GONE
+                }, 1500)
+            }
         }
         binding.tvAddPromo.setOnClickListener {
 

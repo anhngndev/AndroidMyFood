@@ -1,8 +1,10 @@
 package com.ftech.dev.android_my_food.ui.home
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.data.model.Food
@@ -11,6 +13,7 @@ import com.ftech.dev.android_my_food.databinding.ItemFoodVerBinding
 
 class FoodAdapterVer : RecyclerView.Adapter<FoodAdapterVer.FoodViewHolder>() {
 
+    private val TAG = "FoodAdapterVer"
     var list: MutableList<Food> = mutableListOf()
         set(value) {
             field = value
@@ -18,6 +21,7 @@ class FoodAdapterVer : RecyclerView.Adapter<FoodAdapterVer.FoodViewHolder>() {
         }
 
     var callBack: FoodListener? = null
+    var loadMore : ()->Unit={}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodAdapterVer.FoodViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -43,6 +47,24 @@ class FoodAdapterVer : RecyclerView.Adapter<FoodAdapterVer.FoodViewHolder>() {
     }
 
     override fun getItemCount() = list.size
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                layoutManager.let {
+                    val lastShowed = layoutManager.findLastCompletelyVisibleItemPosition()
+                    if (lastShowed == itemCount - 1 && dy > 0) {
+                        Log.d(TAG, "onScrolled: ")
+                        loadMore.invoke()
+                    }
+                }
+            }
+        })
+    }
+
 
     class FoodViewHolder(val binding: ItemFoodVerBinding) : RecyclerView.ViewHolder(binding.root) {
     }
