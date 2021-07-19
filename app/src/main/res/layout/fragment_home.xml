@@ -7,11 +7,11 @@
 
         <import type="com.ftech.dev.android_my_food.ui.cart.CartViewModel" />
 
-        <import type="com.ftech.dev.android_my_food.UserInforViewModel" />
+        <import type="com.ftech.dev.android_my_food.shareviewmodel.UserInforViewModel" />
 
         <variable
             name="userInforViewModel"
-            type="UserInforViewModel" />
+            type="com.ftech.dev.android_my_food.shareviewmodel.UserInforViewModel" />
 
         <variable
             name="cartViewModel"
@@ -229,7 +229,6 @@
 
                 </RelativeLayout>
 
-
                 <RelativeLayout
                     android:id="@+id/rlVoucher"
                     android:layout_width="match_parent"
@@ -274,7 +273,8 @@
             android:layout_height="match_parent"
             android:background="@color/transition_black"
             android:visibility="visible"
-            tools:ignore="MissingConstraints,NotSibling">
+            tools:ignore="MissingConstraints,NotSibling"
+            android:focusable="true">
 
             <TextView
                 android:layout_width="100dp"

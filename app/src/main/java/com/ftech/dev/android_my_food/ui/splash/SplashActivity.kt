@@ -18,8 +18,10 @@ class SplashActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         val root = findViewById<MotionLayout>(R.id.motionLayout)
         CoroutineScope(Dispatchers.IO).launch {//chạy dưới luồng background
+            // show loading
             delay(50L)
-            withContext(Dispatchers.Main) {
+            withContext(Dispatchers.Main) {//thực hiện công việc ở luồng chính
+                //hideloading
                 root.transitionToEnd()
             }
         }

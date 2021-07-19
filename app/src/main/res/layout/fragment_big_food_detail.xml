@@ -314,16 +314,16 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="36dp"
-            android:backgroundTint="@color/light_blue"
-            android:contentDescription="@string/todo"
-            android:tint="@color/white"
-            app:fabSize="mini"
-            app:layout_anchor="@id/rlInformation"
-            app:layout_anchorGravity="top|right|end" />
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="36dp"-->
+<!--            android:backgroundTint="@color/light_blue"-->
+<!--            android:contentDescription="@string/todo"-->
+<!--            android:tint="@color/white"-->
+<!--            app:fabSize="mini"-->
+<!--            app:layout_anchor="@id/rlInformation"-->
+<!--            app:layout_anchorGravity="top|right|end" />-->
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

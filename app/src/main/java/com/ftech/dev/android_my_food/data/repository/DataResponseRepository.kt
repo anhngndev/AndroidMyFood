@@ -20,8 +20,10 @@ class DataResponseRepository {
         apiService.getFoodList().enqueue(object : Callback<DataResponse> {
             override fun onResponse(call: Call<DataResponse>, response: Response<DataResponse>) {
                 if (response.isSuccessful){
+                    Log.d(TAG, "onResponse: get response success")
                     onSuccess.invoke(response.body()?.content?.datalist!!)
                 } else {
+                    Log.d(TAG, "onResponse: get response fail")
                     onError.invoke(null)
                 }
             }

@@ -1,51 +1,46 @@
 package com.ftech.dev.android_my_food.ui.login
 
 import android.content.Context
-import android.os.Bundle
 import android.os.Handler
-import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.ftech.dev.android_my_food.R
-import com.ftech.dev.android_my_food.UserInforViewModel
+import com.ftech.dev.android_my_food.shareviewmodel.UserInforViewModel
 import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.databinding.FragmentLoginBinding
 import com.ftech.dev.android_my_food.ui.cart.CartViewModel
 import com.ftech.dev.android_my_food.ui.main.MainViewModel
+import com.ftech.dev.android_my_food.utils.observer
 import com.ftech.dev.android_my_food.utils.onDebouncedClick
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
+    private val TAG = "LoginFragment"
     private var firebaseAuth = FirebaseAuth.getInstance()
-    private val userViewModel : UserInforViewModel by activityViewModels()
-    private val cartViewModel : CartViewModel by activityViewModels()
-    private val mainViewModel : MainViewModel by activityViewModels()
+    private val userViewModel: UserInforViewModel by activityViewModels()
+    private val cartViewModel: CartViewModel by activityViewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
     private var handler = Handler()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
+    override fun initBinding() {
 
-        }
+        binding.viewModel = userViewModel
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setAction()
-    }
 
     override fun setAction() {
 
-        binding.layoutRegister.onDebouncedClick {
+        binding.layoutRegister.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
         binding.tvLogin.onDebouncedClick {
-            login()
+            if (userViewModel.isEmailValid() && userViewModel.isPassValid()) {
+                login()
+            }
         }
     }
 
@@ -54,6 +49,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     }
 
     override fun initView() {
+        observer(userViewModel.userEmailLiveData) {
+            if (!userViewModel.isEmailValid()) {
+                binding.edtMail.error = "Malformed"
+            }
+        }
+        observer(userViewModel.userPassLiveData) {
+            if (!userViewModel.isPassValid()) {
+                binding.edtPass.error = "Pass more than 6 letter"
+            }
+        }
 
     }
 
@@ -74,9 +79,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             firebaseAuth.signInWithEmailAndPassword(mail.toString(), pass.toString())
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
-                        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return@addOnCompleteListener
-                        val name = sharedPref.getString(mail.toString()+"name", "not found name")
-                        val phone = sharedPref.getString(mail.toString()+"sdt", "not found phone number")
+                        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+                            ?: return@addOnCompleteListener
+                        val name = sharedPref.getString(mail.toString() + "name", "not found name")
+                        val phone =
+                            sharedPref.getString(mail.toString() + "sdt", "not found phone number")
                         userViewModel.userLiveData.value = firebaseAuth.currentUser
                         userViewModel.userNameLivaData.value = name
                         userViewModel.userPhoneNumberLivaData.value = phone
@@ -85,10 +92,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                     }
                 }
                 .addOnFailureListener {
+                    mainViewModel.hideLoading()
                     Toast.makeText(context, "Login failed!", Toast.LENGTH_SHORT).show()
                 }
 
         } else {
+            mainViewModel.hideLoading()
             if (mail.toString().equals("")) {
                 binding.edtMail.error = "Type"
             }

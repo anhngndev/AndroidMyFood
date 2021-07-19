@@ -20,7 +20,7 @@
 
         <variable
             name="viewModel"
-            type="com.ftech.dev.android_my_food.FoodDetailViewModel" />
+            type="com.ftech.dev.android_my_food.shareviewmodel.FoodViewModel" />
 
     </data>
 

@@ -9,7 +9,7 @@ import android.widget.TextView.OnEditorActionListener
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.ftech.dev.android_my_food.FoodDetailViewModel
+import com.ftech.dev.android_my_food.shareviewmodel.FoodViewModel
 import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.data.model.Food
@@ -18,6 +18,7 @@ import com.ftech.dev.android_my_food.databinding.FragmentSearchBinding
 import com.ftech.dev.android_my_food.ui.home.FoodAdapterVer
 import com.ftech.dev.android_my_food.utils.hideKeyboard
 import com.ftech.dev.android_my_food.utils.observer
+import com.ftech.dev.android_my_food.utils.onDebouncedClick
 import java.util.*
 
 
@@ -27,7 +28,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(),
 
     private val TAG = "SearchFragment"
     private val searchViewModel: SearchViewModel by viewModels()
-    private val foodsViewModel: FoodDetailViewModel by activityViewModels()
+    private val foodsViewModel: FoodViewModel by activityViewModels()
     private var foodAdapter = FoodAdapterVer()
     private var searchAdapter = RecentSearchAdapter()
     private var handler = Handler()
@@ -61,10 +62,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(),
         binding.edtSearch.setOnFocusChangeListener { view, b ->
         }
 
-        binding.ivBack.setOnClickListener {
+        binding.ivBack.onDebouncedClick {
             onBackPress()
         }
-        binding.ivClear.setOnClickListener {
+        binding.ivClear.onDebouncedClick {
             searchViewModel.keySearch.value = ""
         }
     }
@@ -73,6 +74,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(),
         foodAdapter.list = mutableListOf()
         foodAdapter.callBack = this
         binding.rcFood.adapter = foodAdapter
+
+
 
         observer(searchViewModel.listSearchLiveData2) {
             it?.let { list ->

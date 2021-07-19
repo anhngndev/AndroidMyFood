@@ -6,7 +6,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.ftech.dev.android_my_food.FoodDetailViewModel
+import com.ftech.dev.android_my_food.shareviewmodel.FoodViewModel
 import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.databinding.FragmentImageBigFoodDetailBinding
@@ -14,7 +14,7 @@ import com.ftech.dev.android_my_food.databinding.FragmentImageBigFoodDetailBindi
 class ImageBigFoodDetailFragment : BaseFragment<FragmentImageBigFoodDetailBinding>(),
     FoodImageAdapter.FoodImageListener {
 
-    private val detailViewModel: FoodDetailViewModel by activityViewModels()
+    private val detailViewModel: FoodViewModel by activityViewModels()
     private lateinit var foodImageAdapter: FoodImageAdapter
     private var foodImageList = mutableListOf<Int>()
 

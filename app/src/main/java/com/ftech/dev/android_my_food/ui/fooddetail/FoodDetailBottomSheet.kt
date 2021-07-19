@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import com.ftech.dev.android_my_food.FoodDetailViewModel
+import com.ftech.dev.android_my_food.shareviewmodel.FoodViewModel
 import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.data.model.Food
 import com.ftech.dev.android_my_food.databinding.BottomSheetFoodDetailBinding
@@ -17,7 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class FoodDetailBottomSheet : BottomSheetDialogFragment() {
 
     lateinit var binding: BottomSheetFoodDetailBinding
-    private val detailViewModel: FoodDetailViewModel by activityViewModels()
+    private val detailViewModel: FoodViewModel by activityViewModels()
     lateinit var food: Food
 
     companion object {

@@ -1,14 +1,17 @@
-package com.ftech.dev.android_my_food
+package com.ftech.dev.android_my_food.shareviewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ftech.dev.android_my_food.data.model.Food
 import com.ftech.dev.android_my_food.data.model.BigFood
 import com.ftech.dev.android_my_food.data.model.Voucher
 import com.ftech.dev.android_my_food.data.repository.DataResponseRepository
+import kotlinx.coroutines.launch
 
-class FoodDetailViewModel : ViewModel() {
+class FoodViewModel : ViewModel() {
+
 
     private val TAG = "FoodDetailViewModel"
     private val dataResponseRepository = DataResponseRepository()
@@ -79,44 +82,6 @@ class FoodDetailViewModel : ViewModel() {
     fun resetCurrentFoods() {
         currentFoodsLiveData.value?.clear()
     }
-
-
-//    fun getTempFoods(amount: Int) {
-//        if (tempAmountFood.value == 0){
-//            if (foodsLiveData.value?.size!! > amount){
-//                tempAmountFood.value = amount
-//                for(i in 0 until amount - 1){
-//                    tempFoodsLiveData.value?.add(foodsLiveData.value!![i])
-//                    Log.d(TAG, "getTempFoods 0: ${tempFoodsLiveData.value?.size}")
-//
-//                }
-//                Log.d(TAG, "getTempFoods 1: ${tempFoodsLiveData.value?.size}")
-//
-//            } else{
-//                tempAmountFood.value = foodsLiveData.value?.size
-//                tempFoodsLiveData.value = foodsLiveData.value!!
-//                Log.d(TAG, "getTempFoods 2: ${tempFoodsLiveData.value?.size}")
-//
-//            }
-//        }else{
-//
-//            if ((tempAmountFood?.value!! + amount) > foodsLiveData.value?.size!! ){
-//                tempAmountFood.value = foodsLiveData.value?.size
-//                tempFoodsLiveData.value = foodsLiveData.value!!
-//                Log.d(TAG, "getTempFoods 3: ${tempFoodsLiveData.value?.size}")
-//
-//            } else{
-//                for(i in tempAmountFood.value!! until tempAmountFood.value!! + amount - 1){
-//                    tempFoodsLiveData.value?.add(foodsLiveData.value!![i])
-//
-//                }
-//                Log.d(TAG, "getTempFoods 4: ${tempFoodsLiveData.value?.size}")
-//
-//            }
-//        }
-//        Log.d(TAG, "getTempFoods: ${tempFoodsLiveData.value?.size}")
-//
-//    }
 
 
 }

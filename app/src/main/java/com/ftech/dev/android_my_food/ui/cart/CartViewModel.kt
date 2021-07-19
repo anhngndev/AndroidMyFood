@@ -76,4 +76,8 @@ class CartViewModel : ViewModel() {
         itemInCartRepository.deleteAll()
     }
 
+    fun isAmountValid() : Boolean{
+        return (amount.value!! > 0)
+    }
+
 }

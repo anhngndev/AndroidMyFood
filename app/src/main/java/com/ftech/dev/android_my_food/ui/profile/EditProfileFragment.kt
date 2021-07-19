@@ -4,10 +4,10 @@ import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.activityViewModels
 import com.ftech.dev.android_my_food.R
-import com.ftech.dev.android_my_food.UserInforViewModel
+import com.ftech.dev.android_my_food.shareviewmodel.UserInforViewModel
 import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.databinding.FragmentEditProfileBinding
-import com.ftech.dev.android_my_food.ui.main.MainViewModel
+import com.ftech.dev.android_my_food.utils.onDebouncedClick
 
 
 class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
@@ -30,12 +30,12 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
     }
 
     override fun setAction() {
-        binding.ivBack.setOnClickListener {
+        binding.ivBack.onDebouncedClick {
             onBackPress()
         }
 
-        binding.tvUpdate.setOnClickListener {
-            val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE) ?: return@setOnClickListener
+        binding.tvUpdate.onDebouncedClick {
+            val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE) ?: return@onDebouncedClick
             with (sharedPref.edit()) {
                 putString(userInforViewModel.userLiveData.value?.email+"name", binding.edtName.text.toString())
                 userInforViewModel.userNameLivaData.value = binding.edtName.text.toString()
@@ -44,7 +44,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding>() {
             onBackPress()
         }
 
-        binding.tvOut.setOnClickListener {
+        binding.tvOut.onDebouncedClick {
             onBackPress()
         }
 

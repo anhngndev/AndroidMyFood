@@ -9,7 +9,7 @@
 
         <import type="com.ftech.dev.android_my_food.ui.voucher.VoucherAdapter.VoucherListener" />
 
-        <import type="com.ftech.dev.android_my_food.FoodDetailViewModel" />
+        <import type="com.ftech.dev.android_my_food.shareviewmodel.FoodViewModel" />
 
         <variable
             name="position"

@@ -14,6 +14,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.data.model.BigFood
 import com.ftech.dev.android_my_food.data.model.Card
 import com.ftech.dev.android_my_food.data.model.Food
@@ -71,17 +72,20 @@ fun RecyclerView.setVisibilityV2(key: String) {
 }
 
 @BindingAdapter("tv_visibility_2")
-//fun TextView.setVisibilityV2(viewModel: CartViewModel) {
-//    visibility = if (viewModel.amount.value!! > 0)
-//        View.GONE
-//    else View.VISIBLE
-//}
-
 fun TextView.setVisibilityV2(value: Int) {
     visibility = if (value > 0) {
         View.GONE
     } else {
         View.VISIBLE
+    }
+}
+
+@BindingAdapter("tv_background")
+fun TextView.setBackGround(value: Int) {
+    if (value > 0) {
+        this.setBackgroundResource(R.drawable.border_5_light_blue_fill)
+    } else {
+        this.setBackgroundResource(R.drawable.border_5_light_gray_fill)
     }
 }
 

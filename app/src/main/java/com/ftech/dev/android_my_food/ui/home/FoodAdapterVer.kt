@@ -38,10 +38,10 @@ class FoodAdapterVer : RecyclerView.Adapter<FoodAdapterVer.FoodViewHolder>() {
         val item = list[position]
         holderFood.binding.item = item
         holderFood.binding.itemPosition = position
+
         holderFood.binding.itemListener = callBack
 
         holderFood.binding.tvName.setOnLongClickListener {
-
             return@setOnLongClickListener false
         }
     }

@@ -15,8 +15,6 @@ class SearchRepository {
         searchDao.insert(searchEntity)
     }
 
-
-
     fun getRecentSearch(): List<SearchEntity> {
         return searchDao.getRecentSearch()
     }

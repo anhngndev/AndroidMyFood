@@ -1,15 +1,14 @@
 package com.ftech.dev.android_my_food.ui.profile
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.ftech.dev.android_my_food.R
-import com.ftech.dev.android_my_food.UserInforViewModel
+import com.ftech.dev.android_my_food.shareviewmodel.UserInforViewModel
 import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.databinding.FragmentProfileBinding
-import com.ftech.dev.android_my_food.ui.main.MainViewModel
+import com.ftech.dev.android_my_food.utils.onDebouncedClick
 import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
@@ -34,15 +33,15 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
     }
 
     override fun setAction() {
-        binding.ivBack.setOnClickListener {
+        binding.ivBack.onDebouncedClick {
             onBackPress()
         }
 
-        binding.tvProfile.setOnClickListener {
+        binding.tvProfile.onDebouncedClick {
             findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment)
         }
 
-        binding.tvMyOrder.setOnClickListener {
+        binding.tvMyOrder.onDebouncedClick {
             findNavController().navigate(R.id.action_profileFragment_to_historyOrderFragment)
         }
 
@@ -50,7 +49,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
         binding.tvLanguage.setOnClickListener { }
 
-        binding.tvLogOut.setOnClickListener {
+        binding.tvLogOut.onDebouncedClick {
             val builder = AlertDialog.Builder(requireContext())
             builder.setTitle("Foody")
             builder.setMessage("Do you want to log out?")

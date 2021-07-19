@@ -4,15 +4,12 @@ import android.os.Bundle
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.ftech.dev.android_my_food.FoodDetailViewModel
+import com.ftech.dev.android_my_food.shareviewmodel.FoodViewModel
 import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.data.model.Food
 import com.ftech.dev.android_my_food.databinding.FragmentBigFoodDetailBinding
 import com.ftech.dev.android_my_food.ui.home.FoodAdapterVer
-import com.ftech.dev.android_my_food.utils.observer
 import java.util.*
 
 class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
@@ -24,7 +21,7 @@ class BigFoodDetailFragment : BaseFragment<FragmentBigFoodDetailBinding>(),
     private var foodAdapter = FoodAdapterVer()
     private var foodImageList = mutableListOf<Int>()
 
-    private val foodsViewModel: FoodDetailViewModel by activityViewModels()
+    private val foodsViewModel: FoodViewModel by activityViewModels()
     override fun getLayoutId(): Int {
         return R.layout.fragment_big_food_detail
     }

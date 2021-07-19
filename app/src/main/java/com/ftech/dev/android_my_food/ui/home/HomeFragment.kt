@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.ftech.dev.android_my_food.FoodDetailViewModel
+import com.ftech.dev.android_my_food.shareviewmodel.FoodViewModel
 import com.ftech.dev.android_my_food.R
-import com.ftech.dev.android_my_food.UserInforViewModel
+import com.ftech.dev.android_my_food.shareviewmodel.UserInforViewModel
 import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.data.model.Card
 import com.ftech.dev.android_my_food.data.model.Food
@@ -36,10 +36,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapterHor.FoodLis
     private var voucherList = mutableListOf<Voucher>()
     private lateinit var bigAdapter: FoodBigAdapter
     private var bigFoodList = mutableListOf<BigFood>()
-    private val detailViewModel: FoodDetailViewModel by activityViewModels()
+    private val detailViewModel: FoodViewModel by activityViewModels()
     private val cartViewModel: CartViewModel by activityViewModels()
     private val userInforViewModel: UserInforViewModel by activityViewModels()
     private var handler = Handler()
+
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_home
@@ -79,6 +80,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), FoodAdapterHor.FoodLis
         binding.tvMore.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_allFoodFragment)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        Log.d(TAG, "onDestroy: ")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.d(TAG, "onDestroyView: ")
     }
 
     override fun initView() {

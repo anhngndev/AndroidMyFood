@@ -84,7 +84,7 @@
         </KeyFrameSet>
     </Transition>
 
-    <ConstraintSet android:id="@+id/start">
+    <ConstraintSet>
         <Constraint
             android:id="@+id/view"
             android:layout_width="200dp"

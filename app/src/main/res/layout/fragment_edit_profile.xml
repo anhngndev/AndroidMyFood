@@ -5,11 +5,11 @@
 
     <data>
 
-        <import type="com.ftech.dev.android_my_food.UserInforViewModel"/>
+        <import type="com.ftech.dev.android_my_food.shareviewmodel.UserInforViewModel"/>
 
         <variable
             name="userViewModel"
-            type="UserInforViewModel" />
+            type="com.ftech.dev.android_my_food.shareviewmodel.UserInforViewModel" />
 
         <variable
             name="isFocusName"

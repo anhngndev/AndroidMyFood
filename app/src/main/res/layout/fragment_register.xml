@@ -4,6 +4,12 @@
 
     <data>
 
+        <import type="com.ftech.dev.android_my_food.ui.register.RegisterViewModel" />
+
+        <variable
+            name="viewModel"
+            type="RegisterViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,7 +28,6 @@
             android:src="@drawable/ic_black_left_arrow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <ImageView
             android:layout_width="220dp"
@@ -59,7 +64,7 @@
         <EditText
             android:id="@+id/edtName"
             android:layout_width="match_parent"
-            android:layout_height="37dp"
+            android:layout_height="42dp"
             android:layout_marginHorizontal="42dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/border_13_white_fill"
@@ -72,6 +77,8 @@
             android:inputType="text"
             android:paddingVertical="8dp"
             android:paddingLeft="17dp"
+            android:paddingEnd="8dp"
+            android:text="@={viewModel.userNameLiveData}"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -81,9 +88,9 @@
         <EditText
             android:id="@+id/edtMail"
             android:layout_width="match_parent"
-            android:layout_height="37dp"
+            android:layout_height="42dp"
             android:layout_marginHorizontal="42dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/border_13_white_fill"
             android:drawableStart="@drawable/ic_start_drawble_mail"
             android:drawablePadding="16dp"
@@ -94,6 +101,8 @@
             android:inputType="textEmailAddress"
             android:paddingVertical="8dp"
             android:paddingLeft="17dp"
+            android:paddingEnd="8dp"
+            android:text="@={viewModel.userEmailLiveData}"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -102,9 +111,9 @@
         <EditText
             android:id="@+id/edtPass"
             android:layout_width="match_parent"
-            android:layout_height="37dp"
+            android:layout_height="42dp"
             android:layout_marginHorizontal="42dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/border_13_white_fill"
             android:drawableStart="@drawable/ic_start_drawble_lock"
             android:drawablePadding="16dp"
@@ -115,6 +124,8 @@
             android:inputType="textPassword"
             android:paddingVertical="8dp"
             android:paddingLeft="17dp"
+            android:paddingEnd="8dp"
+            android:text="@={viewModel.userPassLiveData}"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -123,9 +134,9 @@
         <EditText
             android:id="@+id/edtPassAgain"
             android:layout_width="match_parent"
-            android:layout_height="37dp"
+            android:layout_height="42dp"
             android:layout_marginHorizontal="42dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/border_13_white_fill"
             android:drawableStart="@drawable/ic_start_drawble_lock"
             android:drawablePadding="16dp"
@@ -136,6 +147,8 @@
             android:inputType="textPassword"
             android:paddingVertical="8dp"
             android:paddingLeft="17dp"
+            android:paddingEnd="8dp"
+            android:text="@={viewModel.userPassAgainLiveData}"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -146,7 +159,7 @@
             android:layout_width="match_parent"
             android:layout_height="37dp"
             android:layout_marginHorizontal="42dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/border_13_white_fill"
             android:drawableStart="@drawable/ic_start_drawble_phone"
             android:drawablePadding="16dp"
@@ -157,6 +170,8 @@
             android:inputType="phone"
             android:paddingVertical="8dp"
             android:paddingLeft="17dp"
+            android:paddingEnd="8dp"
+            android:text="@={viewModel.userPhoneNumberLivaData}"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -167,10 +182,10 @@
             android:layout_width="wrap_content"
             android:layout_height="36dp"
             android:layout_marginTop="67dp"
-            android:layout_marginEnd="17dp"
-            android:background="@drawable/ripple_click_square"
+            android:background="@drawable/ripple_click_square_circle"
             android:gravity="center_vertical"
             android:orientation="horizontal"
+            android:paddingHorizontal="15dp"
             android:textColor="@color/black"
             android:textSize="28sp"
             app:layout_constraintEnd_toEndOf="parent"

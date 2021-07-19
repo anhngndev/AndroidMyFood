@@ -13,6 +13,8 @@ import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.data.source.local.ItemInCartEntity
 import com.ftech.dev.android_my_food.databinding.FragmentCartBinding
+import com.ftech.dev.android_my_food.utils.observer
+import com.ftech.dev.android_my_food.utils.onDebouncedClick
 import java.util.*
 
 class CartFragment : BaseFragment<FragmentCartBinding>(), CartAdapter.CartListener {
@@ -37,6 +39,10 @@ class CartFragment : BaseFragment<FragmentCartBinding>(), CartAdapter.CartListen
             it?.let { list ->
                 cartAdapter.list = list
             }
+        }
+
+        observer(cartViewModel.amount){
+            cartViewModel.isAmountValid()
         }
 
 //        cách viết t2
@@ -75,11 +81,11 @@ class CartFragment : BaseFragment<FragmentCartBinding>(), CartAdapter.CartListen
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun setAction() {
-        binding.ivBack.setOnClickListener {
+        binding.ivBack.onDebouncedClick {
             onBackPress()
         }
 
-        binding.tvOrder.setOnClickListener {
+        binding.tvOrder.onDebouncedClick {
             if (cartViewModel.checkOut()) {
                 findNavController().popBackStack(R.id.homeFragment, false)
             } else{
@@ -89,16 +95,16 @@ class CartFragment : BaseFragment<FragmentCartBinding>(), CartAdapter.CartListen
                 }, 1500)
             }
         }
-        binding.tvAddPromo.setOnClickListener {
+        binding.tvAddPromo.onDebouncedClick {
 
         }
-        binding.tvDirect.setOnClickListener {
+        binding.tvDirect.onDebouncedClick {
 
         }
-        binding.tvAddDetailAddress.setOnClickListener {
+        binding.tvAddDetailAddress.onDebouncedClick {
 
         }
-        binding.tvEdit.setOnClickListener {
+        binding.tvEdit.onDebouncedClick {
 
         }
     }
@@ -109,8 +115,8 @@ class CartFragment : BaseFragment<FragmentCartBinding>(), CartAdapter.CartListen
 
     override fun onDeleteItem(item: ItemInCartEntity) {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Hock-y")
-        builder.setMessage("Delete ${item.nameItem.toString()} ?")
+        builder.setTitle("TastyVN")
+        builder.setMessage("Remove ${item.nameItem.toString()} ?")
             .setCancelable(false)
             .setPositiveButton("Yes") { dialog, id ->
                 cartViewModel.delete(item)

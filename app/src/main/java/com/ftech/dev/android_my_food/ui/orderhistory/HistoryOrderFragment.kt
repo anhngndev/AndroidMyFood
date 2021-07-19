@@ -7,6 +7,7 @@ import com.ftech.dev.android_my_food.data.source.local.OrderEntity
 import com.ftech.dev.android_my_food.databinding.FragmentHistoryOrderBinding
 import com.ftech.dev.android_my_food.ui.cart.CartViewModel
 import com.ftech.dev.android_my_food.utils.observer
+import com.ftech.dev.android_my_food.utils.onDebouncedClick
 
 
 class HistoryOrderFragment : BaseFragment<FragmentHistoryOrderBinding>(),
@@ -36,7 +37,7 @@ class HistoryOrderFragment : BaseFragment<FragmentHistoryOrderBinding>(),
     }
 
     override fun setAction() {
-        binding.ivBack.setOnClickListener {
+        binding.ivBack.onDebouncedClick {
             onBackPress()
         }
     }

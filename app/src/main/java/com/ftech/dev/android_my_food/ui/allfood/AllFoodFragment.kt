@@ -1,14 +1,11 @@
 package com.ftech.dev.android_my_food.ui.allfood
 
 import android.util.Log
-import android.os.Handler
 
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.ftech.dev.android_my_food.FoodDetailViewModel
+import com.ftech.dev.android_my_food.shareviewmodel.FoodViewModel
 import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.data.model.Food
@@ -20,7 +17,7 @@ import com.ftech.dev.android_my_food.utils.observer
 class AllFoodFragment : BaseFragment<FragmentAllFoodBinding>(), FoodAdapterVer.FoodListener {
 
     private val TAG = "AllFoodFragment"
-    private val foodsViewModel: FoodDetailViewModel by activityViewModels()
+    private val foodsViewModel: FoodViewModel by activityViewModels()
     private var foodAdapter = FoodAdapterVer()
     private var handler = android.os.Handler()
 

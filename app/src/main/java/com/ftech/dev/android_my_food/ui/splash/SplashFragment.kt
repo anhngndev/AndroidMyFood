@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import com.ftech.dev.android_my_food.R
 import com.ftech.dev.android_my_food.base.BaseFragment
 import com.ftech.dev.android_my_food.databinding.FragmentSplashBinding
+import com.ftech.dev.android_my_food.utils.onDebouncedClick
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import meow.bottomnavigation.MeowBottomNavigation
 
@@ -26,7 +27,7 @@ class SplashFragment: BaseFragment<FragmentSplashBinding>(){
     }
 
     override fun setAction() {
-        binding.layout.setOnClickListener {
+        binding.layout.onDebouncedClick {
             findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
         }
     }
